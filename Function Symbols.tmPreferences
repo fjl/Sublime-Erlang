@@ -5,13 +5,13 @@
 	<key>name</key>
 	<string>Function Symbols</string>
 	<key>scope</key>
-	<string>source.erlang entity.name.function.definition</string>
+	<string>source.erlang entity.name.function.definition.erlang</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 		<key>symbolTransformation</key>
-		<string>s,$,/,</string>
+		<string>s/^/Function: /</string>
 	</dict>
 	<key>uuid</key>
 	<string>7D7FE91B-0543-4F95-8D99-AF393226415C</string>

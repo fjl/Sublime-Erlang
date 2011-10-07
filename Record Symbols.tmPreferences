@@ -5,13 +5,13 @@
 	<key>name</key>
 	<string>Record Symbols</string>
 	<key>scope</key>
-	<string>source.erlang entity.name.type.class.record.definition</string>
+	<string>source.erlang entity.name.type.class.record.definition.erlang</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 		<key>symbolTransformation</key>
-		<string>s/^/#/</string>
+		<string>s/^/Record: /</string>
 	</dict>
 	<key>uuid</key>
 	<string>31DB728C-AC89-4DF0-A2B9-9D3D3A7552A9</string>

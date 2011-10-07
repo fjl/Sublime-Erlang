@@ -5,13 +5,13 @@
 	<key>name</key>
 	<string>Macro Symbols</string>
 	<key>scope</key>
-	<string>source.erlang entity.name.function.macro.definition</string>
+	<string>source.erlang entity.name.function.macro.definition.erlang</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 		<key>symbolTransformation</key>
-		<string>s/^/?/</string>
+		<string>s/^/Macro: /</string>
 	</dict>
 	<key>uuid</key>
 	<string>5EEC72E3-EEA9-4C53-8D70-3903EF1D84E2</string>
