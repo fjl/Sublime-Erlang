@@ -2452,7 +2452,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(~)((\-)?\d++|(\*))?((\.)(\d++|(\*)))?((\.)((\*)|.))?[~cfegswpWPBX#bx\+ni]</string>
+					<string>(~)((\-)?\d++|(\*))?((\.)(\d++|(\*)|))?((\.)((\*)|.))?[t]?[~cfegswpWPBX#bx\+ni]</string>
 					<key>name</key>
 					<string>constant.other.placeholder.erlang</string>
 				</dict>
