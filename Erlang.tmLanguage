@@ -1423,7 +1423,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(integer|float|binary)|(signed|unsigned)|(big|little|native)|(unit)|(-)</string>
+					<string>(integer|float|binary|bytes|bitstring|bits|utf8|utf16|utf32)|(signed|unsigned)|(big|little|native)|(unit)|(-)</string>
 				</dict>
 			</array>
 		</dict>
