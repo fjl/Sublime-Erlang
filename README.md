@@ -13,4 +13,9 @@ for the issues that bug me most.
 
 # Contributing
 
-Use Github. Pull requests and issues are welcome.
+The syntax files (.tmLanguage) are generated from JSON source using
+[AAAPackageDev](https://github.com/SublimeText/AAAPackageDev). If you
+modify the grammar, please do so in the JSON file and then generate the XML
+using the build system supplied by AAAPackageDev.
+
+Pull requests and issues are welcome.
