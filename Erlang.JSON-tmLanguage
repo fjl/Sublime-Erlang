@@ -1077,7 +1077,7 @@
           "name": "constant.other.placeholder.erlang"
         },
         {
-          "match": "~.?",
+          "match": "~[^\"]?",
           "name": "invalid.illegal.string.erlang"
         }
       ]

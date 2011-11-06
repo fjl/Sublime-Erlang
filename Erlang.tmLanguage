@@ -2465,7 +2465,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>~.?</string>
+					<string>~[^"]?</string>
 					<key>name</key>
 					<string>invalid.illegal.string.erlang</string>
 				</dict>
