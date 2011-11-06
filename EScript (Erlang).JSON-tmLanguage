@@ -1,0 +1,20 @@
+{
+  "name": "EScript (Erlang)",
+  "scopeName": "source.escript.erlang",
+  "fileTypes": ["escript"],
+  "firstLineMatch": "^#!/.*[ /]escript",
+  "uuid": "c03378d1-1924-457f-a346-b21c01d22a63",
+  "patterns": [
+    {
+      "name": "source.erlang",
+      "begin": "^(#!/.*[ /]escript)",
+      "beginCaptures": {
+        "1": {"name": "comment.shebang.escript.erlang"}
+      },
+      "end": "(?!)",
+      "patterns": [
+        {"include": "source.erlang"}
+      ]
+    }
+  ]
+}

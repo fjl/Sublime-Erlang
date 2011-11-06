@@ -47,6 +47,10 @@
 			<key>include</key>
 			<string>#everything-else</string>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>#illegal-shebang-comment</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -1019,6 +1023,13 @@
 					</array>
 				</dict>
 			</array>
+		</dict>
+		<key>illegal-shebang-comment</key>
+		<dict>
+			<key>match</key>
+			<string>#!.*</string>
+			<key>name</key>
+			<string>invalid.illegal.comment.shebang.erlang</string>
 		</dict>
 		<key>import-export-directive</key>
 		<dict>

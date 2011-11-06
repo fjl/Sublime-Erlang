@@ -17,7 +17,8 @@
     {"include": "#macro-directive"},
     {"include": "#directive"},
     {"include": "#function"},
-    {"include": "#everything-else"}
+    {"include": "#everything-else"},
+    {"include": "#illegal-shebang-comment"}
   ],
 
   "repository": {
@@ -115,6 +116,11 @@
       },
       "end": "$\\n?",
       "name": "comment.line.erlang"
+    },
+
+    "illegal-shebang-comment": {
+      "match": "#!.*",
+      "name": "invalid.illegal.comment.shebang.erlang"
     },
 
     "define-directive": {
