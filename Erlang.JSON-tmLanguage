@@ -17,6 +17,7 @@
     {"include": "#define-directive"},
     {"include": "#macro-directive"},
     {"include": "#type-directive"},
+    {"include": "#spec-directive"},
     {"include": "#directive"},
     {"include": "#function"},
     {"include": "#everything-else"},
@@ -260,6 +261,138 @@
           },
           "end": "(?=\\)?\\s*\\.)",
           "patterns": [
+            {"include": "#type-expression"}
+          ]
+        }
+      ]
+    },
+
+    "spec-directive": {
+      "begin": "^\\s*(-)(spec)",
+      "beginCaptures": {
+        "1": {"name": "punctuation.section.directive.begin.erlang"},
+        "2": {"name": "keyword.control.directive.spec.erlang"}
+      },
+      "end": "(\\.)",
+      "endCaptures": {
+        "1": {"name": "punctuation.section.directive.end.erlang"}
+      },
+      "name": "meta.directive.spec.erlang",
+      "patterns": [
+        {
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {"name": "punctuation.definition.parameters.begin.erlang"}
+          },
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {"name": "punctuation.definition.parameters.end.erlang"}
+          },
+          "patterns": [
+            {"include": "#internal-type-spec"}
+          ]
+        },
+        {
+          "comment": "brackets around type definition are optional",
+          "begin": "\\s",
+          "end": "(?=\\.)",
+          "patterns": [
+            {
+              "match": ";",
+              "name": "punctuation.separator.clauses.erlang"
+            },
+            {"include": "#internal-type-spec"}
+          ]
+        }
+      ]
+    },
+
+    "internal-type-spec": {
+      "begin": "(([a-z][a-zA-Z\\d@_]*)\\s*(:)\\s*)?([a-z][a-zA-Z\\d@_]*)",
+      "beginCaptures": {
+        "2": {"name": "entity.name.type.class.module.erlang"},
+        "3": {"name": "punctuation.separator.module-function.erlang"},
+        "4": {"name": "entity.name.function.erlang"}
+      },
+      "end": "(?=;|\\.)",
+      "patterns": [
+        {
+          "name": "meta.type.function.parameters.erlang",
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {"name": "punctuation.definition.parameters.begin.erlang"}
+          },
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {"name": "puncutation.definition.parameters.end.erlang"}
+          },
+          "patterns": [
+            {
+              "match": ",",
+              "name": "punctuation.separator.parameters.erlang"
+            },
+            {
+              "begin": "(_[a-zA-Z\\d@_]+|[A-Z][a-zA-Z\\d@_]*|_)\\s*(::)",
+              "beginCaptures": {
+                "1": {"name": "variable.other.erlang"},
+                "2": {"name": "puncutation.separator.parameter-type.erlang"}
+              },
+              "end": "(?=,|\\))",
+              "patterns": [
+                {"include": "#type-expression"}
+              ]
+            },
+            {"include": "#type-expression"}
+          ]
+        },
+        {
+          "name": "meta.type.function.return-value.erlang",
+          "begin": "(->)",
+          "beginCaptures": {
+            "1": {"name": "keyword.operator.type.function.return-value.erlang"}
+          },
+          "end": "(?=;|\\.)",
+          "patterns": [
+            {
+              "name": "meta.type.bounded-quantification.erlang",
+              "begin": "(when)",
+              "beginCaptures": {
+                "1": {"name": "keyword.control.when.erlang"}
+              },
+              "end": "(?=;|\\.)",
+              "patterns": [
+                {
+                  "begin": "(is_subtype)\\s*(\\()",
+                  "beginCaptures": {
+                    "1": {"name": "keyword.control.is-subtype.erlang"},
+                    "2": {"name": "puncutation.definition.parameters.begin.erlang"}
+                  },
+                  "end": "(\\))",
+                  "endCaptures": {
+                    "1": {"name": "punctuation.definition.parameters.end.erlang"}
+                  },
+                  "patterns": [
+                    {
+                      "match": ",",
+                      "name": "punctuation.separator.parameters.erlang"
+                    },
+                    {"include": "#type-expression"}
+                  ]
+                },
+                {
+                  "begin": "(_[a-zA-Z\\d@_]+|[A-Z][a-zA-Z\\d@_]*)\\s*(::)",
+                  "beginCaptures": {
+                    "1": {"name": "variable.other.erlang"},
+                    "2": {"name": "keyword.operator.is-subtype.erlang"}
+                  },
+                  "end": "(?=;|,|\\.)",
+                  "patterns": [
+                    {"include": "#type-expression"}
+                  ]
+                },
+                {"include": "#comment"}
+              ]
+            },
             {"include": "#type-expression"}
           ]
         }
