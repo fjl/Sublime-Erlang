@@ -224,10 +224,9 @@
 
     "internal-type-definition": {
       "name": "meta.type.erlang",
-      "begin": "\\s*(([a-z][a-zA-Z\\d_@]*))\\s*(?=\\()",
+      "begin": "\\s*([a-z][a-zA-Z\\d_@]*)\\s*(?=\\()",
       "beginCaptures": {
-        "1": {"name": "entity.name.type.erlang"},
-        "2": {"name": "storage.type.erlang"}
+        "1": {"name": "storage.type.definition.erlang"}
       },
       "end": "(?=\\)?\\s*\\.)",
       "patterns": [
