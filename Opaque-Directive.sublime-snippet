@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[-opaque ${1:type}() :: ${2:term()}.]]></content>
+    <tabTrigger>-opa</tabTrigger>
+    <scope>source.erlang</scope>
+    <description>Opaque Type Directive</description>
+</snippet>
