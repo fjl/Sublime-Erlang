@@ -25,6 +25,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#export-type-directive</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#record-directive</string>
 		</dict>
 		<dict>
@@ -415,7 +419,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>^\s*+(-)\s*+([a-z][a-zA-Z\d@_]*+)\s*+(\()</string>
+					<string>^\s*(-)([a-z][a-zA-Z\d@_]*)\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -556,6 +560,112 @@
 				<dict>
 					<key>include</key>
 					<string>#variable</string>
+				</dict>
+			</array>
+		</dict>
+		<key>export-type-directive</key>
+		<dict>
+			<key>begin</key>
+			<string>^\s*(-)(export_type)\s*(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.directive.begin.erlang</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.directive.export-type.erlang</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.parameters.begin.erlang</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\))\s*(\.)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.parameters.end.erlang</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.directive.end.erlang</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.directive.export-type.erlang</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(\[)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.list.begin.erlang</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(\])</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.list.end.erlang</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.structure.list.type.erlang</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>storage.type.erlang</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.separator.type-arity.erlang</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>constant.numeric.arity.erlang</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>([a-z][a-zA-Z\d@_]*)\s*(/)\s*([\d]+)</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>punctuation.separator.list.erlang</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comment</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
 				</dict>
 			</array>
 		</dict>

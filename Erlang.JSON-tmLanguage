@@ -12,6 +12,7 @@
   "patterns": [
     {"include": "#module-directive"},
     {"include": "#import-export-directive"},
+    {"include": "#export-type-directive"},
     {"include": "#record-directive"},
     {"include": "#define-directive"},
     {"include": "#macro-directive"},
@@ -535,10 +536,54 @@
       ]
     },
 
+    "export-type-directive": {
+      "name": "meta.directive.export-type.erlang",
+      "begin": "^\\s*(-)(export_type)\\s*(\\()",
+      "beginCaptures": {
+        "1": {"name": "punctuation.section.directive.begin.erlang"},
+        "2": {"name": "keyword.control.directive.export-type.erlang"},
+        "3": {"name": "punctuation.definition.parameters.begin.erlang"}
+      },
+      "end": "(\\))\\s*(\\.)",
+      "endCaptures": {
+        "1": {"name": "punctuation.definition.parameters.end.erlang"},
+        "2": {"name": "punctuation.section.directive.end.erlang"}
+      },
+      "patterns": [
+        {
+          "name": "meta.structure.list.type.erlang",
+          "begin": "(\\[)",
+          "beginCaptures": {
+            "1": {"name": "punctuation.definition.list.begin.erlang"}
+          },
+          "end": "(\\])",
+          "endCaptures": {
+            "1": {"name": "punctuation.definition.list.end.erlang"}
+          },
+          "patterns": [
+            {
+              "match": "([a-z][a-zA-Z\\d@_]*)\\s*(/)\\s*([\\d]+)",
+              "captures": {
+                "1": {"name": "storage.type.erlang"},
+                "2": {"name": "punctuation.separator.type-arity.erlang"},
+                "3": {"name": "constant.numeric.arity.erlang"}
+              }
+            },
+            {
+              "match": ",",
+              "name": "punctuation.separator.list.erlang"
+            },
+            {"include": "#comment"}
+          ]
+        },
+        {"include": "#comment"}
+      ]
+    },
+
     "directive": {
       "patterns": [
         {
-          "begin": "^\\s*+(-)\\s*+([a-z][a-zA-Z\\d@_]*+)\\s*+(\\()",
+          "begin": "^\\s*(-)([a-z][a-zA-Z\\d@_]*)\\s*(\\()",
           "beginCaptures": {
             "1": {"name": "punctuation.section.directive.begin.erlang"},
             "2": {"name": "keyword.control.directive.erlang"},
