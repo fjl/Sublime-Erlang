@@ -124,7 +124,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>[a-z][a-zA-Z\d@_]*+</string>
+					<string>[a-z][a-zA-Z\d@_]*</string>
 					<key>name</key>
 					<string>constant.other.symbol.unquoted.erlang</string>
 				</dict>
@@ -267,7 +267,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>^\s*+(-)\s*+(define)\s*+(\()\s*+([a-zA-Z\d@_]++)\s*+(,)</string>
+					<string>^\s*(-)\s*(define)\s*(\()\s*([a-zA-Z\d@_]+)\s*(,)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -297,7 +297,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(\))\s*+(\.)</string>
+					<string>(\))\s*(\.)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -323,9 +323,9 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?=^\s*+-\s*+define\s*+\(\s*+[a-zA-Z\d@_]++\s*+\()</string>
+					<string>(?=^\s*-\s*define\s*\(\s*[a-zA-Z\d@_]+\s*\()</string>
 					<key>end</key>
-					<string>(\))\s*+(\.)</string>
+					<string>(\))\s*(\.)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -345,7 +345,7 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>^\s*+(-)\s*+(define)\s*+(\()\s*+([a-zA-Z\d@_]++)\s*+(\()</string>
+							<string>^\s*(-)\s*(define)\s*(\()\s*([a-zA-Z\d@_]+)\s*(\()</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>1</key>
@@ -443,7 +443,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(\))\s*+(\.)</string>
+					<string>(\))\s*(\.)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -487,7 +487,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*+(-)\s*+([a-z][a-zA-Z\d@_]*+)\s*+(\.)</string>
+					<string>^\s*(-)([a-z][a-zA-Z\d@_]*)\s*(\.)</string>
 					<key>name</key>
 					<string>meta.directive.erlang</string>
 				</dict>
@@ -812,7 +812,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\b(fun)\s*+(([a-z][a-zA-Z\d@_]*+)\s*+(:)\s*+)?([a-z][a-zA-Z\d@_]*+)\s*(/)</string>
+					<string>\b(fun)\s*(([a-z][a-zA-Z\d@_]*)\s*(:)\s*)?([a-z][a-zA-Z\d@_]*)\s*(/)</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -972,7 +972,7 @@
 		<key>function</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*+([a-z][a-zA-Z\d@_]*+)\s*+(?=\()</string>
+			<string>^\s*([a-z][a-zA-Z\d@_]*)\s*(?=\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1005,7 +1005,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*+([a-z][a-zA-Z\d@_]*+)\s*+(?=\()</string>
+					<string>^\s*([a-z][a-zA-Z\d@_]*)\s*(?=\()</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -1041,7 +1041,7 @@
 		<key>function-call</key>
 		<dict>
 			<key>begin</key>
-			<string>(?=[a-z][a-zA-Z\d@_]*+\s*+(\(|:\s*+[a-z][a-zA-Z\d@_]*+\s*+\())</string>
+			<string>(?=[a-z][a-zA-Z\d@_]*\s*(\(|:\s*[a-z][a-zA-Z\d@_]*\s*\())</string>
 			<key>end</key>
 			<string>(\))</string>
 			<key>endCaptures</key>
@@ -1058,7 +1058,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>((erlang)\s*+(:)\s*+)?(is_atom|is_binary|is_constant|is_float|is_function|is_integer|is_list|is_number|is_pid|is_port|is_reference|is_tuple|is_record|abs|element|hd|length|node|round|self|size|tl|trunc)\s*+(\()</string>
+					<string>((erlang)\s*(:)\s*)?(is_atom|is_binary|is_constant|is_float|is_function|is_integer|is_list|is_number|is_pid|is_port|is_reference|is_tuple|is_record|abs|element|hd|length|node|round|self|size|tl|trunc)\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>2</key>
@@ -1100,7 +1100,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(([a-z][a-zA-Z\d@_]*+)\s*+(:)\s*+)?([a-z][a-zA-Z\d@_]*+)\s*+(\()</string>
+					<string>(([a-z][a-zA-Z\d@_]*)\s*(:)\s*)?([a-z][a-zA-Z\d@_]*)\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>2</key>
@@ -1155,7 +1155,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>^\s*+(-)\s*+(import)\s*+(\()\s*+([a-z][a-zA-Z\d@_]*+)\s*+(,)</string>
+					<string>^\s*(-)(import)\s*(\()\s*([a-z][a-zA-Z\d@_]*)\s*(,)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1185,7 +1185,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(\))\s*+(\.)</string>
+					<string>(\))\s*(\.)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1211,7 +1211,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>^\s*+(-)\s*+(export)\s*+(\()</string>
+					<string>^\s*(-)(export)\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1231,7 +1231,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(\))\s*+(\.)</string>
+					<string>(\))\s*(\.)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1866,7 +1866,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>([a-z][a-zA-Z\d@_]*+)\s*+(/)</string>
+					<string>([a-z][a-zA-Z\d@_]*)\s*(/)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2355,7 +2355,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*+(-)\s*+(ifdef)\s*+(\()\s*+([a-zA-z\d@_]++)\s*+(\))\s*+(\.)</string>
+					<string>^\s*(-)(ifdef)\s*(\()\s*([a-zA-z\d@_]+)\s*(\))\s*(\.)</string>
 					<key>name</key>
 					<string>meta.directive.ifdef.erlang</string>
 				</dict>
@@ -2394,7 +2394,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*+(-)\s*+(ifndef)\s*+(\()\s*+([a-zA-z\d@_]++)\s*+(\))\s*+(\.)</string>
+					<string>^\s*(-)(ifndef)\s*(\()\s*([a-zA-z\d@_]+)\s*(\))\s*(\.)</string>
 					<key>name</key>
 					<string>meta.directive.ifndef.erlang</string>
 				</dict>
@@ -2433,7 +2433,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*+(-)\s*+(undef)\s*+(\()\s*+([a-zA-z\d@_]++)\s*+(\))\s*+(\.)</string>
+					<string>^\s*(-)(undef)\s*(\()\s*([a-zA-z\d@_]+)\s*(\))\s*(\.)</string>
 					<key>name</key>
 					<string>meta.directive.undef.erlang</string>
 				</dict>
@@ -2455,7 +2455,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(\?\??)\s*+([a-zA-Z\d@_]++)</string>
+			<string>(\?\??)([a-zA-Z\d@_]+)</string>
 			<key>name</key>
 			<string>meta.macro-usage.erlang</string>
 		</dict>
@@ -2495,7 +2495,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*+(-)\s*+(module)\s*+(\()\s*+([a-z][a-zA-Z\d@_]*+)\s*+(\))\s*+(\.)</string>
+			<string>^\s*(-)(module)\s*(\()\s*([a-z][a-zA-Z\d@_]*)\s*(\))\s*(\.)</string>
 			<key>name</key>
 			<string>meta.directive.module.erlang</string>
 		</dict>
@@ -2522,7 +2522,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\d++(\.)\d++(([eE][\+\-])?\d++)?</string>
+					<string>\d+(\.)\d+(([eE][\+\-])?\d+)?</string>
 					<key>name</key>
 					<string>constant.numeric.float.erlang</string>
 				</dict>
@@ -2994,7 +2994,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(~)((\-)?\d++|(\*))?((\.)(\d++|(\*)|))?((\.)((\*)|.))?[t]?[~cfegswpWPBX#bx\+ni]</string>
+					<string>(~)((\-)?\d+|(\*))?((\.)(\d+|(\*)|))?((\.)((\*)|.))?[t]?[~cfegswpWPBX#bx\+ni]</string>
 					<key>name</key>
 					<string>constant.other.placeholder.erlang</string>
 				</dict>
@@ -3013,7 +3013,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(~)(\*)?(\d++)?[~du\-#fsacl]</string>
+					<string>(~)(\*)?(\d+)?[~du\-#fsacl]</string>
 					<key>name</key>
 					<string>constant.other.placeholder.erlang</string>
 				</dict>
@@ -3309,7 +3309,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(any|term|boolean|byte|binary|bitstring|char|non_neg_integer|pos_integer|neg_integer|number|integer|float|tuple|iolist|string|nonempty_string|module|atom|pid|port|reference|mfa|node|timeout|set|dict|no_return|none)(\()</string>
+					<string>(any|term|boolean|byte|binary|bitstring|char|non_neg_integer|pos_integer|neg_integer|number|integer|float|tuple|iolist|string|nonempty_string|module|atom|pid|port|reference|mfa|node|timeout|set|dict|no_return|none)\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -3767,7 +3767,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(_[a-zA-Z\d@_]++|[A-Z][a-zA-Z\d@_]*+)|(_)</string>
+			<string>(_[a-zA-Z\d@_]+|[A-Z][a-zA-Z\d@_]*)|(_)</string>
 		</dict>
 	</dict>
 	<key>scopeName</key>
