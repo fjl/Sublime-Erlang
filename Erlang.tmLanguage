@@ -812,11 +812,11 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(fun)\s*(([a-z][a-zA-Z\d@_]*)\s*(:)\s*)?([a-z][a-zA-Z\d@_]*)\s*(/)</string>
+					<string>\b(fun)\s*(([a-z][a-zA-Z\d@_]*)\s*(:)\s*)?([a-z][a-zA-Z\d@_]*)\s*(/)</string>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(fun)</string>
+					<string>\b(fun)\b</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -826,7 +826,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(end)</string>
+					<string>\b(end)\b</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2189,7 +2189,7 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>(when)</string>
+							<string>\b(when)\b</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>1</key>
@@ -2206,7 +2206,7 @@
 							<array>
 								<dict>
 									<key>begin</key>
-									<string>(is_subtype)\s*(\()</string>
+									<string>\b(is_subtype)\s*(\()</string>
 									<key>beginCaptures</key>
 									<dict>
 										<key>1</key>
@@ -3214,7 +3214,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(fun)\s*(\()</string>
+					<string>\b(fun)\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -3322,7 +3322,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(any|term|boolean|byte|binary|bitstring|char|non_neg_integer|pos_integer|neg_integer|number|integer|float|tuple|iolist|string|nonempty_string|module|atom|pid|port|reference|mfa|node|timeout|set|dict|no_return|none)\s*(\()</string>
+					<string>\b(any|term|boolean|byte|binary|bitstring|char|non_neg_integer|pos_integer|neg_integer|number|integer|float|tuple|iolist|string|nonempty_string|module|atom|pid|port|reference|mfa|node|timeout|set|dict|no_return|none)\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>

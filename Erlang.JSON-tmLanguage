@@ -355,14 +355,14 @@
           "patterns": [
             {
               "name": "meta.type.bounded-quantification.erlang",
-              "begin": "(when)",
+              "begin": "\\b(when)\\b",
               "beginCaptures": {
                 "1": {"name": "keyword.control.when.erlang"}
               },
               "end": "(?=;|\\.)",
               "patterns": [
                 {
-                  "begin": "(is_subtype)\\s*(\\()",
+                  "begin": "\\b(is_subtype)\\s*(\\()",
                   "beginCaptures": {
                     "1": {"name": "keyword.control.is-subtype.erlang"},
                     "2": {"name": "puncutation.definition.parameters.begin.erlang"}
@@ -422,7 +422,7 @@
         },
         {
           "name": "meta.type.function.erlang",
-          "begin": "(fun)\\s*(\\()",
+          "begin": "\\b(fun)\\s*(\\()",
           "beginCaptures": {
             "1": {"name": "keyword.control.type.function.erlang"},
             "2": {"name": "punctuation.definition.parameters.begin.erlang"}
@@ -474,7 +474,7 @@
         },
         {
           "comment": "type arguments given to predefined arity-0 types are marked invalid",
-          "begin": "(any|term|boolean|byte|binary|bitstring|char|non_neg_integer|pos_integer|neg_integer|number|integer|float|tuple|iolist|string|nonempty_string|module|atom|pid|port|reference|mfa|node|timeout|set|dict|no_return|none)\\s*(\\()",
+          "begin": "\\b(any|term|boolean|byte|binary|bitstring|char|non_neg_integer|pos_integer|neg_integer|number|integer|float|tuple|iolist|string|nonempty_string|module|atom|pid|port|reference|mfa|node|timeout|set|dict|no_return|none)\\s*(\\()",
           "beginCaptures": {
             "1": {"name": "storage.type.builtin.erlang"},
             "2": {"name": "punctuation.definition.parameters.begin.erlang"}
@@ -821,14 +821,14 @@
             "5": {"name": "entity.name.function.erlang"},
             "6": {"name": "punctuation.separator.function-arity.erlang"}
           },
-          "match": "(fun)\\s*(([a-z][a-zA-Z\\d@_]*)\\s*(:)\\s*)?([a-z][a-zA-Z\\d@_]*)\\s*(/)"
+          "match": "\\b(fun)\\s*(([a-z][a-zA-Z\\d@_]*)\\s*(:)\\s*)?([a-z][a-zA-Z\\d@_]*)\\s*(/)"
         },
         {
-          "begin": "(fun)",
+          "begin": "\\b(fun)\\b",
           "beginCaptures": {
             "1": {"name": "keyword.control.fun.erlang"}
           },
-          "end": "(end)",
+          "end": "\\b(end)\\b",
           "endCaptures": {
             "1": {"name": "keyword.control.end.erlang"}
           },
