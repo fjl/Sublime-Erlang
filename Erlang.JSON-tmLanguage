@@ -821,14 +821,14 @@
             "5": {"name": "entity.name.function.erlang"},
             "6": {"name": "punctuation.separator.function-arity.erlang"}
           },
-          "match": "\\b(fun)\\s*(([a-z][a-zA-Z\\d@_]*)\\s*(:)\\s*)?([a-z][a-zA-Z\\d@_]*)\\s*(/)"
+          "match": "(fun)\\s*(([a-z][a-zA-Z\\d@_]*)\\s*(:)\\s*)?([a-z][a-zA-Z\\d@_]*)\\s*(/)"
         },
         {
-          "begin": "\\b(fun)\\b",
+          "begin": "(fun)",
           "beginCaptures": {
             "1": {"name": "keyword.control.fun.erlang"}
           },
-          "end": "\\b(end)\\b",
+          "end": "(end)",
           "endCaptures": {
             "1": {"name": "keyword.control.end.erlang"}
           },
@@ -836,15 +836,14 @@
           "patterns": [
             {
               "begin": "(?=\\()",
-              "end": "(;)|(?=\\bend\\b)",
+              "end": "(;)|(?=end)",
               "endCaptures": {
                 "1": {"name": "punctuation.separator.clauses.erlang"}
               },
               "patterns": [
                 {"include": "#internal-function-parts"}
               ]
-            },
-            {"include": "#everything-else"}
+            }
           ]
         },
         {
@@ -1053,29 +1052,29 @@
     "internal-function-parts": {
       "patterns": [
         {
-          "begin": "(?=\\()",
-          "end": "(->)",
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {"name": "punctuation.definition.parameters.begin.erlang"}
+          },
+          "end": "(\\))",
           "endCaptures": {
-            "1": {"name": "punctuation.separator.clause-head-body.erlang"}
+            "1": {"name": "punctuation.definition.parameters.end.erlang"}
           },
           "patterns": [
             {
-              "begin": "(\\()",
-              "beginCaptures": {
-                "1": {"name": "punctuation.definition.parameters.begin.erlang"}
-              },
-              "end": "(\\))",
-              "endCaptures": {
-                "1": {"name": "punctuation.definition.parameters.end.erlang"}
-              },
-              "patterns": [
-                {
-                  "match": ",",
-                  "name": "punctuation.separator.parameters.erlang"
-                },
-                {"include": "#everything-else"}
-              ]
+              "match": ",",
+              "name": "punctuation.separator.parameters.erlang"
             },
+            {"include": "#everything-else"}
+          ]
+        },
+        {
+          "begin": "(when)",
+          "beginCaptures": {
+            "1": {"name": "keyword.control.when.erlang"}
+          },
+          "end": "(?=->)",
+          "patterns": [
             {
               "match": ",|;",
               "name": "punctuation.separator.guards.erlang"
@@ -1084,10 +1083,19 @@
           ]
         },
         {
-          "match": ",",
-          "name": "punctuation.separator.expressions.erlang"
-        },
-        {"include": "#everything-else"}
+          "begin": "(->)",
+          "beginCaptures": {
+            "1": {"name": "punctuation.separator.function.head-body.erlang"}
+          },
+          "end": "(?=;|end|\\.)",
+          "patterns": [
+            {
+              "match": ",",
+              "name": "punctuation.separator.expressions.erlang"
+            },
+            {"include": "#everything-else"}
+          ]
+        }
       ]
     },
 

@@ -812,11 +812,11 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\b(fun)\s*(([a-z][a-zA-Z\d@_]*)\s*(:)\s*)?([a-z][a-zA-Z\d@_]*)\s*(/)</string>
+					<string>(fun)\s*(([a-z][a-zA-Z\d@_]*)\s*(:)\s*)?([a-z][a-zA-Z\d@_]*)\s*(/)</string>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>\b(fun)\b</string>
+					<string>(fun)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -826,7 +826,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>\b(end)\b</string>
+					<string>(end)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -843,7 +843,7 @@
 							<key>begin</key>
 							<string>(?=\()</string>
 							<key>end</key>
-							<string>(;)|(?=\bend\b)</string>
+							<string>(;)|(?=end)</string>
 							<key>endCaptures</key>
 							<dict>
 								<key>1</key>
@@ -859,10 +859,6 @@
 									<string>#internal-function-parts</string>
 								</dict>
 							</array>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#everything-else</string>
 						</dict>
 					</array>
 				</dict>
@@ -1910,54 +1906,54 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?=\()</string>
+					<string>(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.parameters.begin.erlang</string>
+						</dict>
+					</dict>
 					<key>end</key>
-					<string>(-&gt;)</string>
+					<string>(\))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.separator.clause-head-body.erlang</string>
+							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 					</dict>
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>begin</key>
-							<string>(\()</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.parameters.begin.erlang</string>
-								</dict>
-							</dict>
-							<key>end</key>
-							<string>(\))</string>
-							<key>endCaptures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.parameters.end.erlang</string>
-								</dict>
-							</dict>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>match</key>
-									<string>,</string>
-									<key>name</key>
-									<string>punctuation.separator.parameters.erlang</string>
-								</dict>
-								<dict>
-									<key>include</key>
-									<string>#everything-else</string>
-								</dict>
-							</array>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>punctuation.separator.parameters.erlang</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#everything-else</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(when)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.when.erlang</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=-&gt;)</string>
+					<key>patterns</key>
+					<array>
 						<dict>
 							<key>match</key>
 							<string>,|;</string>
@@ -1971,14 +1967,31 @@
 					</array>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>,</string>
-					<key>name</key>
-					<string>punctuation.separator.expressions.erlang</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#everything-else</string>
+					<key>begin</key>
+					<string>(-&gt;)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.function.head-body.erlang</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=;|end|\.)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>punctuation.separator.expressions.erlang</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#everything-else</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
