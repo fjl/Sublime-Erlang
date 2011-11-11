@@ -14,10 +14,9 @@
     {"include": "#import-export-directive"},
     {"include": "#export-type-directive"},
     {"include": "#record-directive"},
-    {"include": "#define-directive"},
-    {"include": "#macro-directive"},
     {"include": "#type-directive"},
     {"include": "#spec-directive"},
+    {"include": "#preprocessor-directive"},
     {"include": "#directive"},
     {"include": "#function"},
     {"include": "#everything-else"},
@@ -124,68 +123,6 @@
     "illegal-shebang-comment": {
       "match": "#!.*",
       "name": "invalid.illegal.comment.shebang.erlang"
-    },
-
-    "define-directive": {
-      "patterns": [
-        {
-          "begin": "^\\s*(-)\\s*(define)\\s*(\\()\\s*([a-zA-Z\\d@_]+)\\s*(,)",
-          "beginCaptures": {
-            "1": {"name": "punctuation.section.directive.begin.erlang"},
-            "2": {"name": "keyword.control.directive.define.erlang"},
-            "3": {"name": "punctuation.definition.parameters.begin.erlang"},
-            "4": {"name": "entity.name.function.macro.definition.erlang"},
-            "5": {"name": "punctuation.separator.parameters.erlang"}
-          },
-          "end": "(\\))\\s*(\\.)",
-          "endCaptures": {
-            "1": {"name": "punctuation.definition.parameters.end.erlang"},
-            "2": {"name": "punctuation.section.directive.end.erlang"}
-          },
-          "name": "meta.directive.define.erlang",
-          "patterns": [
-            {"include": "#everything-else"}
-          ]
-        },
-        {
-          "begin": "(?=^\\s*-\\s*define\\s*\\(\\s*[a-zA-Z\\d@_]+\\s*\\()",
-          "end": "(\\))\\s*(\\.)",
-          "endCaptures": {
-            "1": {"name": "punctuation.definition.parameters.end.erlang"},
-            "2": {"name": "punctuation.section.directive.end.erlang"}
-          },
-          "name": "meta.directive.define.erlang",
-          "patterns": [
-            {
-              "begin": "^\\s*(-)\\s*(define)\\s*(\\()\\s*([a-zA-Z\\d@_]+)\\s*(\\()",
-              "beginCaptures": {
-                "1": {"name": "punctuation.section.directive.begin.erlang"},
-                "2": {"name": "keyword.control.directive.define.erlang"},
-                "3": {"name": "punctuation.definition.parameters.begin.erlang"},
-                "4": {"name": "entity.name.function.macro.definition.erlang"},
-                "5": {"name": "punctuation.definition.parameters.begin.erlang"}
-              },
-              "end": "(\\))\\s*(,)",
-              "endCaptures": {
-                "1": {"name": "punctuation.definition.parameters.end.erlang"},
-                "2": {"name": "punctuation.separator.parameters.erlang"}
-              },
-              "patterns": [
-                {
-                  "match": ",",
-                  "name": "punctuation.separator.parameters.erlang"
-                },
-                {"include": "#everything-else"}
-              ]
-            },
-            {
-              "match": "\\|\\||\\||:|;|,|\\.|->",
-              "name": "punctuation.separator.define.erlang"
-            },
-            {"include": "#everything-else"}
-          ]
-        }
-      ]
     },
 
     "type-directive": {
@@ -713,6 +650,116 @@
       ]
     },
 
+    "preprocessor-directive": {
+      "patterns": [
+        {
+          "begin": "^\\s*(-)(ifdef|ifndef|undef)\\s*(\\()",
+          "beginCaptures": {
+            "1": {"name": "punctuation.section.directive.begin.erlang"},
+            "2": {"name": "keyword.control.directive.preprocessor.erlang"},
+            "3": {"name": "punctuation.definition.parameters.begin.erlang"}
+          },
+          "end": "(\\))\\s*(\\.)",
+          "endCaptures": {
+            "1": {"name": "punctuation.definition.parameters.end.erlang"},
+            "2": {"name": "punctuation.section.directive.end.erlang"}
+          },
+          "patterns": [
+            {
+              "match": "[a-zA-Z\\d@_]+",
+              "name": "entity.name.macro.erlang"
+            },
+            {"include": "#comment"}
+          ]
+        },
+        {
+          "match": "^\\s*(-)(else|endif)\\s*((\\()\\s*(\\)))?(\\.)",
+          "captures": {
+            "1": {"name": "punctuation.section.directive.begin.erlang"},
+            "2": {"name": "keyword.control.directive.preprocessor.erlang"},
+            "4": {"name": "invalid.illegal.preprocessor-directive-parameters.erlang"},
+            "5": {"name": "invalid.illegal.preprocessor-directive-parameters.erlang"},
+            "6": {"name": "punctuation.section.directive.end.erlang"}
+          }
+        },
+        {
+          "begin": "^\\s*(-)\\s*(define)\\s*(\\()\\s*([a-zA-Z\\d@_]+)\\s*(,)",
+          "beginCaptures": {
+            "1": {"name": "punctuation.section.directive.begin.erlang"},
+            "2": {"name": "keyword.control.directive.preprocessor.define.erlang"},
+            "3": {"name": "punctuation.definition.parameters.begin.erlang"},
+            "4": {"name": "entity.name.macro.definition.erlang"},
+            "5": {"name": "punctuation.separator.parameters.erlang"}
+          },
+          "end": "(\\))\\s*(\\.)",
+          "endCaptures": {
+            "1": {"name": "punctuation.definition.parameters.end.erlang"},
+            "2": {"name": "punctuation.section.directive.end.erlang"}
+          },
+          "name": "meta.directive.define.erlang",
+          "patterns": [
+            {"include": "#everything-else"}
+          ]
+        },
+        {
+          "begin": "(?=^\\s*-\\s*define\\s*\\(\\s*[a-zA-Z\\d@_]+\\s*\\()",
+          "end": "(\\))\\s*(\\.)",
+          "endCaptures": {
+            "1": {"name": "punctuation.definition.parameters.end.erlang"},
+            "2": {"name": "punctuation.section.directive.end.erlang"}
+          },
+          "name": "meta.directive.define.erlang",
+          "patterns": [
+            {
+              "begin": "^\\s*(-)\\s*(define)\\s*(\\()\\s*([a-zA-Z\\d@_]+)\\s*(\\()",
+              "beginCaptures": {
+                "1": {"name": "punctuation.section.directive.begin.erlang"},
+                "2": {"name": "keyword.control.directive.preprocessor.define.erlang"},
+                "3": {"name": "punctuation.definition.parameters.begin.erlang"},
+                "4": {"name": "entity.name.macro.definition.erlang"},
+                "5": {"name": "punctuation.definition.parameters.begin.erlang"}
+              },
+              "end": "(\\))\\s*(,)",
+              "endCaptures": {
+                "1": {"name": "punctuation.definition.parameters.end.erlang"},
+                "2": {"name": "punctuation.separator.parameters.erlang"}
+              },
+              "patterns": [
+                {
+                  "match": ",",
+                  "name": "punctuation.separator.parameters.erlang"
+                },
+                {"include": "#variable"},
+                {"include": "#comment"}
+              ]
+            },
+            {"include": "#everything-else"}
+          ]
+        }
+      ]
+    },
+
+    "macro-usage": {
+      "patterns": [
+        {
+          "name": "meta.macro-usage.erlang",
+          "match": "(\\?)([a-zA-Z\\d@_]+)",
+          "captures": {
+            "1": {"name": "keyword.operator.macro.erlang"},
+            "2": {"name": "entity.name.macro.erlang"}
+          }
+        },
+        {
+          "name": "meta.preprocessor.stringify-macro-arg.erlang",
+          "match": "(\\?\\?)(_[a-zA-Z\\d@_]+|[A-Z][a-zA-Z\\d@_]*)",
+          "captures": {
+            "1": {"name": "keyword.operator.macro.stringify.erlang"},
+            "2": {"name": "variable.other.preprocessor.erlang"}
+          }
+        }
+      ]
+    },
+
     "directive": {
       "patterns": [
         {
@@ -1141,56 +1188,6 @@
         },
         {"include": "#everything-else"}
       ]
-    },
-
-    "macro-directive": {
-      "patterns": [
-        {
-          "captures": {
-            "1": {"name": "punctuation.section.directive.begin.erlang"},
-            "2": {"name": "keyword.control.directive.ifdef.erlang"},
-            "3": {"name": "punctuation.definition.parameters.begin.erlang"},
-            "4": {"name": "entity.name.function.macro.erlang"},
-            "5": {"name": "punctuation.definition.parameters.end.erlang"},
-            "6": {"name": "punctuation.section.directive.end.erlang"}
-          },
-          "match": "^\\s*(-)(ifdef)\\s*(\\()\\s*([a-zA-z\\d@_]+)\\s*(\\))\\s*(\\.)",
-          "name": "meta.directive.ifdef.erlang"
-        },
-        {
-          "captures": {
-            "1": {"name": "punctuation.section.directive.begin.erlang"},
-            "2": {"name": "keyword.control.directive.ifndef.erlang"},
-            "3": {"name": "punctuation.definition.parameters.begin.erlang"},
-            "4": {"name": "entity.name.function.macro.erlang"},
-            "5": {"name": "punctuation.definition.parameters.end.erlang"},
-            "6": {"name": "punctuation.section.directive.end.erlang"}
-          },
-          "match": "^\\s*(-)(ifndef)\\s*(\\()\\s*([a-zA-z\\d@_]+)\\s*(\\))\\s*(\\.)",
-          "name": "meta.directive.ifndef.erlang"
-        },
-        {
-          "captures": {
-            "1": {"name": "punctuation.section.directive.begin.erlang"},
-            "2": {"name": "keyword.control.directive.undef.erlang"},
-            "3": {"name": "punctuation.definition.parameters.begin.erlang"},
-            "4": {"name": "entity.name.function.macro.erlang"},
-            "5": {"name": "punctuation.definition.parameters.end.erlang"},
-            "6": {"name": "punctuation.section.directive.end.erlang"}
-          },
-          "match": "^\\s*(-)(undef)\\s*(\\()\\s*([a-zA-z\\d@_]+)\\s*(\\))\\s*(\\.)",
-          "name": "meta.directive.undef.erlang"
-        }
-      ]
-    },
-
-    "macro-usage": {
-      "captures": {
-        "1": {"name": "keyword.operator.macro.erlang"},
-        "2": {"name": "entity.name.function.macro.erlang"}
-      },
-      "match": "(\\?\\??)([a-zA-Z\\d@_]+)",
-      "name": "meta.macro-usage.erlang"
     },
 
     "module-directive": {

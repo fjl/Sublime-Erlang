@@ -33,19 +33,15 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#define-directive</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#macro-directive</string>
-		</dict>
-		<dict>
-			<key>include</key>
 			<string>#type-directive</string>
 		</dict>
 		<dict>
 			<key>include</key>
 			<string>#spec-directive</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#preprocessor-directive</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -260,162 +256,6 @@
 			<string>$\n?</string>
 			<key>name</key>
 			<string>comment.line.erlang</string>
-		</dict>
-		<key>define-directive</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>^\s*(-)\s*(define)\s*(\()\s*([a-zA-Z\d@_]+)\s*(,)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.directive.begin.erlang</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.directive.define.erlang</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.begin.erlang</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.macro.definition.erlang</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.parameters.erlang</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(\))\s*(\.)</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.end.erlang</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.directive.end.erlang</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.directive.define.erlang</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#everything-else</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?=^\s*-\s*define\s*\(\s*[a-zA-Z\d@_]+\s*\()</string>
-					<key>end</key>
-					<string>(\))\s*(\.)</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.end.erlang</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.directive.end.erlang</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.directive.define.erlang</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>begin</key>
-							<string>^\s*(-)\s*(define)\s*(\()\s*([a-zA-Z\d@_]+)\s*(\()</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.section.directive.begin.erlang</string>
-								</dict>
-								<key>2</key>
-								<dict>
-									<key>name</key>
-									<string>keyword.control.directive.define.erlang</string>
-								</dict>
-								<key>3</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.parameters.begin.erlang</string>
-								</dict>
-								<key>4</key>
-								<dict>
-									<key>name</key>
-									<string>entity.name.function.macro.definition.erlang</string>
-								</dict>
-								<key>5</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.parameters.begin.erlang</string>
-								</dict>
-							</dict>
-							<key>end</key>
-							<string>(\))\s*(,)</string>
-							<key>endCaptures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.parameters.end.erlang</string>
-								</dict>
-								<key>2</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.separator.parameters.erlang</string>
-								</dict>
-							</dict>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>match</key>
-									<string>,</string>
-									<key>name</key>
-									<string>punctuation.separator.parameters.erlang</string>
-								</dict>
-								<dict>
-									<key>include</key>
-									<string>#everything-else</string>
-								</dict>
-							</array>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>\|\||\||:|;|,|\.|-&gt;</string>
-							<key>name</key>
-							<string>punctuation.separator.define.erlang</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#everything-else</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
 		</dict>
 		<key>directive</key>
 		<dict>
@@ -2329,7 +2169,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>macro-directive</key>
+		<key>macro-usage</key>
 		<dict>
 			<key>patterns</key>
 			<array>
@@ -2339,38 +2179,18 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.section.directive.begin.erlang</string>
+							<string>keyword.operator.macro.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.control.directive.ifdef.erlang</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.begin.erlang</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.macro.erlang</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.end.erlang</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.directive.end.erlang</string>
+							<string>entity.name.macro.erlang</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*(-)(ifdef)\s*(\()\s*([a-zA-z\d@_]+)\s*(\))\s*(\.)</string>
+					<string>(\?)([a-zA-Z\d@_]+)</string>
 					<key>name</key>
-					<string>meta.directive.ifdef.erlang</string>
+					<string>meta.macro-usage.erlang</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -2378,99 +2198,20 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.section.directive.begin.erlang</string>
+							<string>keyword.operator.macro.stringify.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.control.directive.ifndef.erlang</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.begin.erlang</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.macro.erlang</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.end.erlang</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.directive.end.erlang</string>
+							<string>variable.other.preprocessor.erlang</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*(-)(ifndef)\s*(\()\s*([a-zA-z\d@_]+)\s*(\))\s*(\.)</string>
+					<string>(\?\?)(_[a-zA-Z\d@_]+|[A-Z][a-zA-Z\d@_]*)</string>
 					<key>name</key>
-					<string>meta.directive.ifndef.erlang</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.directive.begin.erlang</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.directive.undef.erlang</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.begin.erlang</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.macro.erlang</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.end.erlang</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.directive.end.erlang</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>^\s*(-)(undef)\s*(\()\s*([a-zA-z\d@_]+)\s*(\))\s*(\.)</string>
-					<key>name</key>
-					<string>meta.directive.undef.erlang</string>
+					<string>meta.preprocessor.stringify-macro-arg.erlang</string>
 				</dict>
 			</array>
-		</dict>
-		<key>macro-usage</key>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.macro.erlang</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.macro.erlang</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(\?\??)([a-zA-Z\d@_]+)</string>
-			<key>name</key>
-			<string>meta.macro-usage.erlang</string>
 		</dict>
 		<key>module-directive</key>
 		<dict>
@@ -2574,6 +2315,242 @@
 				<dict>
 					<key>include</key>
 					<string>#everything-else</string>
+				</dict>
+			</array>
+		</dict>
+		<key>preprocessor-directive</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>^\s*(-)(ifdef|ifndef|undef)\s*(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.directive.begin.erlang</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.directive.preprocessor.erlang</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.parameters.begin.erlang</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(\))\s*(\.)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.parameters.end.erlang</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.directive.end.erlang</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>[a-zA-Z\d@_]+</string>
+							<key>name</key>
+							<string>entity.name.macro.erlang</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comment</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.directive.begin.erlang</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.directive.preprocessor.erlang</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>invalid.illegal.preprocessor-directive-parameters.erlang</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>invalid.illegal.preprocessor-directive-parameters.erlang</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.directive.end.erlang</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^\s*(-)(else|endif)\s*((\()\s*(\)))?(\.)</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>^\s*(-)\s*(define)\s*(\()\s*([a-zA-Z\d@_]+)\s*(,)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.directive.begin.erlang</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.directive.preprocessor.define.erlang</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.parameters.begin.erlang</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.macro.definition.erlang</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.parameters.erlang</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(\))\s*(\.)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.parameters.end.erlang</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.directive.end.erlang</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.directive.define.erlang</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#everything-else</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=^\s*-\s*define\s*\(\s*[a-zA-Z\d@_]+\s*\()</string>
+					<key>end</key>
+					<string>(\))\s*(\.)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.parameters.end.erlang</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.directive.end.erlang</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.directive.define.erlang</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>^\s*(-)\s*(define)\s*(\()\s*([a-zA-Z\d@_]+)\s*(\()</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.section.directive.begin.erlang</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.control.directive.preprocessor.define.erlang</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.parameters.begin.erlang</string>
+								</dict>
+								<key>4</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.macro.definition.erlang</string>
+								</dict>
+								<key>5</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.parameters.begin.erlang</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(\))\s*(,)</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.parameters.end.erlang</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.separator.parameters.erlang</string>
+								</dict>
+							</dict>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>,</string>
+									<key>name</key>
+									<string>punctuation.separator.parameters.erlang</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#variable</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#comment</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#everything-else</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
