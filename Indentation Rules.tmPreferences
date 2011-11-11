@@ -9,9 +9,9 @@
 	<key>settings</key>
 	<dict>
 		<key>decreaseIndentPattern</key>
-		<string>^\s*\b(end)\b</string>
+		<string>^\s*\b(end|after)\b</string>
 		<key>increaseIndentPattern</key>
-		<string>^[^%]*(\b(if|case|receive|after|fun|try|catch|begin|query)\b(?!.*\b(end)\b.*))|(-&gt;(\s*%.*)?$)</string>
+		<string>(^[^%]*\b(if|case|receive|after|fun|try|catch|begin|query)\b(?!.*\b(end)\b.*))|(^.*-&gt;\s*(%.*)?$)</string>
 	</dict>
 	<key>uuid</key>
 	<string>34E0D602-ADAE-43F9-A661-0323A821AB75</string>
