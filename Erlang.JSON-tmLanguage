@@ -251,7 +251,7 @@
         "3": {"name": "punctuation.separator.module-function.erlang"},
         "4": {"name": "entity.name.function.erlang"}
       },
-      "end": "(?=;|\\.)",
+      "end": "(?=;|\\.|\\)\\s*\\.)",
       "patterns": [
         {
           "name": "meta.type.function.parameters.erlang",
@@ -288,7 +288,7 @@
           "beginCaptures": {
             "1": {"name": "keyword.operator.type.function.return-value.erlang"}
           },
-          "end": "(?=;|\\.)",
+          "end": "(?=;|\\.|\\)\\s*\\.)",
           "patterns": [
             {
               "name": "meta.type.bounded-quantification.erlang",
@@ -296,7 +296,7 @@
               "beginCaptures": {
                 "1": {"name": "keyword.control.when.erlang"}
               },
-              "end": "(?=;|\\.)",
+              "end": "(?=;|\\.|\\)\\s*\\.)",
               "patterns": [
                 {
                   "begin": "\\b(is_subtype)\\s*(\\()",
@@ -322,7 +322,7 @@
                     "1": {"name": "variable.other.erlang"},
                     "2": {"name": "keyword.operator.is-subtype.erlang"}
                   },
-                  "end": "(?=;|,|\\.)",
+                  "end": "(?=;|,|\\.|\\)\\s*\\.)",
                   "patterns": [
                     {"include": "#type-expression"}
                   ]
@@ -1573,7 +1573,8 @@
             {
               "match": ",",
               "name": "punctuation.separator.fields.erlang"
-            }
+            },
+            {"include": "#comment"}
           ]
         }
       ]
@@ -1616,7 +1617,9 @@
               "patterns": [
                 {"include": "#everything-else"}
               ]
-            }
+            },
+            {"include": "#comment"},
+            {"include": "#macro-usage"}
           ]
         }
       ]

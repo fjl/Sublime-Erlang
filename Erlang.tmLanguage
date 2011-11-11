@@ -1944,7 +1944,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=;|\.)</string>
+			<string>(?=;|\.|\)\s*\.)</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -2022,7 +2022,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?=;|\.)</string>
+					<string>(?=;|\.|\)\s*\.)</string>
 					<key>name</key>
 					<string>meta.type.function.return-value.erlang</string>
 					<key>patterns</key>
@@ -2039,7 +2039,7 @@
 								</dict>
 							</dict>
 							<key>end</key>
-							<string>(?=;|\.)</string>
+							<string>(?=;|\.|\)\s*\.)</string>
 							<key>name</key>
 							<string>meta.type.bounded-quantification.erlang</string>
 							<key>patterns</key>
@@ -2101,7 +2101,7 @@
 										</dict>
 									</dict>
 									<key>end</key>
-									<string>(?=;|,|\.)</string>
+									<string>(?=;|,|\.|\)\s*\.)</string>
 									<key>patterns</key>
 									<array>
 										<dict>
@@ -2742,6 +2742,10 @@
 							<key>name</key>
 							<string>punctuation.separator.fields.erlang</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comment</string>
+						</dict>
 					</array>
 				</dict>
 			</array>
@@ -2842,6 +2846,14 @@
 									<string>#everything-else</string>
 								</dict>
 							</array>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comment</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#macro-usage</string>
 						</dict>
 					</array>
 				</dict>
