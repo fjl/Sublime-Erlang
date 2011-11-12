@@ -275,7 +275,7 @@
           "name": "meta.type.function.return-value.erlang",
           "begin": "(->)",
           "beginCaptures": {
-            "1": {"name": "punctuation.definition.function.return-value.erlang"}
+            "1": {"name": "punctuation.separator.function.head-body.erlang"}
           },
           "end": "(?=;|\\.|\\)\\s*\\.)",
           "patterns": [
@@ -390,7 +390,7 @@
                "name": "meta.type.function.return-value.erlang",
                "begin": "(->)",
                "beginCaptures": {
-                 "1": {"name": "punctuation.definition.function.return-value.erlang"}
+                 "1": {"name": "punctuation.separator.function.head-body.erlang"}
                },
                "end": "(?=\\))",
                "patterns": [
@@ -840,7 +840,25 @@
           },
           "name": "meta.expression.if.erlang",
           "patterns": [
-            {"include": "#internal-expression-punctuation"},
+            {
+              "name": "meta.guard-expression.erlang",
+              "begin": "^",
+              "end": "(->)",
+              "endCaptures": {
+                "1": {"name": "punctuation.separator.clause-head-body.erlang"}
+              },
+              "patterns": [
+                {"include": "#everything-else"}
+              ]
+            },
+            {
+              "match": "(;)|(,)",
+              "captures": {
+                "1": {"name": "punctuation.separator.clause-head-body.erlang"},
+                "2": {"name": "punctuation.separator.clauses.erlang"},
+                "3": {"name": "punctuation.separator.expressions.erlang"}
+              }
+            },
             {"include": "#everything-else"}
           ]
         },
@@ -954,6 +972,30 @@
       ]
     },
 
+    "internal-expression-punctuation": {
+      "patterns": [
+        {
+          "match": "(->)|(;)|(,)",
+          "captures": {
+            "1": {"name": "punctuation.separator.clause-head-body.erlang"},
+            "2": {"name": "punctuation.separator.clauses.erlang"},
+            "3": {"name": "punctuation.separator.expressions.erlang"}
+          }
+        },
+        {
+          "name": "meta.guard-expression.erlang",
+          "begin": "(when)",
+          "beginCaptures": {
+            "1": {"name": "keyword.control.when.erlang"}
+          },
+          "end": "(?=->)",
+          "patterns": [
+            {"include": "#everything-else"}
+          ]
+        }
+      ]
+    },
+
     "function": {
       "begin": "^\\s*([a-z][a-zA-Z\\d@_]*)\\s*(?=\\()",
       "beginCaptures": {
@@ -995,7 +1037,7 @@
       "name": "meta.function-call.erlang",
       "patterns": [
         {
-          "begin": "((erlang)\\s*(:)\\s*)?(is_atom|is_binary|is_constant|is_float|is_function|is_integer|is_list|is_number|is_pid|is_port|is_reference|is_tuple|is_record|abs|element|hd|length|node|round|self|size|tl|trunc)\\s*(\\()",
+          "begin": "((erlang)\\s*(:)\\s*)?(abs|binary_part|bit_size|byte_size|element|float|hd|is_atom|is_binary|is_bitstring|is_boolean|is_float|is_function|is_integer|is_list|is_number|is_pid|is_port|is_record|is_reference|is_tuple|length|node|round|self|size|tl|trunc|tuple_size)\\s*(\\()",
           "beginCaptures": {
             "2": {"name": "entity.name.type.class.module.erlang"},
             "3": {"name": "punctuation.separator.module-function.erlang"},
@@ -1072,15 +1114,6 @@
       ]
     },
 
-    "internal-expression-punctuation": {
-      "captures": {
-        "1": {"name": "punctuation.separator.clause-head-body.erlang"},
-        "2": {"name": "punctuation.separator.clauses.erlang"},
-        "3": {"name": "punctuation.separator.expressions.erlang"}
-      },
-      "match": "(->)|(;)|(,)"
-    },
-
     "internal-function-list": {
       "begin": "(\\[)",
       "beginCaptures": {
@@ -1130,7 +1163,7 @@
           ]
         },
         {
-          "name": "meta.function.guard.erlang",
+          "name": "meta.guard-expression.erlang",
           "begin": "(when)",
           "beginCaptures": {
             "1": {"name": "keyword.control.when.erlang"}

@@ -1,5 +1,5 @@
 {
-  "scope": "source.erlang meta.function.guard.erlang",
+  "scope": "source.erlang meta.guard-expression.erlang",
   "completions": [
     "node()",
     "self()",
