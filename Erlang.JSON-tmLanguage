@@ -268,17 +268,6 @@
               "match": ",",
               "name": "punctuation.separator.parameters.erlang"
             },
-            {
-              "begin": "(_[a-zA-Z\\d@_]+|[A-Z][a-zA-Z\\d@_]*|_)\\s*(::)",
-              "beginCaptures": {
-                "1": {"name": "variable.other.erlang"},
-                "2": {"name": "puncutation.separator.parameter-type.erlang"}
-              },
-              "end": "(?=,|\\))",
-              "patterns": [
-                {"include": "#type-expression"}
-              ]
-            },
             {"include": "#type-expression"}
           ]
         },
@@ -286,7 +275,7 @@
           "name": "meta.type.function.return-value.erlang",
           "begin": "(->)",
           "beginCaptures": {
-            "1": {"name": "keyword.operator.type.function.return-value.erlang"}
+            "1": {"name": "punctuation.definition.function.return-value.erlang"}
           },
           "end": "(?=;|\\.|\\)\\s*\\.)",
           "patterns": [
@@ -316,20 +305,26 @@
                     {"include": "#type-expression"}
                   ]
                 },
-                {
-                  "begin": "(_[a-zA-Z\\d@_]+|[A-Z][a-zA-Z\\d@_]*)\\s*(::)",
-                  "beginCaptures": {
-                    "1": {"name": "variable.other.erlang"},
-                    "2": {"name": "keyword.operator.is-subtype.erlang"}
-                  },
-                  "end": "(?=;|,|\\.|\\)\\s*\\.)",
-                  "patterns": [
-                    {"include": "#type-expression"}
-                  ]
-                },
+                {"include": "#internal-variable-type"},
                 {"include": "#comment"}
               ]
             },
+            {"include": "#type-expression"}
+          ]
+        }
+      ]
+    },
+
+    "internal-variable-type": {
+      "patterns": [
+        {
+          "begin": "(_[a-zA-Z\\d@_]+|[A-Z][a-zA-Z\\d@_]*)\\s*(::)",
+          "beginCaptures": {
+            "1": {"name": "variable.other.erlang"},
+            "2": {"name": "punctuation.separator.variable-type.erlang"}
+          },
+          "end": "(?=;|,|\\.|\\]|\\}|\\)\\s*\\.)",
+          "patterns": [
             {"include": "#type-expression"}
           ]
         }
@@ -395,7 +390,7 @@
                "name": "meta.type.function.return-value.erlang",
                "begin": "(->)",
                "beginCaptures": {
-                 "1": {"name": "keyword.operator.type.function.return-value.erlang"}
+                 "1": {"name": "punctuation.definition.function.return-value.erlang"}
                },
                "end": "(?=\\))",
                "patterns": [
@@ -602,6 +597,7 @@
         {"include": "#atom"},
         {"include": "#comment"},
         {"include": "#macro-usage"},
+        {"include": "#internal-variable-type"},
         {"include": "#variable"}
       ]
     },
@@ -1202,8 +1198,12 @@
       "name": "meta.structure.list.erlang",
       "patterns": [
         {
-          "match": "\\||\\|\\||,",
+          "match": "\\|(?!\\|)|,",
           "name": "punctuation.separator.list.erlang"
+        },
+        {
+          "match": "\\|\\|",
+          "name": "keyword.operator.symbolic.list-comprehension.erlang"
         },
         {"include": "#everything-else"}
       ]

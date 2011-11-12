@@ -2020,7 +2020,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.type.function.return-value.erlang</string>
+							<string>punctuation.definition.function.return-value.erlang</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -2087,30 +2087,8 @@
 									</array>
 								</dict>
 								<dict>
-									<key>begin</key>
-									<string>(_[a-zA-Z\d@_]+|[A-Z][a-zA-Z\d@_]*)\s*(::)</string>
-									<key>beginCaptures</key>
-									<dict>
-										<key>1</key>
-										<dict>
-											<key>name</key>
-											<string>variable.other.erlang</string>
-										</dict>
-										<key>2</key>
-										<dict>
-											<key>name</key>
-											<string>keyword.operator.is-subtype.erlang</string>
-										</dict>
-									</dict>
-									<key>end</key>
-									<string>(?=;|,|\.|\)\s*\.)</string>
-									<key>patterns</key>
-									<array>
-										<dict>
-											<key>include</key>
-											<string>#type-expression</string>
-										</dict>
-									</array>
+									<key>include</key>
+									<string>#internal-variable-type</string>
 								</dict>
 								<dict>
 									<key>include</key>
@@ -2118,6 +2096,38 @@
 								</dict>
 							</array>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#type-expression</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>internal-variable-type</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(_[a-zA-Z\d@_]+|[A-Z][a-zA-Z\d@_]*)\s*(::)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.erlang</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.variable-type.erlang</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=;|,|\.|\]|\}|\)\s*\.)</string>
+					<key>patterns</key>
+					<array>
 						<dict>
 							<key>include</key>
 							<string>#type-expression</string>
@@ -2161,9 +2171,15 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\||\|\||,</string>
+					<string>\|(?!\|)|,</string>
 					<key>name</key>
 					<string>punctuation.separator.list.erlang</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\|\|</string>
+					<key>name</key>
+					<string>keyword.operator.symbolic.list-comprehension.erlang</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -3321,7 +3337,7 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>keyword.operator.type.function.return-value.erlang</string>
+									<string>punctuation.definition.function.return-value.erlang</string>
 								</dict>
 							</dict>
 							<key>end</key>
@@ -3785,6 +3801,10 @@
 				<dict>
 					<key>include</key>
 					<string>#macro-usage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#internal-variable-type</string>
 				</dict>
 				<dict>
 					<key>include</key>
