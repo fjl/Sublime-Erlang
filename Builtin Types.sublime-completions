@@ -1,5 +1,5 @@
 {
-  "scope": "source.erlang meta.directive.spec.erlang, source.erlang meta.type.erlang, source.erlang meta.field_type.erlang",
+  "scope": "source.erlang meta.directive.spec.erlang, source.erlang meta.type.erlang, source.erlang meta.field-type.erlang",
 
   "completions": [
     "any()",
