@@ -1,0 +1,11 @@
+{
+  "scope": "source.erlang",
+  "completions": [
+    "?MODULE",
+    "?FILE",
+    "?LINE",
+    "true",
+    "false",
+    "undefined"
+  ]
+}
