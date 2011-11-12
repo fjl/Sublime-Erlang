@@ -1134,6 +1134,7 @@
           ]
         },
         {
+          "name": "meta.function.guard.erlang",
           "begin": "(when)",
           "beginCaptures": {
             "1": {"name": "keyword.control.when.erlang"}

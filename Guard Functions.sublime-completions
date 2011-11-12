@@ -1,0 +1,36 @@
+{
+  "scope": "source.erlang meta.function.guard.erlang",
+  "completions": [
+    "node()",
+    "self()",
+
+    {"trigger": "abs()", "contents": "abs($0)"},
+    {"trigger": "binary_part()", "contents": "binary_part($0)"},
+    {"trigger": "bit_size()", "contents": "bit_size($0)"},
+    {"trigger": "byte_size()", "contents": "byte_size($0)"},
+    {"trigger": "element()", "contents": "element($0)"},
+    {"trigger": "float()", "contents": "float($0)"},
+    {"trigger": "hd()", "contents": "hd($0)"},
+    {"trigger": "is_atom()", "contents": "is_atom($0)"},
+    {"trigger": "is_binary()", "contents": "is_binary($0)"},
+    {"trigger": "is_bitstring()", "contents": "is_bitstring($0)"},
+    {"trigger": "is_boolean()", "contents": "is_boolean($0)"},
+    {"trigger": "is_float()", "contents": "is_float($0)"},
+    {"trigger": "is_function()", "contents": "is_function($0)"},
+    {"trigger": "is_integer()", "contents": "is_integer($0)"},
+    {"trigger": "is_list()", "contents": "is_list($0)"},
+    {"trigger": "is_number()", "contents": "is_number($0)"},
+    {"trigger": "is_pid()", "contents": "is_pid($0)"},
+    {"trigger": "is_port()", "contents": "is_port($0)"},
+    {"trigger": "is_record()", "contents": "is_record($0)"},
+    {"trigger": "is_reference()", "contents": "is_reference($0)"},
+    {"trigger": "is_tuple()", "contents": "is_tuple($0)"},
+    {"trigger": "length()", "contents": "length($0)"},
+    {"trigger": "node()", "contents": "node($0)"},
+    {"trigger": "round()", "contents": "round($0)"},
+    {"trigger": "size()", "contents": "size($0)"},
+    {"trigger": "tl()", "contents": "tl($0)"},
+    {"trigger": "trunc()", "contents": "trunc($0)"},
+    {"trigger": "tuple_size()", "contents": "tuple_size($0)"}
+  ]
+}

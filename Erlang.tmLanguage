@@ -1792,6 +1792,8 @@
 					</dict>
 					<key>end</key>
 					<string>(?=-&gt;)</string>
+					<key>name</key>
+					<string>meta.function.guard.erlang</string>
 					<key>patterns</key>
 					<array>
 						<dict>
