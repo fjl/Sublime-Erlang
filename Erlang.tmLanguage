@@ -2063,7 +2063,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.function.return-value.erlang</string>
+							<string>punctuation.separator.function.head-body.erlang</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -3380,7 +3380,7 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>punctuation.definition.function.return-value.erlang</string>
+									<string>punctuation.separator.function.head-body.erlang</string>
 								</dict>
 							</dict>
 							<key>end</key>
