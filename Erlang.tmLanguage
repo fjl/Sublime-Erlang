@@ -544,17 +544,9 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>^</string>
+							<string>(?&lt;=if|;)</string>
 							<key>end</key>
-							<string>(-&gt;)</string>
-							<key>endCaptures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.separator.clause-head-body.erlang</string>
-								</dict>
-							</dict>
+							<string>(?=-&gt;)</string>
 							<key>name</key>
 							<string>meta.guard-expression.erlang</string>
 							<key>patterns</key>
@@ -566,30 +558,39 @@
 							</array>
 						</dict>
 						<dict>
-							<key>captures</key>
+							<key>begin</key>
+							<string>(-&gt;)</string>
+							<key>beginCaptures</key>
 							<dict>
 								<key>1</key>
 								<dict>
 									<key>name</key>
 									<string>punctuation.separator.clause-head-body.erlang</string>
 								</dict>
-								<key>2</key>
+							</dict>
+							<key>end</key>
+							<string>(;)|(?=end)</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>1</key>
 								<dict>
 									<key>name</key>
 									<string>punctuation.separator.clauses.erlang</string>
 								</dict>
-								<key>3</key>
+							</dict>
+							<key>patterns</key>
+							<array>
 								<dict>
+									<key>match</key>
+									<string>,</string>
 									<key>name</key>
 									<string>punctuation.separator.expressions.erlang</string>
 								</dict>
-							</dict>
-							<key>match</key>
-							<string>(;)|(,)</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#everything-else</string>
+								<dict>
+									<key>include</key>
+									<string>#everything-else</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>

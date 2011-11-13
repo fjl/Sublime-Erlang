@@ -842,24 +842,29 @@
           "patterns": [
             {
               "name": "meta.guard-expression.erlang",
-              "begin": "^",
-              "end": "(->)",
-              "endCaptures": {
-                "1": {"name": "punctuation.separator.clause-head-body.erlang"}
-              },
+              "begin": "(?<=if|;)",
+              "end": "(?=->)",
               "patterns": [
                 {"include": "#everything-else"}
               ]
             },
             {
-              "match": "(;)|(,)",
-              "captures": {
-                "1": {"name": "punctuation.separator.clause-head-body.erlang"},
-                "2": {"name": "punctuation.separator.clauses.erlang"},
-                "3": {"name": "punctuation.separator.expressions.erlang"}
-              }
-            },
-            {"include": "#everything-else"}
+              "begin": "(->)",
+              "beginCaptures": {
+                "1": {"name": "punctuation.separator.clause-head-body.erlang"}
+              },
+              "end": "(;)|(?=end)",
+              "endCaptures": {
+                "1": {"name": "punctuation.separator.clauses.erlang"}
+              },
+              "patterns": [
+                {
+                  "match": ",",
+                  "name": "punctuation.separator.expressions.erlang"
+                },
+                {"include": "#everything-else"}
+              ]
+            }
           ]
         },
         {
