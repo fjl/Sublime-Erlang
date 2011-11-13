@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>comment</key>
-	<string>The recognition of function definitions and compiler directives (such as module, record and macro definitions) requires that each of the aforementioned constructs must be the first string inside a line (except for whitespace).  Also, the function/module/record/macro names must be given unquoted.  -- desp</string>
+	<string>The recognition of function definitions and compiler directives (such as module, record and macro definitions) requires that each of the aforementioned constructs must be the first string inside a line (except for whitespace).  Also, all record/macro names must be given unquoted.</string>
 	<key>fileTypes</key>
 	<array>
 		<string>erl</string>
@@ -493,7 +493,7 @@
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>([a-z][a-zA-Z\d@_]*)\s*(/)\s*([\d]+)</string>
+							<string>('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(/)\s*([\d]+)</string>
 						</dict>
 						<dict>
 							<key>match</key>
@@ -693,7 +693,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\b(fun)\s*(([a-z][a-zA-Z\d@_]*)\s*(:)\s*)?([a-z][a-zA-Z\d@_]*)\s*(/)</string>
+					<string>\b(fun)\s*(('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(:)\s*)?('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(/)</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -853,7 +853,7 @@
 		<key>function</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([a-z][a-zA-Z\d@_]*)\s*(?=\()</string>
+			<string>^\s*('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(?=\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -886,7 +886,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*([a-z][a-zA-Z\d@_]*)\s*(?=\()</string>
+					<string>^\s*('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(?=\()</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -922,7 +922,7 @@
 		<key>function-call</key>
 		<dict>
 			<key>begin</key>
-			<string>(?=[a-z][a-zA-Z\d@_]*\s*(\(|:\s*[a-z][a-zA-Z\d@_]*\s*\())</string>
+			<string>(?=('[^'\\]*(\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(\(|:\s*('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*\())</string>
 			<key>end</key>
 			<string>(\))</string>
 			<key>endCaptures</key>
@@ -981,7 +981,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(([a-z][a-zA-Z\d@_]*)\s*(:)\s*)?([a-z][a-zA-Z\d@_]*)\s*(\()</string>
+					<string>(('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(:)\s*)?('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>2</key>
@@ -1036,7 +1036,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>^\s*(-)(import)\s*(\()\s*([a-z][a-zA-Z\d@_]*)\s*(,)</string>
+					<string>^\s*(-)(import)\s*(\()\s*('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(,)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1775,7 +1775,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>([a-z][a-zA-Z\d@_]*)\s*(/)</string>
+					<string>('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(/)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1917,7 +1917,7 @@
 		<key>internal-type-definition</key>
 		<dict>
 			<key>begin</key>
-			<string>\s*([a-z][a-zA-Z\d_@]*)\s*(?=\()</string>
+			<string>\s*('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d_@]*)\s*(?=\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -2003,7 +2003,7 @@
 		<key>internal-type-spec</key>
 		<dict>
 			<key>begin</key>
-			<string>(([a-z][a-zA-Z\d@_]*)\s*(:)\s*)?([a-z][a-zA-Z\d@_]*)</string>
+			<string>(('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(:)\s*)?('[^'\\]*(?:\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>2</key>
@@ -2161,7 +2161,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(_[a-zA-Z\d@_]+|[A-Z][a-zA-Z\d@_]*)\s*(::)</string>
+					<string>(_[a-zA-Z\d@_]+|[A-Z][a-zA-Z\d@_]+)\s*(::)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2176,7 +2176,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?=;|,|\.|\]|\}|\)\s*\.)</string>
+					<string>(?=;|,|\.|\]|\}|\))</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -2355,7 +2355,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*(-)(module)\s*(\()\s*([a-z][a-zA-Z\d@_]*)\s*(\))\s*(\.)</string>
+			<string>^\s*(-)(module)\s*(\()\s*('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(\))\s*(\.)</string>
 			<key>name</key>
 			<string>meta.directive.module.erlang</string>
 		</dict>
@@ -2736,7 +2736,7 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>([a-z][a-zA-Z\d@_]*)\s*</string>
+							<string>('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>1</key>
@@ -2843,7 +2843,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(#[a-z][a-zA-Z\d@_]*)\s*(\.)\s*([a-z][a-zA-Z\d@_]*)</string>
+					<string>(#[a-z][a-zA-Z\d@_]*)\s*(\.)\s*('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)</string>
 					<key>name</key>
 					<string>meta.record-usage.erlang</string>
 				</dict>
@@ -2879,7 +2879,7 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>(([a-z][a-zA-Z\d@_]*)|(_))\s*(=)</string>
+							<string>(('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)|(_))\s*(=)</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>2</key>
@@ -3470,7 +3470,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(([a-z][a-zA-Z\d_@]*)(:))?([a-z][a-zA-Z\d_@]*)(\()</string>
+					<string>(('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d_@]*)(:))?('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d_@]*)(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>2</key>
@@ -3599,7 +3599,7 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>([a-z][a-zA-Z\d@_]*)\s*(::)</string>
+							<string>('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)\s*(::)</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>1</key>
