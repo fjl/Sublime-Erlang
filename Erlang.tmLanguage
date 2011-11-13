@@ -3135,10 +3135,21 @@
 		</dict>
 		<key>symbolic-operator</key>
 		<dict>
-			<key>match</key>
-			<string>\+\+|\+|--|-|\*|/=|/|=/=|=:=|==|=&lt;|=|&lt;-|&lt;|&gt;=|&gt;|!</string>
-			<key>name</key>
-			<string>keyword.operator.symbolic.erlang</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>-&gt;</string>
+					<key>name</key>
+					<string>invalid.illegal.arrow.erlang</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\+\+|\+|--|-|\*|/=|/|=/=|=:=|==|=&lt;|=|&lt;-|&lt;|&gt;=|&gt;|!</string>
+					<key>name</key>
+					<string>keyword.operator.symbolic.erlang</string>
+				</dict>
+			</array>
 		</dict>
 		<key>textual-operator</key>
 		<dict>

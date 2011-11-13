@@ -1713,8 +1713,16 @@
     },
 
     "symbolic-operator": {
-      "match": "\\+\\+|\\+|--|-|\\*|/=|/|=/=|=:=|==|=<|=|<-|<|>=|>|!",
-      "name": "keyword.operator.symbolic.erlang"
+      "patterns": [
+        {
+          "match": "->",
+          "name": "invalid.illegal.arrow.erlang"
+        },
+        {
+          "match": "\\+\\+|\\+|--|-|\\*|/=|/|=/=|=:=|==|=<|=|<-|<|>=|>|!",
+          "name": "keyword.operator.symbolic.erlang"
+        }
+      ]
     },
 
     "textual-operator": {
