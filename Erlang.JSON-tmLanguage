@@ -922,7 +922,8 @@
               "patterns": [
                 {"include": "#internal-function-parts"}
               ]
-            }
+            },
+            {"include": "#comment"}
           ]
         },
         {
@@ -1190,7 +1191,8 @@
             },
             {"include": "#everything-else"}
           ]
-        }
+        },
+        {"include": "#comment"}
       ]
     },
 

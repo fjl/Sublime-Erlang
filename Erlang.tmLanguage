@@ -741,6 +741,10 @@
 								</dict>
 							</array>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comment</string>
+						</dict>
 					</array>
 				</dict>
 				<dict>
@@ -1903,6 +1907,10 @@
 							<string>#everything-else</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
 				</dict>
 			</array>
 		</dict>
