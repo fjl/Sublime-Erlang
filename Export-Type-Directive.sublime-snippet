@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[-export_type([${1:type}/${2:arity}]).]]></content>
+    <tabTrigger>-expty</tabTrigger>
+    <scope>source.erlang</scope>
+    <description>Export-Type Directive</description>
+</snippet>
