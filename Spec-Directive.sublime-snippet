@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[-spec ${1:function}(${2:Parameters}) -> ${3:ReturnType}.]]></content>
+    <tabTrigger>-spe</tabTrigger>
+    <scope>source.erlang</scope>
+    <description>Spec Directive</description>
+</snippet>
