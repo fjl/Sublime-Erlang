@@ -3130,7 +3130,7 @@
 		<key>spec-directive</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(-)(spec)</string>
+			<string>^\s*(-)(spec)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -3398,7 +3398,7 @@
 		<key>type-directive</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(-)(type|opaque)</string>
+			<string>^\s*(-)(type|opaque)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>

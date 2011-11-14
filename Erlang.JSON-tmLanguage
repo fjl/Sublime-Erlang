@@ -126,7 +126,7 @@
     },
 
     "type-directive": {
-      "begin": "^\\s*(-)(type|opaque)",
+      "begin": "^\\s*(-)(type|opaque)\\b",
       "beginCaptures": {
         "1": {"name": "punctuation.section.directive.begin.erlang"},
         "2": {"name": "keyword.control.directive.type.erlang"}
@@ -205,7 +205,7 @@
     },
 
     "spec-directive": {
-      "begin": "^\\s*(-)(spec)",
+      "begin": "^\\s*(-)(spec)\\b",
       "beginCaptures": {
         "1": {"name": "punctuation.section.directive.begin.erlang"},
         "2": {"name": "keyword.control.directive.spec.erlang"}
