@@ -6,6 +6,7 @@
     "?LINE",
     "true",
     "false",
-    "undefined"
+    "undefined",
+    "infinity"
   ]
 }
