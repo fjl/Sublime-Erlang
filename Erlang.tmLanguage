@@ -355,7 +355,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#keyword</string>
+					<string>#illegal-keyword</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -569,7 +569,7 @@
 								</dict>
 							</dict>
 							<key>end</key>
-							<string>(;)|(?=end)</string>
+							<string>(;)|(?=\b(end)\b)</string>
 							<key>endCaptures</key>
 							<dict>
 								<key>1</key>
@@ -581,14 +581,8 @@
 							<key>patterns</key>
 							<array>
 								<dict>
-									<key>match</key>
-									<string>,</string>
-									<key>name</key>
-									<string>punctuation.separator.expressions.erlang</string>
-								</dict>
-								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>#internal-expression-list</string>
 								</dict>
 							</array>
 						</dict>
@@ -620,12 +614,46 @@
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>include</key>
-							<string>#internal-expression-punctuation</string>
+							<key>begin</key>
+							<string>(?&lt;=case)</string>
+							<key>end</key>
+							<string>\b(of)\b</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.control.of.erlang</string>
+								</dict>
+							</dict>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#everything-else</string>
+								</dict>
+							</array>
 						</dict>
 						<dict>
-							<key>include</key>
-							<string>#everything-else</string>
+							<key>begin</key>
+							<string>(?&lt;=of|;)</string>
+							<key>end</key>
+							<string>(?=;|\b(end)\b)</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#internal-guard-expression</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#internal-arrow-clause-expression</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#everything-else</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
@@ -655,14 +683,285 @@
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>include</key>
-							<string>#internal-expression-punctuation</string>
+							<key>begin</key>
+							<string>(?&lt;=receive|;)</string>
+							<key>end</key>
+							<string>(?=\b(after|end)\b|;)</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#internal-guard-expression</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#internal-arrow-clause-expression</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#everything-else</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\b(after)\b</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.control.after.erlang</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\b(end)\b)</string>
+							<key>name</key>
+							<string>meta.receive-after-section.erlang</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>begin</key>
+									<string>(?=([0-9]+#)?[0-9a-zA-Z]+|infinity|'infinity'|\?[a-zA-Z\d@_]+|%)</string>
+									<key>end</key>
+									<string>(?=-&gt;)</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#integer</string>
+										</dict>
+										<dict>
+											<key>include</key>
+											<string>#variable</string>
+										</dict>
+										<dict>
+											<key>include</key>
+											<string>#macro-usage</string>
+										</dict>
+										<dict>
+											<key>include</key>
+											<string>#comment</string>
+										</dict>
+										<dict>
+											<key>match</key>
+											<string>infinity</string>
+											<key>name</key>
+											<string>constant.other.symbol.unquoted.erlang</string>
+										</dict>
+										<dict>
+											<key>match</key>
+											<string>'infinity'</string>
+											<key>name</key>
+											<string>constant.other.symbol.quoted.erlang</string>
+										</dict>
+										<dict>
+											<key>match</key>
+											<string>[^\s]</string>
+											<key>name</key>
+											<string>invalid.illegal.receive-timeout.erlang</string>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#internal-arrow-clause-expression</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b(try)\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.try.erlang</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\b(end)\b</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.end.erlang</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.expression.try.erlang</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\b(of)\b</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.control.of.erlang</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\b(catch|after|end)\b)</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#internal-guard-expression</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#internal-arrow-clause-expression</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#everything-else</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\b(catch)\b</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.control.catch.erlang</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\b(after|end)\b)</string>
+							<key>name</key>
+							<string>meta.try-catch-section.erlang</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>captures</key>
+									<dict>
+										<key>1</key>
+										<dict>
+											<key>name</key>
+											<string>keyword.other.error-class.erlang</string>
+										</dict>
+										<key>2</key>
+										<dict>
+											<key>name</key>
+											<string>punctuation.separator.error-class.erlang</string>
+										</dict>
+									</dict>
+									<key>match</key>
+									<string>\b(error|throw|exit|'error'|'throw'|'exit')\b\s*(:)</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>:</string>
+									<key>name</key>
+									<string>punctuation.separator.error-class.erlang</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#internal-guard-expression</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#internal-arrow-clause-expression</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#everything-else</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\b(after)\b</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.control.after.erlang</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\b(end)\b)</string>
+							<key>name</key>
+							<string>meta.try-after-section</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>\.</string>
+									<key>name</key>
+									<string>invalid.illegal.punctuation.dot.erlang</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#everything-else</string>
+								</dict>
+							</array>
 						</dict>
 						<dict>
 							<key>include</key>
 							<string>#everything-else</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\b(begin)\b</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.begin.erlang</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\b(end)\b</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.end.erlang</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.expression.begin.erlang</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\.</string>
+							<key>name</key>
+							<string>invalid.illegal.punctuation.dot.erlang</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#internal-expression-list</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.catch.erlang</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(catch)\b</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -745,107 +1044,6 @@
 						<dict>
 							<key>include</key>
 							<string>#comment</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>\b(try)\b</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.try.erlang</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>\b(end)\b</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.end.erlang</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.expression.try.erlang</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#internal-expression-punctuation</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#everything-else</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>\b(begin)\b</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.begin.erlang</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>\b(end)\b</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.end.erlang</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.expression.begin.erlang</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#internal-expression-punctuation</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#everything-else</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>\b(query)\b</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.query.erlang</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>\b(end)\b</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.end.erlang</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.expression.query.erlang</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#everything-else</string>
 						</dict>
 					</array>
 				</dict>
@@ -1023,6 +1221,13 @@
 					</array>
 				</dict>
 			</array>
+		</dict>
+		<key>illegal-keyword</key>
+		<dict>
+			<key>match</key>
+			<string>\b(after|begin|case|catch|cond|end|fun|if|let|of|query|try|receive|when)\b</string>
+			<key>name</key>
+			<string>invalid.illegal.keyword.control.erlang</string>
 		</dict>
 		<key>illegal-shebang-comment</key>
 		<dict>
@@ -1647,6 +1852,42 @@
 				</dict>
 			</array>
 		</dict>
+		<key>internal-arrow-clause-expression</key>
+		<dict>
+			<key>begin</key>
+			<string>(-&gt;)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.separator.clause-head-body.erlang</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(;)|(?=end|after|catch)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.separator.clauses.erlang</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\.</string>
+					<key>name</key>
+					<string>invalid.illegal.punctuation.dot.erlang</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#internal-expression-list</string>
+				</dict>
+			</array>
+		</dict>
 		<key>internal-binary-type-specifiers</key>
 		<dict>
 			<key>begin</key>
@@ -1697,54 +1938,19 @@
 				</dict>
 			</array>
 		</dict>
-		<key>internal-expression-punctuation</key>
+		<key>internal-expression-list</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.clause-head-body.erlang</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.clauses.erlang</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.separator.expressions.erlang</string>
-						</dict>
-					</dict>
 					<key>match</key>
-					<string>(-&gt;)|(;)|(,)</string>
+					<string>,</string>
+					<key>name</key>
+					<string>punctuation.separator.expressions.erlang</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>(when)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.when.erlang</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?=-&gt;)</string>
-					<key>name</key>
-					<string>meta.guard-expression.erlang</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#everything-else</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#everything-else</string>
 				</dict>
 			</array>
 		</dict>
@@ -1854,33 +2060,8 @@
 					</array>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>(when)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.when.erlang</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?=-&gt;)</string>
-					<key>name</key>
-					<string>meta.guard-expression.erlang</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>match</key>
-							<string>,|;</string>
-							<key>name</key>
-							<string>punctuation.separator.guards.erlang</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#everything-else</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#internal-guard-expression</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -1898,20 +2079,44 @@
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>match</key>
-							<string>,</string>
-							<key>name</key>
-							<string>punctuation.separator.expressions.erlang</string>
-						</dict>
-						<dict>
 							<key>include</key>
-							<string>#everything-else</string>
+							<string>#internal-expression-list</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#comment</string>
+				</dict>
+			</array>
+		</dict>
+		<key>internal-guard-expression</key>
+		<dict>
+			<key>begin</key>
+			<string>(when)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.when.erlang</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=-&gt;)</string>
+			<key>name</key>
+			<string>meta.guard-expression.erlang</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>,|;</string>
+					<key>name</key>
+					<string>punctuation.separator.guards.erlang</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#everything-else</string>
 				</dict>
 			</array>
 		</dict>
@@ -2187,13 +2392,6 @@
 					</array>
 				</dict>
 			</array>
-		</dict>
-		<key>keyword</key>
-		<dict>
-			<key>match</key>
-			<string>\b(after|begin|case|catch|cond|end|fun|if|let|of|query|try|receive|when)\b</string>
-			<key>name</key>
-			<string>keyword.control.erlang</string>
 		</dict>
 		<key>list</key>
 		<dict>
@@ -3852,6 +4050,10 @@
 				<dict>
 					<key>include</key>
 					<string>#integer</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#illegal-keyword</string>
 				</dict>
 				<dict>
 					<key>include</key>

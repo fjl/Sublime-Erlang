@@ -594,6 +594,7 @@
           ]
         },
         {"include": "#integer"},
+        {"include": "#illegal-keyword"},
         {"include": "#atom"},
         {"include": "#comment"},
         {"include": "#macro-usage"},
@@ -811,7 +812,7 @@
         {"include": "#record-usage"},
         {"include": "#macro-usage"},
         {"include": "#expression"},
-        {"include": "#keyword"},
+        {"include": "#illegal-keyword"},
         {"include": "#textual-operator"},
         {"include": "#function-call"},
         {"include": "#tuple"},
@@ -853,16 +854,12 @@
               "beginCaptures": {
                 "1": {"name": "punctuation.separator.clause-head-body.erlang"}
               },
-              "end": "(;)|(?=end)",
+              "end": "(;)|(?=\\b(end)\\b)",
               "endCaptures": {
                 "1": {"name": "punctuation.separator.clauses.erlang"}
               },
               "patterns": [
-                {
-                  "match": ",",
-                  "name": "punctuation.separator.expressions.erlang"
-                },
-                {"include": "#everything-else"}
+                {"include": "#internal-expression-list"}
               ]
             }
           ]
@@ -878,11 +875,29 @@
           },
           "name": "meta.expression.case.erlang",
           "patterns": [
-            {"include": "#internal-expression-punctuation"},
-            {"include": "#everything-else"}
+            {
+              "begin": "(?<=case)",
+              "end": "\\b(of)\\b",
+              "endCaptures": {
+                "1": {"name": "keyword.control.of.erlang"}
+              },
+              "patterns": [
+                {"include": "#everything-else"}
+              ]
+            },
+            {
+              "begin": "(?<=of|;)",
+              "end": "(?=;|\\b(end)\\b)",
+              "patterns": [
+                {"include": "#internal-guard-expression"},
+                {"include": "#internal-arrow-clause-expression"},
+                {"include": "#everything-else"}
+              ]
+            }
           ]
         },
         {
+          "name": "meta.expression.receive.erlang",
           "begin": "\\b(receive)\\b",
           "beginCaptures": {
             "1": {"name": "keyword.control.receive.erlang"}
@@ -891,23 +906,152 @@
           "endCaptures": {
             "1": {"name": "keyword.control.end.erlang"}
           },
-          "name": "meta.expression.receive.erlang",
           "patterns": [
-            {"include": "#internal-expression-punctuation"},
+            {
+              "begin": "(?<=receive|;)",
+              "end": "(?=\\b(after|end)\\b|;)",
+              "patterns": [
+                {"include": "#internal-guard-expression"},
+                {"include": "#internal-arrow-clause-expression"},
+                {"include": "#everything-else"}
+              ]
+            },
+            {
+              "name": "meta.receive-after-section.erlang",
+              "begin": "\\b(after)\\b",
+              "beginCaptures": {
+                "1": {"name": "keyword.control.after.erlang"}
+              },
+              "end": "(?=\\b(end)\\b)",
+              "patterns": [
+                {
+                  "begin": "(?=([0-9]+#)?[0-9a-zA-Z]+|infinity|'infinity'|\\?[a-zA-Z\\d@_]+|%)",
+                  "end": "(?=->)",
+                  "patterns": [
+                    {"include": "#integer"},
+                    {"include": "#variable"},
+                    {"include": "#macro-usage"},
+                    {"include": "#comment"},
+                    {
+                      "match": "infinity",
+                      "name": "constant.other.symbol.unquoted.erlang"
+                    },
+                    {
+                      "match": "'infinity'",
+                      "name": "constant.other.symbol.quoted.erlang"
+                    },
+                    {
+                      "match": "[^\\s]",
+                      "name": "invalid.illegal.receive-timeout.erlang"
+                    }
+                  ]
+                },
+                {"include": "#internal-arrow-clause-expression"}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "meta.expression.try.erlang",
+          "begin": "\\b(try)\\b",
+          "beginCaptures": {
+            "1": {"name": "keyword.control.try.erlang"}
+          },
+          "end": "\\b(end)\\b",
+          "endCaptures": {
+            "1": {"name": "keyword.control.end.erlang"}
+          },
+          "patterns": [
+            {
+              "begin": "\\b(of)\\b",
+              "beginCaptures": {
+                "1": {"name": "keyword.control.of.erlang"}
+              },
+              "end": "(?=\\b(catch|after|end)\\b)",
+              "patterns": [
+                {"include": "#internal-guard-expression"},
+                {"include": "#internal-arrow-clause-expression"},
+                {"include": "#everything-else"}
+              ]
+            },
+            {
+              "name": "meta.try-catch-section.erlang",
+              "begin": "\\b(catch)\\b",
+              "beginCaptures": {
+                "1": {"name": "keyword.control.catch.erlang"}
+              },
+              "end": "(?=\\b(after|end)\\b)",
+              "patterns": [
+                {
+                  "match": "\\b(error|throw|exit|'error'|'throw'|'exit')\\b\\s*(:)",
+                  "captures": {
+                    "1": {"name": "keyword.other.error-class.erlang"},
+                    "2": {"name": "punctuation.separator.error-class.erlang"}
+                  }
+                },
+                {
+                  "match": ":",
+                  "name": "punctuation.separator.error-class.erlang"
+                },
+                {"include": "#internal-guard-expression"},
+                {"include": "#internal-arrow-clause-expression"},
+                {"include": "#everything-else"}
+              ]
+            },
+            {
+              "name": "meta.try-after-section",
+              "begin": "\\b(after)\\b",
+              "beginCaptures": {
+                "1": {"name": "keyword.control.after.erlang"}
+              },
+              "end": "(?=\\b(end)\\b)",
+              "patterns": [
+                {
+                  "match": "\\.",
+                  "name": "invalid.illegal.punctuation.dot.erlang"
+                },
+                {"include": "#everything-else"}
+              ]
+            },
             {"include": "#everything-else"}
           ]
         },
         {
+          "name": "meta.expression.begin.erlang",
+          "begin": "\\b(begin)\\b",
+          "beginCaptures": {
+            "1": {"name": "keyword.control.begin.erlang"}
+          },
+          "end": "\\b(end)\\b",
+          "endCaptures": {
+            "1": {"name": "keyword.control.end.erlang"}
+          },
+          "patterns": [
+            {
+              "match": "\\.",
+              "name": "invalid.illegal.punctuation.dot.erlang"
+            },
+            {"include": "#internal-expression-list"}
+          ]
+        },
+        {
+          "match": "\\b(catch)\\b",
+          "captures": {
+            "1": {"name": "keyword.control.catch.erlang"}
+          }
+        },
+        {
+          "match": "\\b(fun)\\s*(('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-z][a-zA-Z\\d@_]*)\\s*(:)\\s*)?('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-z][a-zA-Z\\d@_]*)\\s*(/)",
           "captures": {
             "1": {"name": "keyword.control.fun.erlang"},
             "3": {"name": "entity.name.type.class.module.erlang"},
             "4": {"name": "punctuation.separator.module-function.erlang"},
             "5": {"name": "entity.name.function.erlang"},
             "6": {"name": "punctuation.separator.function-arity.erlang"}
-          },
-          "match": "\\b(fun)\\s*(('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-z][a-zA-Z\\d@_]*)\\s*(:)\\s*)?('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-z][a-zA-Z\\d@_]*)\\s*(/)"
+          }
         },
         {
+          "name": "meta.expression.fun.erlang",
           "begin": "\\b(fun)\\b",
           "beginCaptures": {
             "1": {"name": "keyword.control.fun.erlang"}
@@ -916,7 +1060,6 @@
           "endCaptures": {
             "1": {"name": "keyword.control.end.erlang"}
           },
-          "name": "meta.expression.fun.erlang",
           "patterns": [
             {
               "begin": "(?=\\()",
@@ -930,75 +1073,51 @@
             },
             {"include": "#comment"}
           ]
-        },
-        {
-          "begin": "\\b(try)\\b",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.try.erlang"}
-          },
-          "end": "\\b(end)\\b",
-          "endCaptures": {
-            "1": {"name": "keyword.control.end.erlang"}
-          },
-          "name": "meta.expression.try.erlang",
-          "patterns": [
-            {"include": "#internal-expression-punctuation"},
-            {"include": "#everything-else"}
-          ]
-        },
-        {
-          "begin": "\\b(begin)\\b",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.begin.erlang"}
-          },
-          "end": "\\b(end)\\b",
-          "endCaptures": {
-            "1": {"name": "keyword.control.end.erlang"}
-          },
-          "name": "meta.expression.begin.erlang",
-          "patterns": [
-            {"include": "#internal-expression-punctuation"},
-            {"include": "#everything-else"}
-          ]
-        },
-        {
-          "begin": "\\b(query)\\b",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.query.erlang"}
-          },
-          "end": "\\b(end)\\b",
-          "endCaptures": {
-            "1": {"name": "keyword.control.end.erlang"}
-          },
-          "name": "meta.expression.query.erlang",
-          "patterns": [
-            {"include": "#everything-else"}
-          ]
         }
       ]
     },
 
-    "internal-expression-punctuation": {
+    "internal-guard-expression": {
+      "name": "meta.guard-expression.erlang",
+      "begin": "(when)",
+      "beginCaptures": {
+        "1": {"name": "keyword.control.when.erlang"}
+      },
+      "end": "(?=->)",
       "patterns": [
         {
-          "match": "(->)|(;)|(,)",
-          "captures": {
-            "1": {"name": "punctuation.separator.clause-head-body.erlang"},
-            "2": {"name": "punctuation.separator.clauses.erlang"},
-            "3": {"name": "punctuation.separator.expressions.erlang"}
-          }
+          "match": ",|;",
+          "name": "punctuation.separator.guards.erlang"
         },
+        {"include": "#everything-else"}
+      ]
+    },
+
+    "internal-arrow-clause-expression": {
+      "begin": "(->)",
+      "beginCaptures": {
+        "1": {"name": "punctuation.separator.clause-head-body.erlang"}
+      },
+      "end": "(;)|(?=end|after|catch)",
+      "endCaptures": {
+        "1": {"name": "punctuation.separator.clauses.erlang"}
+      },
+      "patterns": [
         {
-          "name": "meta.guard-expression.erlang",
-          "begin": "(when)",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.when.erlang"}
-          },
-          "end": "(?=->)",
-          "patterns": [
-            {"include": "#everything-else"}
-          ]
-        }
+          "match": "\\.",
+          "name": "invalid.illegal.punctuation.dot.erlang"
+        },
+        {"include": "#internal-expression-list"}
+      ]
+    },
+
+    "internal-expression-list": {
+      "patterns": [
+        {
+          "match": ",",
+          "name": "punctuation.separator.expressions.erlang"
+        },
+        {"include": "#everything-else"}
       ]
     },
 
@@ -1168,21 +1287,7 @@
             {"include": "#everything-else"}
           ]
         },
-        {
-          "name": "meta.guard-expression.erlang",
-          "begin": "(when)",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.when.erlang"}
-          },
-          "end": "(?=->)",
-          "patterns": [
-            {
-              "match": ",|;",
-              "name": "punctuation.separator.guards.erlang"
-            },
-            {"include": "#everything-else"}
-          ]
-        },
+        {"include": "#internal-guard-expression"},
         {
           "begin": "(->)",
           "beginCaptures": {
@@ -1190,11 +1295,7 @@
           },
           "end": "(?=;|end|\\.)",
           "patterns": [
-            {
-              "match": ",",
-              "name": "punctuation.separator.expressions.erlang"
-            },
-            {"include": "#everything-else"}
+            {"include": "#internal-expression-list"}
           ]
         },
         {"include": "#comment"}
@@ -1221,9 +1322,9 @@
       ]
     },
 
-    "keyword": {
+    "illegal-keyword": {
       "match": "\\b(after|begin|case|catch|cond|end|fun|if|let|of|query|try|receive|when)\\b",
-      "name": "keyword.control.erlang"
+      "name": "invalid.illegal.keyword.control.erlang"
     },
 
     "list": {
