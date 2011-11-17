@@ -263,7 +263,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>^\s*(-)([a-z][a-zA-Z\d@_]*)\s*(\()</string>
+					<string>^\s*(-)('[^'\\]*(?:\\.[^'\\]*)*'|[a-z][a-zA-Z\d@_]*)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -276,21 +276,11 @@
 							<key>name</key>
 							<string>keyword.control.directive.erlang</string>
 						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.begin.erlang</string>
-						</dict>
 					</dict>
 					<key>end</key>
-					<string>(\))\s*(\.)</string>
+					<string>(\.)</string>
 					<key>endCaptures</key>
 					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.parameters.end.erlang</string>
-						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
@@ -306,30 +296,6 @@
 							<string>#everything-else</string>
 						</dict>
 					</array>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.directive.begin.erlang</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.directive.erlang</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.directive.end.erlang</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>^\s*(-)([a-z][a-zA-Z\d@_]*)\s*(\.)</string>
-					<key>name</key>
-					<string>meta.directive.erlang</string>
 				</dict>
 			</array>
 		</dict>

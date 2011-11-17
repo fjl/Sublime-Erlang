@@ -778,30 +778,19 @@
     "directive": {
       "patterns": [
         {
-          "begin": "^\\s*(-)([a-z][a-zA-Z\\d@_]*)\\s*(\\()",
+          "name": "meta.directive.erlang",
+          "begin": "^\\s*(-)('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-z][a-zA-Z\\d@_]*)",
           "beginCaptures": {
             "1": {"name": "punctuation.section.directive.begin.erlang"},
-            "2": {"name": "keyword.control.directive.erlang"},
-            "3": {"name": "punctuation.definition.parameters.begin.erlang"}
+            "2": {"name": "keyword.control.directive.erlang"}
           },
-          "end": "(\\))\\s*(\\.)",
+          "end": "(\\.)",
           "endCaptures": {
-            "1": {"name": "punctuation.definition.parameters.end.erlang"},
             "2": {"name": "punctuation.section.directive.end.erlang"}
           },
-          "name": "meta.directive.erlang",
           "patterns": [
             {"include": "#everything-else"}
           ]
-        },
-        {
-          "captures": {
-            "1": {"name": "punctuation.section.directive.begin.erlang"},
-            "2": {"name": "keyword.control.directive.erlang"},
-            "3": {"name": "punctuation.section.directive.end.erlang"}
-          },
-          "match": "^\\s*(-)([a-z][a-zA-Z\\d@_]*)\\s*(\\.)",
-          "name": "meta.directive.erlang"
         }
       ]
     },
