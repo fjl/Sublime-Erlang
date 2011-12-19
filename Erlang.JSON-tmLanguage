@@ -1698,7 +1698,8 @@
                   "patterns": [
                     {"include": "#type-expression"}
                   ]
-                }
+                },
+                {"include": "#comment"}
               ]
             },
             {
