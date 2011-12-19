@@ -170,6 +170,24 @@
 					<string>(,)|(:)</string>
 				</dict>
 				<dict>
+					<key>match</key>
+					<string>\|\|</string>
+					<key>name</key>
+					<string>keyword.operator.symbolic.comprehension.erlang</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>&lt;-</string>
+					<key>name</key>
+					<string>keyword.operator.symbolic.comprehension.list-items.erlang</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>&lt;=</string>
+					<key>name</key>
+					<string>keyword.operator.symbolic.comprehension.binary-items.erlang</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#internal-binary-type-specifiers</string>
 				</dict>
@@ -2395,7 +2413,19 @@
 					<key>match</key>
 					<string>\|\|</string>
 					<key>name</key>
-					<string>keyword.operator.symbolic.list-comprehension.erlang</string>
+					<string>keyword.operator.symbolic.comprehension.erlang</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>&lt;-</string>
+					<key>name</key>
+					<string>keyword.operator.symbolic.comprehension.list-items.erlang</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>&lt;=</string>
+					<key>name</key>
+					<string>keyword.operator.symbolic.comprehension.binary-items.erlang</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -3314,7 +3344,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\+\+|\+|--|-|\*|/=|/|=/=|=:=|==|=&lt;|=|&lt;-|&lt;|&gt;=|&gt;|!</string>
+					<string>\+\+|\+|--|-|\*|/=|/|=/=|=:=|==|=&lt;|=|&lt;|&gt;=|&gt;|!</string>
 					<key>name</key>
 					<string>keyword.operator.symbolic.erlang</string>
 				</dict>

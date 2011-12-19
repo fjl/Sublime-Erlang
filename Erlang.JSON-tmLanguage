@@ -76,6 +76,18 @@
           },
           "match": "(,)|(:)"
         },
+        {
+          "match": "\\|\\|",
+          "name": "keyword.operator.symbolic.comprehension.erlang"
+        },
+        {
+          "match": "<-",
+          "name": "keyword.operator.symbolic.comprehension.list-items.erlang"
+        },
+        {
+          "match": "<=",
+          "name": "keyword.operator.symbolic.comprehension.binary-items.erlang"
+        },
         {"include": "#internal-binary-type-specifiers"},
         {"include": "#everything-else"}
       ]
@@ -1333,7 +1345,15 @@
         },
         {
           "match": "\\|\\|",
-          "name": "keyword.operator.symbolic.list-comprehension.erlang"
+          "name": "keyword.operator.symbolic.comprehension.erlang"
+        },
+        {
+          "match": "<-",
+          "name": "keyword.operator.symbolic.comprehension.list-items.erlang"
+        },
+        {
+          "match": "<=",
+          "name": "keyword.operator.symbolic.comprehension.binary-items.erlang"
         },
         {"include": "#everything-else"}
       ]
@@ -1815,7 +1835,7 @@
           "name": "invalid.illegal.arrow.erlang"
         },
         {
-          "match": "\\+\\+|\\+|--|-|\\*|/=|/|=/=|=:=|==|=<|=|<-|<|>=|>|!",
+          "match": "\\+\\+|\\+|--|-|\\*|/=|/|=/=|=:=|==|=<|=|<|>=|>|!",
           "name": "keyword.operator.symbolic.erlang"
         }
       ]
