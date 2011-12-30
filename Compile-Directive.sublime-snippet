@@ -1,6 +1,0 @@
-<snippet>
-    <content><![CDATA[-compile([${1:export_all}]).]]></content>
-    <tabTrigger>-com</tabTrigger>
-    <scope>source.erlang</scope>
-    <description>Compile Directive</description>
-</snippet>

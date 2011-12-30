@@ -1,6 +1,0 @@
-<snippet>
-    <content><![CDATA[-type ${1:type}() :: ${2:term()}.]]></content>
-    <tabTrigger>-ty</tabTrigger>
-    <scope>source.erlang</scope>
-    <description>Type Directive</description>
-</snippet>

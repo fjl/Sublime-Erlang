@@ -1,0 +1,24 @@
+{
+	"scope": "source.erlang - meta.function.erlang",
+
+	"completions": [
+		{ "trigger": "-behaviour", "contents": "-behaviour(${1:behaviour})."},
+		{ "trigger": "-compile", "contents": "-compile([${1:export_all}])."},
+		{ "trigger": "-define", "contents": "-define(${1:macro}${2: (${3:param})}, ${4:body})."},
+		{ "trigger": "-else", "contents": "-else."},
+		{ "trigger": "-endif", "contents": "-endif."},
+		{ "trigger": "-export", "contents": "-export([${1:function}/${2:arity}])."},
+		{ "trigger": "-export_type", "contents": "-export_type([${1:type}/${2:arity}])."},
+		{ "trigger": "-ifdef", "contents": "-ifdef(${1:macro})."},
+		{ "trigger": "-ifndef", "contents": "-ifndef(${1:macro})."},
+		{ "trigger": "-import", "contents": "-import(${1:module}, [${2:function}/${3:arity}])."},
+		{ "trigger": "-include", "contents": "-include(\"${1:file.hrl}\")."},
+		{ "trigger": "-include_lib", "contents": "-include_lib(\"${1:app/file.hrl}\")."},
+		{ "trigger": "-module", "contents": "-module(${1:${TM_FILEPATH/^.*\\/(.*)\\.erl$/$1/g}})."},
+		{ "trigger": "-opaque", "contents": "-opaque ${1:type}() :: ${2:term()}."},
+		{ "trigger": "-record", "contents": "-record(${1:record}, {${2:field}${3: = ${4:value}}})."},
+		{ "trigger": "-spec", "contents": "-spec ${1:function}(${2:Parameters}) -> ${3:ReturnType}."},
+		{ "trigger": "-type", "contents": "-type ${1:type}() :: ${2:term()}."},
+		{ "trigger": "-undef", "contents": "-undef(${1:macro})."}
+	]
+}
