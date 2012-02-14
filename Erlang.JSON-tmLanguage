@@ -692,13 +692,14 @@
           }
         },
         {
-          "begin": "^\\s*(-)\\s*(define)\\s*(\\()\\s*([a-zA-Z_][a-zA-Z\\d@_]*)\\s*(,)",
+          "begin": "^\\s*(-)\\s*(define)\\s*(\\()\\s*(([a-zA-Z_][a-zA-Z\\d@_]*))\\s*(,)",
           "beginCaptures": {
             "1": {"name": "punctuation.section.directive.begin.erlang"},
             "2": {"name": "keyword.control.directive.preprocessor.define.erlang"},
             "3": {"name": "punctuation.definition.parameters.begin.erlang"},
-            "4": {"name": "entity.name.macro.definition.erlang"},
-            "5": {"name": "punctuation.separator.parameters.erlang"}
+            "4": {"name": "keyword.other.macro.erlang"},
+            "5": {"name": "entity.name.macro.definition.erlang"},
+            "6": {"name": "punctuation.separator.parameters.erlang"}
           },
           "end": "(\\))\\s*(\\.)",
           "endCaptures": {
