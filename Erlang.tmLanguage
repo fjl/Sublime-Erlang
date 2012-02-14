@@ -3643,7 +3643,7 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.begin.erlang</string>
+							<string>punctuation.definition.parameters.type.begin.erlang</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -3655,7 +3655,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.end.erlang</string>
+							<string>punctuation.definition.parameters.type.end.erlang</string>
 						</dict>
 					</dict>
 					<key>patterns</key>
@@ -3695,7 +3695,7 @@
 						<key>5</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.begin.erlang</string>
+							<string>punctuation.definition.parameters.type.begin.erlang</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -3705,7 +3705,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.parameters.end.erlang</string>
+							<string>punctuation.definition.parameters.type.end.erlang</string>
 						</dict>
 					</dict>
 					<key>patterns</key>
