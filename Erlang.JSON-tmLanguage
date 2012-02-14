@@ -273,7 +273,7 @@
           },
           "end": "(\\))",
           "endCaptures": {
-            "1": {"name": "puncutation.definition.parameters.end.erlang"}
+            "1": {"name": "punctuation.definition.parameters.end.erlang"}
           },
           "patterns": [
             {
@@ -303,7 +303,7 @@
                   "begin": "\\b(is_subtype)\\s*(\\()",
                   "beginCaptures": {
                     "1": {"name": "keyword.control.is-subtype.erlang"},
-                    "2": {"name": "puncutation.definition.parameters.begin.erlang"}
+                    "2": {"name": "punctuation.definition.parameters.begin.erlang"}
                   },
                   "end": "(\\))",
                   "endCaptures": {

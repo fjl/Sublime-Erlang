@@ -2234,7 +2234,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>puncutation.definition.parameters.end.erlang</string>
+							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 					</dict>
 					<key>name</key>
@@ -2300,7 +2300,7 @@
 										<key>2</key>
 										<dict>
 											<key>name</key>
-											<string>puncutation.definition.parameters.begin.erlang</string>
+											<string>punctuation.definition.parameters.begin.erlang</string>
 										</dict>
 									</dict>
 									<key>end</key>
