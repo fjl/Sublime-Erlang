@@ -3135,7 +3135,7 @@
 		<key>spec-directive</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(-)(spec)\b</string>
+			<string>^\s*(-)(callback|spec)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
