@@ -3,6 +3,7 @@
 
 	"completions": [
 		{ "trigger": "-behaviour", "contents": "-behaviour(${1:behaviour})."},
+		{ "trigger": "-callback", "contents": "-callback ${1:function}(${2:Parameters}) -> ${3:ReturnType}."},
 		{ "trigger": "-compile", "contents": "-compile([${1:export_all}])."},
 		{ "trigger": "-define", "contents": "-define(${1:macro}${2: (${3:param})}, ${4:body})."},
 		{ "trigger": "-else", "contents": "-else."},

@@ -217,7 +217,7 @@
     },
 
     "spec-directive": {
-      "begin": "^\\s*(-)(spec)\\b",
+      "begin": "^\\s*(-)(callback|spec)\\b",
       "beginCaptures": {
         "1": {"name": "punctuation.section.directive.begin.erlang"},
         "2": {"name": "keyword.control.directive.spec.erlang"}
