@@ -977,7 +977,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\b(fun)\s*(('[^'\\]*(?:\\.[^'\\]*)*'|[a-zA-Z_][a-zA-Z\d@_]+)\s*(:)\s*)?('[^'\\]*(?:\\.[^'\\]*)*'|[a-zA-Z_][a-zA-Z\d@_]*)\s*(/)</string>
+					<string>\b(fun)\s*(('[^'\\]*(?:\\.[^'\\]*)*'|[a-zA-Z_][a-zA-Z\d@_]*)\s*(:)\s*)?('[^'\\]*(?:\\.[^'\\]*)*'|[a-zA-Z_][a-zA-Z\d@_]*)\s*(/)</string>
 				</dict>
 				<dict>
 					<key>begin</key>
