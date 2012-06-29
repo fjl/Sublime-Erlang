@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Function Symbols</string>
+	<key>scope</key>
+	<string>keyword.control.directive.code.yecc, keyword.control.directive.nonterminals.yecc, keyword.control.directive.terminals.yecc, keyword.control.directive.expect.yecc, keyword.control.directive.rootsymbol.yecc</string>
+	<key>settings</key>
+	<dict>
+		<key>showInSymbolList</key>
+		<integer>1</integer>
+		<key>symbolTransformation</key>
+		<string>s/^/Directive: /</string>
+	</dict>
+	<key>uuid</key>
+	<string>37454515-F082-49D2-8689-E63AB28F4E9A</string>
+</dict>
+</plist>
