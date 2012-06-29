@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Symbol Overrides</string>
 	<key>scope</key>
-	<string>source.erlang entity.name.function.erlang, source.erlang entity.name.macro.erlang, source.erlang entity.name.function.guard.erlang, source.erlang entity.name.type.class.module.erlang, source.erlang entity.name.type.class.module.definition.erlang</string>
+	<string>entity.name.function.erlang, entity.name.macro.erlang, entity.name.function.guard.erlang, entity.name.type.class.module.erlang, entity.name.type.class.module.definition.erlang</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>

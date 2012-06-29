@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Type Symbols</string>
 	<key>scope</key>
-	<string>source.erlang storage.type.definition.erlang</string>
+	<string>storage.type.definition.erlang</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>

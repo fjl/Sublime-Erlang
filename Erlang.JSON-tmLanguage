@@ -19,7 +19,7 @@
     {"include": "#preprocessor-directive"},
     {"include": "#directive"},
     {"include": "#function"},
-    {"include": "#everything-else"},
+    {"include": "source.erlang.expression"},
     {"include": "#illegal-shebang-comment"}
   ],
 
@@ -54,71 +54,6 @@
         {
           "match": "[a-z][a-zA-Z\\d@_]*",
           "name": "constant.other.symbol.unquoted.erlang"
-        }
-      ]
-    },
-
-    "binary": {
-      "begin": "(<<)",
-      "beginCaptures": {
-        "1": {"name": "punctuation.definition.binary.begin.erlang"}
-      },
-      "end": "(>>)",
-      "endCaptures": {
-        "1": {"name": "punctuation.definition.binary.end.erlang"}
-      },
-      "name": "meta.structure.binary.erlang",
-      "patterns": [
-        {
-          "captures": {
-            "1": {"name": "punctuation.separator.binary.erlang"},
-            "2": {"name": "punctuation.separator.value-size.erlang"}
-          },
-          "match": "(,)|(:)"
-        },
-        {
-          "match": "\\|\\|",
-          "name": "keyword.operator.symbolic.comprehension.erlang"
-        },
-        {
-          "match": "<-",
-          "name": "keyword.operator.symbolic.comprehension.list-items.erlang"
-        },
-        {
-          "match": "<=",
-          "name": "keyword.operator.symbolic.comprehension.binary-items.erlang"
-        },
-        {"include": "#internal-binary-type-specifiers"},
-        {"include": "#everything-else"}
-      ]
-    },
-
-    "character": {
-      "patterns": [
-        {
-          "captures": {
-            "1": {"name": "punctuation.definition.character.erlang"},
-            "2": {"name": "constant.character.escape.erlang"},
-            "3": {"name": "punctuation.definition.escape.erlang"},
-            "5": {"name": "punctuation.definition.escape.erlang"}
-          },
-          "match": "(\\$)((\\\\)([bdefnrstv\\\\'\"]|(\\^)[@-_]|[0-7]{1,3}))",
-          "name": "constant.character.erlang"
-        },
-        {
-          "match": "\\$\\\\\\^?.?",
-          "name": "invalid.illegal.character.erlang"
-        },
-        {
-          "captures": {
-            "1": {"name": "punctuation.definition.character.erlang"}
-          },
-          "match": "(\\$)\\S",
-          "name": "constant.character.erlang"
-        },
-        {
-          "match": "\\$.?",
-          "name": "invalid.illegal.character.erlang"
         }
       ]
     },
@@ -708,7 +643,7 @@
           },
           "name": "meta.directive.define.erlang",
           "patterns": [
-            {"include": "#everything-else"}
+            {"include": "source.erlang.expression"}
           ]
         },
         {
@@ -743,7 +678,7 @@
                 {"include": "#comment"}
               ]
             },
-            {"include": "#everything-else"}
+            {"include": "source.erlang.expression"}
           ]
         }
       ]
@@ -767,7 +702,7 @@
                "match": ",",
                "name": "punctuation.separator.parameters.erlang"
             },
-            {"include": "#everything-else"}
+            {"include": "source.erlang.expression"}
           ]
         },
         {
@@ -802,278 +737,7 @@
             "2": {"name": "punctuation.section.directive.end.erlang"}
           },
           "patterns": [
-            {"include": "#everything-else"}
-          ]
-        }
-      ]
-    },
-
-    "everything-else": {
-      "patterns": [
-        {"include": "#comment"},
-        {"include": "#record-usage"},
-        {"include": "#macro-usage"},
-        {"include": "#expression"},
-        {"include": "#illegal-keyword"},
-        {"include": "#textual-operator"},
-        {"include": "#function-call"},
-        {"include": "#tuple"},
-        {"include": "#list"},
-        {"include": "#binary"},
-        {"include": "#parenthesized-expression"},
-        {"include": "#character"},
-        {"include": "#number"},
-        {"include": "#atom"},
-        {"include": "#string"},
-        {"include": "#symbolic-operator"},
-        {"include": "#variable"}
-      ]
-    },
-
-    "expression": {
-      "patterns": [
-        {
-          "begin": "\\b(if)\\b",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.if.erlang"}
-          },
-          "end": "\\b(end)\\b",
-          "endCaptures": {
-            "1": {"name": "keyword.control.end.erlang"}
-          },
-          "name": "meta.expression.if.erlang",
-          "patterns": [
-            {
-              "name": "meta.guard-expression.erlang",
-              "begin": "(?<=if|;)",
-              "end": "(?=->)",
-              "patterns": [
-                {"include": "#everything-else"}
-              ]
-            },
-            {
-              "begin": "(->)",
-              "beginCaptures": {
-                "1": {"name": "punctuation.separator.clause-head-body.erlang"}
-              },
-              "end": "(;)|(?=\\b(end)\\b)",
-              "endCaptures": {
-                "1": {"name": "punctuation.separator.clauses.erlang"}
-              },
-              "patterns": [
-                {"include": "#internal-expression-list"}
-              ]
-            }
-          ]
-        },
-        {
-          "begin": "\\b(case)\\b",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.case.erlang"}
-          },
-          "end": "\\b(end)\\b",
-          "endCaptures": {
-            "1": {"name": "keyword.control.end.erlang"}
-          },
-          "name": "meta.expression.case.erlang",
-          "patterns": [
-            {
-              "begin": "(?<=case)",
-              "end": "\\b(of)\\b",
-              "endCaptures": {
-                "1": {"name": "keyword.control.of.erlang"}
-              },
-              "patterns": [
-                {"include": "#everything-else"}
-              ]
-            },
-            {
-              "begin": "(?<=of|;)",
-              "end": "(?=;|\\b(end)\\b)",
-              "patterns": [
-                {"include": "#internal-guard-expression"},
-                {"include": "#internal-arrow-clause-expression"},
-                {"include": "#everything-else"}
-              ]
-            }
-          ]
-        },
-        {
-          "name": "meta.expression.receive.erlang",
-          "begin": "\\b(receive)\\b",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.receive.erlang"}
-          },
-          "end": "\\b(end)\\b",
-          "endCaptures": {
-            "1": {"name": "keyword.control.end.erlang"}
-          },
-          "patterns": [
-            {
-              "begin": "(?<=receive|;)",
-              "end": "(?=\\b(after|end)\\b|;)",
-              "patterns": [
-                {"include": "#internal-guard-expression"},
-                {"include": "#internal-arrow-clause-expression"},
-                {"include": "#everything-else"}
-              ]
-            },
-            {
-              "name": "meta.receive-after-section.erlang",
-              "begin": "\\b(after)\\b",
-              "beginCaptures": {
-                "1": {"name": "keyword.control.after.erlang"}
-              },
-              "end": "(?=\\b(end)\\b)",
-              "patterns": [
-                {
-                  "begin": "(?=([0-9]+#)?[0-9a-zA-Z]+|infinity|'infinity'|\\?[a-zA-Z\\d@_]+|%)",
-                  "end": "(?=->)",
-                  "patterns": [
-                    {"include": "#integer"},
-                    {"include": "#variable"},
-                    {"include": "#macro-usage"},
-                    {"include": "#comment"},
-                    {
-                      "match": "infinity",
-                      "name": "constant.other.symbol.unquoted.erlang"
-                    },
-                    {
-                      "match": "'infinity'",
-                      "name": "constant.other.symbol.quoted.erlang"
-                    },
-                    {
-                      "match": "[^\\s]",
-                      "name": "invalid.illegal.receive-timeout.erlang"
-                    }
-                  ]
-                },
-                {"include": "#internal-arrow-clause-expression"}
-              ]
-            }
-          ]
-        },
-        {
-          "name": "meta.expression.try.erlang",
-          "begin": "\\b(try)\\b",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.try.erlang"}
-          },
-          "end": "\\b(end)\\b",
-          "endCaptures": {
-            "1": {"name": "keyword.control.end.erlang"}
-          },
-          "patterns": [
-            {
-              "begin": "\\b(of)\\b",
-              "beginCaptures": {
-                "1": {"name": "keyword.control.of.erlang"}
-              },
-              "end": "(?=\\b(catch|after|end)\\b)",
-              "patterns": [
-                {"include": "#internal-guard-expression"},
-                {"include": "#internal-arrow-clause-expression"},
-                {"include": "#everything-else"}
-              ]
-            },
-            {
-              "name": "meta.try-catch-section.erlang",
-              "begin": "\\b(catch)\\b",
-              "beginCaptures": {
-                "1": {"name": "keyword.control.catch.erlang"}
-              },
-              "end": "(?=\\b(after|end)\\b)",
-              "patterns": [
-                {
-                  "match": "\\b(error|throw|exit|'error'|'throw'|'exit')\\b\\s*(:)",
-                  "captures": {
-                    "1": {"name": "keyword.other.error-class.erlang"},
-                    "2": {"name": "punctuation.separator.error-class.erlang"}
-                  }
-                },
-                {
-                  "match": ":",
-                  "name": "punctuation.separator.error-class.erlang"
-                },
-                {"include": "#internal-guard-expression"},
-                {"include": "#internal-arrow-clause-expression"},
-                {"include": "#everything-else"}
-              ]
-            },
-            {
-              "name": "meta.try-after-section",
-              "begin": "\\b(after)\\b",
-              "beginCaptures": {
-                "1": {"name": "keyword.control.after.erlang"}
-              },
-              "end": "(?=\\b(end)\\b)",
-              "patterns": [
-                {
-                  "match": "\\.",
-                  "name": "invalid.illegal.punctuation.dot.erlang"
-                },
-                {"include": "#everything-else"}
-              ]
-            },
-            {"include": "#everything-else"}
-          ]
-        },
-        {
-          "name": "meta.expression.begin.erlang",
-          "begin": "\\b(begin)\\b",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.begin.erlang"}
-          },
-          "end": "\\b(end)\\b",
-          "endCaptures": {
-            "1": {"name": "keyword.control.end.erlang"}
-          },
-          "patterns": [
-            {
-              "match": "\\.",
-              "name": "invalid.illegal.punctuation.dot.erlang"
-            },
-            {"include": "#internal-expression-list"}
-          ]
-        },
-        {
-          "match": "\\b(catch)\\b",
-          "captures": {
-            "1": {"name": "keyword.control.catch.erlang"}
-          }
-        },
-        {
-          "match": "\\b(fun)\\s*(('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-zA-Z_][a-zA-Z\\d@_]*)\\s*(:)\\s*)?('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-zA-Z_][a-zA-Z\\d@_]*)\\s*(/)",
-          "captures": {
-            "1": {"name": "keyword.control.fun.erlang"},
-            "3": {"name": "entity.name.type.class.module.erlang"},
-            "4": {"name": "punctuation.separator.module-function.erlang"},
-            "5": {"name": "entity.name.function.erlang"},
-            "6": {"name": "punctuation.separator.function-arity.erlang"}
-          }
-        },
-        {
-          "name": "meta.expression.fun.erlang",
-          "begin": "\\b(fun)\\b",
-          "beginCaptures": {
-            "1": {"name": "keyword.control.fun.erlang"}
-          },
-          "end": "\\b(end)\\b",
-          "endCaptures": {
-            "1": {"name": "keyword.control.end.erlang"}
-          },
-          "patterns": [
-            {
-              "begin": "(?=\\()",
-              "end": "(;)|(?=end)",
-              "endCaptures": {
-                "1": {"name": "punctuation.separator.clauses.erlang"}
-              },
-              "patterns": [
-                {"include": "#internal-function-parts"}
-              ]
-            },
-            {"include": "#comment"}
+            {"include": "source.erlang.expression"}
           ]
         }
       ]
@@ -1091,7 +755,7 @@
           "match": ",|;",
           "name": "punctuation.separator.guards.erlang"
         },
-        {"include": "#everything-else"}
+        {"include": "source.erlang.expression"}
       ]
     },
 
@@ -1119,7 +783,7 @@
           "match": ",",
           "name": "punctuation.separator.expressions.erlang"
         },
-        {"include": "#everything-else"}
+        {"include": "source.erlang.expression"}
       ]
     },
 
@@ -1151,52 +815,7 @@
             {"include": "#internal-function-parts"}
           ]
         },
-        {"include": "#everything-else"}
-      ]
-    },
-
-    "function-call": {
-      "begin": "(?=('[^'\\\\]*(\\\\.[^'\\\\]*)*'|[a-z][a-zA-Z\\d@_]*)\\s*(\\(|:\\s*('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-z][a-zA-Z\\d@_]*)\\s*\\())",
-      "end": "(\\))",
-      "endCaptures": {
-        "1": {"name": "punctuation.definition.parameters.end.erlang"}
-      },
-      "name": "meta.function-call.erlang",
-      "patterns": [
-        {
-          "begin": "((erlang)\\s*(:)\\s*)?(abs|binary_part|bit_size|byte_size|element|float|hd|is_atom|is_binary|is_bitstring|is_boolean|is_float|is_function|is_integer|is_list|is_number|is_pid|is_port|is_record|is_reference|is_tuple|length|node|round|self|size|tl|trunc|tuple_size)\\s*(\\()",
-          "beginCaptures": {
-            "2": {"name": "entity.name.type.class.module.erlang"},
-            "3": {"name": "punctuation.separator.module-function.erlang"},
-            "4": {"name": "entity.name.function.guard.erlang"},
-            "5": {"name": "punctuation.definition.parameters.begin.erlang"}
-          },
-          "end": "(?=\\))",
-          "patterns": [
-            {
-              "match": ",",
-              "name": "punctuation.separator.parameters.erlang"
-            },
-            {"include": "#everything-else"}
-          ]
-        },
-        {
-          "begin": "(('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-z][a-zA-Z\\d@_]*)\\s*(:)\\s*)?('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-z][a-zA-Z\\d@_]*)\\s*(\\()",
-          "beginCaptures": {
-            "2": {"name": "entity.name.type.class.module.erlang"},
-            "3": {"name": "punctuation.separator.module-function.erlang"},
-            "4": {"name": "entity.name.function.erlang"},
-            "5": {"name": "punctuation.definition.parameters.begin.erlang"}
-          },
-          "end": "(?=\\))",
-          "patterns": [
-            {
-              "match": ",",
-              "name": "punctuation.separator.parameters.erlang"
-            },
-            {"include": "#everything-else"}
-          ]
-        }
+        {"include": "source.erlang.expression"}
       ]
     },
 
@@ -1263,10 +882,10 @@
             "1": {"name": "punctuation.separator.list.erlang"}
           },
           "patterns": [
-            {"include": "#everything-else"}
+            {"include": "source.erlang.expression"}
           ]
         },
-        {"include": "#everything-else"}
+        {"include": "source.erlang.expression"}
       ]
     },
 
@@ -1286,7 +905,7 @@
               "match": ",",
               "name": "punctuation.separator.parameters.erlang"
             },
-            {"include": "#everything-else"}
+            {"include": "source.erlang.expression"}
           ]
         },
         {"include": "#internal-guard-expression"},
@@ -1329,37 +948,6 @@
       "name": "invalid.illegal.keyword.control.erlang"
     },
 
-    "list": {
-      "begin": "(\\[)",
-      "beginCaptures": {
-        "1": {"name": "punctuation.definition.list.begin.erlang"}
-      },
-      "end": "(\\])",
-      "endCaptures": {
-        "1": {"name": "punctuation.definition.list.end.erlang"}
-      },
-      "name": "meta.structure.list.erlang",
-      "patterns": [
-        {
-          "match": "\\|(?!\\|)|,",
-          "name": "punctuation.separator.list.erlang"
-        },
-        {
-          "match": "\\|\\|",
-          "name": "keyword.operator.symbolic.comprehension.erlang"
-        },
-        {
-          "match": "<-",
-          "name": "keyword.operator.symbolic.comprehension.list-items.erlang"
-        },
-        {
-          "match": "<=",
-          "name": "keyword.operator.symbolic.comprehension.binary-items.erlang"
-        },
-        {"include": "#everything-else"}
-      ]
-    },
-
     "module-directive": {
       "captures": {
         "1": {"name": "punctuation.section.directive.begin.erlang"},
@@ -1371,22 +959,6 @@
       },
       "match": "^\\s*(-)(module)\\s*(\\()\\s*('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[a-z][a-zA-Z\\d@_]*)\\s*(\\))\\s*(\\.)",
       "name": "meta.directive.module.erlang"
-    },
-
-    "number": {
-      "begin": "(?=\\d)",
-      "end": "(?!\\d)",
-      "patterns": [
-        {
-          "captures": {
-            "1": {"name": "punctuation.separator.integer-float.erlang"},
-            "3": {"name": "punctuation.separator.float-exponent.erlang"}
-          },
-          "match": "\\d+(\\.)\\d+(([eE][\\+\\-])?\\d+)?",
-          "name": "constant.numeric.float.erlang"
-        },
-        {"include": "#integer"}
-      ]
     },
 
     "integer": {
@@ -1658,7 +1230,7 @@
       },
       "name": "meta.expression.parenthesized",
       "patterns": [
-        {"include": "#everything-else"}
+        {"include": "source.erlang.expression"}
       ]
     },
 
@@ -1706,7 +1278,7 @@
                   },
                   "end": "(?=\\s*::|\\s*,|\\s*\\})",
                   "patterns": [
-                    {"include": "#everything-else"}
+                    {"include": "source.erlang.expression"}
                   ]
                 },
                 {
@@ -1768,101 +1340,13 @@
                 "1": {"name": "punctuation.separator.class.record.erlang"}
               },
               "patterns": [
-                {"include": "#everything-else"}
+                {"include": "source.erlang.expression"}
               ]
             },
             {"include": "#comment"},
             {"include": "#macro-usage"}
           ]
         }
-      ]
-    },
-
-    "string": {
-      "begin": "(\")",
-      "beginCaptures": {
-        "1": {"name": "punctuation.definition.string.begin.erlang"}
-      },
-      "end": "(\")",
-      "endCaptures": {
-        "1": {"name": "punctuation.definition.string.end.erlang"}
-      },
-      "name": "string.quoted.double.erlang",
-      "patterns": [
-        {
-          "captures": {
-            "1": {"name": "punctuation.definition.escape.erlang"},
-            "3": {"name": "punctuation.definition.escape.erlang"}
-          },
-          "match": "(\\\\)([bdefnrstv\\\\'\"]|(\\^)[@-_]|[0-7]{1,3})",
-          "name": "constant.character.escape.erlang"
-        },
-        {
-          "match": "\\\\\\^?.?",
-          "name": "invalid.illegal.string.erlang"
-        },
-        {
-          "captures": {
-            "1":  {"name": "punctuation.definition.placeholder.erlang"},
-            "10": {"name": "punctuation.separator.placeholder-parts.erlang"},
-            "12": {"name": "punctuation.separator.placeholder-parts.erlang"},
-            "3":  {"name": "punctuation.separator.placeholder-parts.erlang"},
-            "4":  {"name": "punctuation.separator.placeholder-parts.erlang"},
-            "6":  {"name": "punctuation.separator.placeholder-parts.erlang"},
-            "8":  {"name": "punctuation.separator.placeholder-parts.erlang"}
-          },
-          "match": "(~)((\\-)?\\d+|(\\*))?((\\.)(\\d+|(\\*)|))?((\\.)((\\*)|.))?[t]?[~cfegswpWPBX#bx\\+ni]",
-          "name": "constant.other.placeholder.erlang"
-        },
-        {
-          "captures": {
-            "1": {"name": "punctuation.definition.placeholder.erlang"},
-            "2": {"name": "punctuation.separator.placeholder-parts.erlang"}
-          },
-          "match": "(~)(\\*)?(\\d+)?[~du\\-#fsacl]",
-          "name": "constant.other.placeholder.erlang"
-        },
-        {
-          "match": "~[^\"]?",
-          "name": "invalid.illegal.string.erlang"
-        }
-      ]
-    },
-
-    "symbolic-operator": {
-      "patterns": [
-        {
-          "match": "->",
-          "name": "invalid.illegal.arrow.erlang"
-        },
-        {
-          "match": "\\+\\+|\\+|--|-|\\*|/=|/|=/=|=:=|==|=<|=|<|>=|>|!",
-          "name": "keyword.operator.symbolic.erlang"
-        }
-      ]
-    },
-
-    "textual-operator": {
-      "match": "\\b(andalso|band|and|bxor|xor|bor|orelse|or|bnot|not|bsl|bsr|div|rem)\\b",
-      "name": "keyword.operator.textual.erlang"
-    },
-
-    "tuple": {
-      "begin": "(\\{)",
-      "beginCaptures": {
-        "1": {"name": "punctuation.definition.tuple.begin.erlang"}
-      },
-      "end": "(\\})",
-      "endCaptures": {
-        "1": {"name": "punctuation.definition.tuple.end.erlang"}
-      },
-      "name": "meta.structure.tuple.erlang",
-      "patterns": [
-        {
-          "match": ",",
-          "name": "punctuation.separator.tuple.erlang"
-        },
-        {"include": "#everything-else"}
       ]
     },
 
