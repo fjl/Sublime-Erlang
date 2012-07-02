@@ -2,6 +2,12 @@
   "scopeName": "source.erlang.expression",
   "uuid": "c1989c76-7e4e-4315-b63b-439e9c348e15",
   "name": "Erlang Expressions",
+  "fileTypes": [
+    "emakefile",
+    "Emakefile",
+    "app",
+    "app.src"
+  ],
   "patterns": [
     {"include": "#everything-else"}
   ],

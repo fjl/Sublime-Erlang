@@ -8,8 +8,6 @@
 	<array>
 		<string>erl</string>
 		<string>hrl</string>
-		<string>Emakefile</string>
-		<string>emakefile</string>
 	</array>
 	<key>name</key>
 	<string>Erlang</string>
