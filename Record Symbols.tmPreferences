@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Record Symbols</string>
 	<key>scope</key>
-	<string>source.erlang storage.type.record.definition.erlang</string>
+	<string>storage.type.record.definition.erlang</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>

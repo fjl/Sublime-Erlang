@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Type Symbols</string>
+	<string>Function Symbols</string>
 	<key>scope</key>
-	<string>storage.type.definition.erlang</string>
+	<string>keyword.control.directive.code.yecc, keyword.control.directive.nonterminals.yecc, keyword.control.directive.terminals.yecc, keyword.control.directive.expect.yecc, keyword.control.directive.rootsymbol.yecc</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 		<key>symbolTransformation</key>
-		<string>s/^/Type: /</string>
+		<string>s/^/Directive: /</string>
 	</dict>
 	<key>uuid</key>
-	<string>31DB728C-AC89-4DF0-A2B9-9D3D3A7552A9</string>
+	<string>37454515-F082-49D2-8689-E63AB28F4E9A</string>
 </dict>
 </plist>

@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Function Symbols</string>
 	<key>scope</key>
-	<string>source.erlang entity.name.function.definition.erlang</string>
+	<string>entity.name.function.definition.erlang</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
