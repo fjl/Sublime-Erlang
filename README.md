@@ -9,13 +9,16 @@ for the issues that bug me most.
 
 * clone this repository into the ST2 `Packages` folder
 * remove the `Erlang` folder inside your ST2 `Packages` folder or (more elegant)
-  disable the `Erlang` package in your Global User Config.
+  disable the `Erlang` package in your User Settings file. 
+
+I'd recommend tracking this repository using Package Control's "Add Repository" command.
 
 # Contributing
 
 The syntax files (.tmLanguage) are generated from JSON source using
 [AAAPackageDev](https://github.com/SublimeText/AAAPackageDev). If you
 modify the grammar, please do so in the JSON file and then generate the XML
-using the build system supplied by AAAPackageDev.
+using the build system supplied by AAAPackageDev. The generated XML
+files should be committed alongside your changes to the JSON.
 
 Pull requests and issues are welcome.
