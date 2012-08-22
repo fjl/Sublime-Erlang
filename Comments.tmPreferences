@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Comments</string>
 	<key>scope</key>
-	<string>source.erlang</string>
+	<string>source.erlang, source.yecc</string>
 	<key>settings</key>
 	<dict>
 		<key>shellVariables</key>
