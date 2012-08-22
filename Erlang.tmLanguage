@@ -1853,7 +1853,7 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>^\s*(-)\s*(define)\s*(\()\s*([a-zA-Z_][a-zA-Z\d@_]*)\s*(\()</string>
+							<string>^\s*(-)\s*(define)\s*(\()\s*(([a-zA-Z_][a-zA-Z\d@_]*))\s*(\()</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>1</key>
@@ -1874,9 +1874,14 @@
 								<key>4</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.macro.definition.erlang</string>
+									<string>keyword.other.macro.erlang</string>
 								</dict>
 								<key>5</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.macro.definition.erlang</string>
+								</dict>
+								<key>6</key>
 								<dict>
 									<key>name</key>
 									<string>punctuation.definition.parameters.begin.erlang</string>
