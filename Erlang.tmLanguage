@@ -2089,6 +2089,10 @@
 						</dict>
 					</array>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
 			</array>
 		</dict>
 		<key>record-usage</key>
