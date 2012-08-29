@@ -119,7 +119,7 @@
           "beginCaptures": {
             "1": {"name": "punctuation.definition.parameters.begin.erlang"}
           },
-          "end": "(\\))\\s*(?=::|\\)?\\s*\\.)",
+          "end": "(\\))",
           "endCaptures": {
             "1": {"name": "punctuation.definition.parameters.end.erlang"}
           },
@@ -129,11 +129,7 @@
               "name": "punctuation.separator.parameters.erlang"
             },
             {"include": "#variable"},
-            {"include": "#comment"},
-            {
-              "match": "[^\\s]",
-              "name": "invalid.illegal.type-parameter.erlang"
-            }
+            {"include": "#comment"}
           ]
         },
         {
@@ -145,6 +141,10 @@
           "patterns": [
             {"include": "#type-expression"}
           ]
+        },
+        {
+          "match": "[^\\s]",
+          "name": "invalid.illegal.type-parameter.erlang"
         }
       ]
     },

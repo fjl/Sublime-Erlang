@@ -1286,7 +1286,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(\))\s*(?=::|\)?\s*\.)</string>
+					<string>(\))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1311,12 +1311,6 @@
 							<key>include</key>
 							<string>#comment</string>
 						</dict>
-						<dict>
-							<key>match</key>
-							<string>[^\s]</string>
-							<key>name</key>
-							<string>invalid.illegal.type-parameter.erlang</string>
-						</dict>
 					</array>
 				</dict>
 				<dict>
@@ -1339,6 +1333,12 @@
 							<string>#type-expression</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[^\s]</string>
+					<key>name</key>
+					<string>invalid.illegal.type-parameter.erlang</string>
 				</dict>
 			</array>
 		</dict>
