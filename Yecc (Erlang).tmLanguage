@@ -90,6 +90,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#token</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#comment</string>
 				</dict>
 			</array>
@@ -194,6 +198,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#token</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#comment</string>
 				</dict>
 			</array>
@@ -226,6 +234,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#token</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#comment</string>
 				</dict>
 			</array>
@@ -233,25 +245,7 @@
 		<key>rule</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(('[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)\s*(-&gt;)\s*(?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)(?:\s+(?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))*)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.rule.definition.yecc</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.rule.yecc</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.parameters.begin.yecc</string>
-				</dict>
-			</dict>
+			<string>(?=[a-z'])</string>
 			<key>end</key>
 			<string>(\.)</string>
 			<key>endCaptures</key>
@@ -266,6 +260,42 @@
 			<string>meta.rule.yecc</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?=[a-z'])</string>
+					<key>end</key>
+					<string>\s*(?=-&gt;)</string>
+					<key>name</key>
+					<string>entity.name.rule.definition.yecc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#token</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(-&gt;)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.rule.name-definition.yecc</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=:)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#token</string>
+						</dict>
+					</array>
+				</dict>
 				<dict>
 					<key>begin</key>
 					<string>(:)</string>
@@ -343,7 +373,79 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#token</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#comment</string>
+				</dict>
+			</array>
+		</dict>
+		<key>token</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>('\$empty')</string>
+					<key>name</key>
+					<string>keyword.empty-token.yecc</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(')</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.token.begin.yecc</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(')</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.token.end.yecc</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.other.token.quoted.yecc</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.escape.yecc</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.escape.yecc</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>(\\)([bdefnrstv\\'"]|(\^)[@-_]|[0-7]{1,3})</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\\\^?.?</string>
+							<key>name</key>
+							<string>invalid.illegal.token.yecc</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[a-z][a-zA-Z\d@_]*</string>
+					<key>name</key>
+					<string>entity.name.token.unquoted.yecc</string>
 				</dict>
 			</array>
 		</dict>
