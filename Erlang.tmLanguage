@@ -1365,7 +1365,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?=;|\.|\)\s*\.)</string>
+			<string>(?=\.|\)\s*\.)</string>
 			<key>patterns</key>
 			<array>
 				<dict>

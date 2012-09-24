@@ -196,7 +196,7 @@
         "3": {"name": "punctuation.separator.module-function.erlang"},
         "4": {"name": "entity.name.function.erlang"}
       },
-      "end": "(?=;|\\.|\\)\\s*\\.)",
+      "end": "(?=\\.|\\)\\s*\\.)",
       "patterns": [
         {
           "name": "meta.type.function.parameters.erlang",
