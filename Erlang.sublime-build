@@ -1,5 +1,5 @@
 {
-	"cmd": ["erl", "-compile", "$file"],
+	"cmd": ["erlc", "$file"],
 	"file_regex":"^([^:]+):([0-9]*):?(.*):?(.*)",
 	"selector": "source.erlang, source.yecc"
 }
