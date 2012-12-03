@@ -415,7 +415,11 @@
           },
           "patterns": [
             {
-              "begin": "(?=\\()",
+              "begin": "(?:(_)|([[:upper:]_][[:alnum:]@_]*))?\\s*(?=\\()",
+              "beginCaptures": {
+                "2": {"name": "variable.language.omitted.fun-name.erlang"},
+                "1": {"name": "variable.other.fun-name.erlang"}
+              },
               "end": "(;)|(?=end)",
               "endCaptures": {
                 "1": {"name": "punctuation.separator.clauses.erlang"}

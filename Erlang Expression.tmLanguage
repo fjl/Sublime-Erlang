@@ -816,7 +816,20 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>(?=\()</string>
+							<string>(?:(_)|([[:upper:]_][[:alnum:]@_]*))?\s*(?=\()</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>variable.language.omitted.fun-name.erlang</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>variable.other.fun-name.erlang</string>
+								</dict>
+							</dict>
 							<key>end</key>
 							<string>(;)|(?=end)</string>
 							<key>endCaptures</key>
