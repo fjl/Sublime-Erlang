@@ -97,7 +97,7 @@
     },
     "rule": {
       "name": "meta.rule.yecc",
-      "begin": "^\\s*(('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*)\\s*(->)\\s*(?:'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*)(?:\\s+(?:'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*))*)(?=\\s*:)",
+      "begin": "^\\s*(('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*)\\s*(->)\\s*(?:'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*)(?:\\s+(?:'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*))*)",
       "beginCaptures": {
         "1": {"name": "entity.name.rule.definition.yecc"},
         "2": {"name": "entity.name.rule.yecc"},
@@ -117,6 +117,11 @@
           "patterns": [
             {"include": "#rule-body"}
           ]
+        },
+        {"include": "#comment"},
+        {
+          "match": "[^\\s]",
+          "name": "invalid.illegal.rule-part.yecc"
         }
       ]
     },

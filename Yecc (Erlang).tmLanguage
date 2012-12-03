@@ -233,7 +233,7 @@
 		<key>rule</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(('[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)\s*(-&gt;)\s*(?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)(?:\s+(?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))*)(?=\s*:)</string>
+			<string>^\s*(('[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)\s*(-&gt;)\s*(?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)(?:\s+(?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -286,6 +286,16 @@
 							<string>#rule-body</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[^\s]</string>
+					<key>name</key>
+					<string>invalid.illegal.rule-part.yecc</string>
 				</dict>
 			</array>
 		</dict>
