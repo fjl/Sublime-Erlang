@@ -32,6 +32,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#endsymbol-directive</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#rule</string>
 		</dict>
 		<dict>
@@ -57,6 +61,38 @@
 			<string>$\n?</string>
 			<key>name</key>
 			<string>comment.line.yecc</string>
+		</dict>
+		<key>endsymbol-directive</key>
+		<dict>
+			<key>begin</key>
+			<string>^\s*(Endsymbol)\b</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.directive.endsymbol.yecc</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\.)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.directive.end.yecc</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.directive.endsymbol.yecc</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+			</array>
 		</dict>
 		<key>erlang-code</key>
 		<dict>

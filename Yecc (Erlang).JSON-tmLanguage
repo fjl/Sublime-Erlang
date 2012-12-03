@@ -9,6 +9,7 @@
     {"include": "#terminals-directive"},
     {"include": "#expect-directive"},
     {"include": "#rootsymbol-directive"},
+    {"include": "#endsymbol-directive"},
     {"include": "#rule"},
     {"include": "#erlang-code"}
   ],
@@ -71,6 +72,20 @@
       "begin": "^\\s*(Rootsymbol)\\b",
       "beginCaptures": {
         "1": {"name": "keyword.control.directive.rootsymbol.yecc"}
+      },
+      "end": "(\\.)",
+      "endCaptures": {
+        "1": {"name": "punctuation.section.directive.end.yecc"}
+      },
+      "patterns": [
+        {"include": "#comment"}
+      ]
+    },
+    "endsymbol-directive": {
+      "name": "meta.directive.endsymbol.yecc",
+      "begin": "^\\s*(Endsymbol)\\b",
+      "beginCaptures": {
+        "1": {"name": "keyword.control.directive.endsymbol.yecc"}
       },
       "end": "(\\.)",
       "endCaptures": {
