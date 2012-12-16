@@ -5,7 +5,7 @@
 	<key>name</key>
 	<string>Function Symbols</string>
 	<key>scope</key>
-	<string>keyword.control.directive.code.yecc, keyword.control.directive.nonterminals.yecc, keyword.control.directive.terminals.yecc, keyword.control.directive.expect.yecc, keyword.control.directive.rootsymbol.yecc</string>
+	<string>keyword.control.directive.code.yecc, keyword.control.directive.nonterminals.yecc, keyword.control.directive.terminals.yecc, keyword.control.directive.expect.yecc, keyword.control.directive.rootsymbol.yecc, keyword.control.directive.endsymbol.yecc</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>

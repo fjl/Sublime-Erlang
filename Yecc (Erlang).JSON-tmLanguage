@@ -9,6 +9,7 @@
     {"include": "#terminals-directive"},
     {"include": "#expect-directive"},
     {"include": "#rootsymbol-directive"},
+    {"include": "#endsymbol-directive"},
     {"include": "#rule"},
     {"include": "#erlang-code"}
   ],
@@ -80,9 +81,23 @@
         {"include": "#comment"}
       ]
     },
+    "endsymbol-directive": {
+      "name": "meta.directive.endsymbol.yecc",
+      "begin": "^\\s*(Endsymbol)\\b",
+      "beginCaptures": {
+        "1": {"name": "keyword.control.directive.endsymbol.yecc"}
+      },
+      "end": "(\\.)",
+      "endCaptures": {
+        "1": {"name": "punctuation.section.directive.end.yecc"}
+      },
+      "patterns": [
+        {"include": "#comment"}
+      ]
+    },
     "rule": {
       "name": "meta.rule.yecc",
-      "begin": "^\\s*(('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*)\\s*(->)\\s*(?:'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*)(?:\\s+(?:'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*))*)(?=\\s*:)",
+      "begin": "^\\s*(('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*)\\s*(->)\\s*(?:'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*)(?:\\s+(?:'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*))*)",
       "beginCaptures": {
         "1": {"name": "entity.name.rule.definition.yecc"},
         "2": {"name": "entity.name.rule.yecc"},
@@ -102,6 +117,11 @@
           "patterns": [
             {"include": "#rule-body"}
           ]
+        },
+        {"include": "#comment"},
+        {
+          "match": "[^\\s]",
+          "name": "invalid.illegal.rule-part.yecc"
         }
       ]
     },
