@@ -12,8 +12,10 @@
 		<integer>1</integer>
 		<key>symbolTransformation</key>
 		<string>s/^/Macro: /</string>
+		<key>showInIndexedSymbolList</key>
+		<integer>1</integer>
+		<key>symbolIndexTransformation</key>
+		<string>s/^/Macro: /</string>
 	</dict>
-	<key>uuid</key>
-	<string>5EEC72E3-EEA9-4C53-8D70-3903EF1D84E2</string>
 </dict>
 </plist>

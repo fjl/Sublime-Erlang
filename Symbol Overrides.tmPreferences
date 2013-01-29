@@ -5,13 +5,13 @@
 	<key>name</key>
 	<string>Symbol Overrides</string>
 	<key>scope</key>
-	<string>entity.name.function.erlang, entity.name.macro.erlang, entity.name.function.guard.erlang, entity.name.type.class.module.erlang, entity.name.type.class.module.definition.erlang</string>
+	<string>entity.name.function.erlang, entity.name.macro.erlang, entity.name.function.guard.erlang, entity.name.type.class.module.erlang</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
 		<string>0</string>
+    	<key>showInIndexedSymbolList</key>
+    	<string>0</string>
 	</dict>
-	<key>uuid</key>
-	<string>AE84FFDF-2D5A-4331-A301-6CF34CF26CD8</string>
 </dict>
 </plist>

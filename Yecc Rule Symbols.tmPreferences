@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Function Symbols</string>
+	<string>Yecc Rule Symbols</string>
 	<key>scope</key>
 	<string>entity.name.rule.definition.yecc</string>
 	<key>settings</key>
@@ -12,8 +12,10 @@
 		<integer>1</integer>
 		<key>symbolTransformation</key>
 		<string>s/^/Rule: /</string>
+		<key>showInIndexedSymbolList</key>
+		<integer>1</integer>
+		<key>symbolIndexTransformation</key>
+		<string>s/^/Yecc Rule: /</string>
 	</dict>
-	<key>uuid</key>
-	<string>7D573C45-C5FF-44CF-9F8C-606F10A1EB15</string>
 </dict>
 </plist>

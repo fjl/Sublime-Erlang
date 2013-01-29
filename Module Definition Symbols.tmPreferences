@@ -3,19 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Record Symbols</string>
+	<string>Module Definition Symbols</string>
 	<key>scope</key>
-	<string>storage.type.record.definition.erlang</string>
+	<string>entity.name.type.class.module.definition.erlang</string>
 	<key>settings</key>
 	<dict>
 		<key>showInSymbolList</key>
-		<integer>1</integer>
-		<key>symbolTransformation</key>
-		<string>s/^/Record: /</string>
+		<integer>0</integer>
 		<key>showInIndexedSymbolList</key>
-		<string>1</string>
+		<integer>1</integer>
 		<key>symbolIndexTransformation</key>
-		<string>s/^/Record: /</string>
+		<string>s/^/Module: /</string>
 	</dict>
 </dict>
 </plist>

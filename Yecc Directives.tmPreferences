@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Function Symbols</string>
+	<string>Yecc Directive Symbols</string>
 	<key>scope</key>
 	<string>keyword.control.directive.code.yecc, keyword.control.directive.nonterminals.yecc, keyword.control.directive.terminals.yecc, keyword.control.directive.expect.yecc, keyword.control.directive.rootsymbol.yecc, keyword.control.directive.endsymbol.yecc</string>
 	<key>settings</key>
@@ -12,8 +12,8 @@
 		<integer>1</integer>
 		<key>symbolTransformation</key>
 		<string>s/^/Directive: /</string>
+		<key>showInIndexedSymbolList</key>
+		<integer>0</integer>
 	</dict>
-	<key>uuid</key>
-	<string>37454515-F082-49D2-8689-E63AB28F4E9A</string>
 </dict>
 </plist>
