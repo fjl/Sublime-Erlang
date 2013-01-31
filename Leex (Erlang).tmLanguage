@@ -197,7 +197,7 @@
 			<key>end</key>
 			<string>(?!)</string>
 			<key>name</key>
-			<string>meta.section.code.leex</string>
+			<string>meta.section.code.leex source.erlang</string>
 			<key>patterns</key>
 			<array>
 				<dict>

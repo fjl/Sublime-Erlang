@@ -118,7 +118,7 @@
 			<key>end</key>
 			<string>(?!)</string>
 			<key>name</key>
-			<string>meta.section.code.yecc</string>
+			<string>meta.section.code.yecc source.erlang</string>
 			<key>patterns</key>
 			<array>
 				<dict>

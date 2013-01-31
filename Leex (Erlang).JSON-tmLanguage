@@ -111,7 +111,7 @@
       ]
     },
     "erlang-code": {
-      "name": "meta.section.code.leex",
+      "name": "meta.section.code.leex source.erlang",
       "begin": "^(\\s*)(Erlang (\\s*)code)(\\s*)(\\.)\\s*((?:\\s*[^\\s]+\\s*)*)$",
       "beginCaptures": {
         "1": {"name": "invalid.illegal.whitespace-before-directive.leex"},

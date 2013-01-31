@@ -26,7 +26,7 @@
       "name": "comment.line.yecc"
     },
     "erlang-code": {
-      "name": "meta.section.code.yecc",
+      "name": "meta.section.code.yecc source.erlang",
       "begin": "^\\s*(Erlang\\s+code)\\s*(\\.)",
       "beginCaptures": {
         "1": {"name": "keyword.control.directive.code.yecc"},
