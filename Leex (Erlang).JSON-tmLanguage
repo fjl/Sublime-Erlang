@@ -1,0 +1,225 @@
+{
+  "name": "Leex (Erlang)",
+  "scopeName": "source.leex",
+  "fileTypes": ["xrl"],
+  "uuid": "3ca0cbfe-f2dd-4213-a54f-bde43af60b84",
+  "patterns": [
+    {"include": "#comment"},
+    {"include": "#definitions"},
+    {"include": "#rules"},
+    {"include": "#erlang-code"}
+  ],
+  "repository": {
+    "comment": {
+      "begin": "(%)",
+      "beginCaptures": {
+        "1": {"name": "punctuation.definition.comment.erlang"}
+      },
+      "end": "$",
+      "name": "comment.line.leex"
+    },
+    "definitions": {
+      "name": "meta.section.definitions.leex",
+      "begin": "^(\\s*)(Definitions)(\\s*)(\\.)\\s*((?:\\s*[^\\s]+\\s*)*)$",
+      "beginCaptures": {
+        "1": {"name": "invalid.illegal.whitespace-before-directive.leex"},
+        "2": {"name": "keyword.control.directive.definitions.leex"},
+        "3": {"name": "invalid.illegal.whitespace-in-directive.leex"},
+        "4": {"name": "punctuation.section.directive.end.leex"},
+        "5": {"name": "invalid.illegal.characters-after-directive.leex"}
+      },
+      "end": "^(?=\\s*Rules\\s*\\.)",
+      "patterns": [
+        {
+          "name": "meta.definition.leex",
+          "begin": "^\\s*([A-Z_][A-Za-z0-9_]*)",
+          "beginCaptures": {
+            "1": {"name": "variable.other.macro.definition.leex"},
+            "2": {"name": "punctuation.separator.definition.leex"},
+            "3": {"name": "invalid.illegal.definition-no-whitespace.leex"}
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "begin": "\\s*(=)(?:(?:\\s+)|([^\\s]))",
+              "beginCaptures": {
+                "1": {"name": "punctuation.separator.definition.leex"},
+                "2": {"name": "invalid.illegal.definition-no-whitespace.leex"}
+              },
+              "end": "$",
+              "patterns": [
+                {"include": "#regular-expression"}
+              ]
+            }
+          ]
+        },
+        {"include": "#comment"},
+        {
+          "match": "^((?:\\s*[^\\s%]+)+)%?",
+          "captures": {
+            "1": {"name": "invalid.illegal.macro-definition.leex"}
+          }
+        }
+      ]
+    },
+    "rules": {
+      "name": "meta.section.rules.leex",
+      "begin": "^(\\s*)(Rules)(\\s*)(\\.)\\s*((?:\\s*[^\\s]+\\s*)*)$",
+      "beginCaptures": {
+        "1": {"name": "invalid.illegal.whitespace-before-directive.leex"},
+        "2": {"name": "keyword.control.directive.rules.leex"},
+        "3": {"name": "invalid.illegal.whitespace-in-directive.leex"},
+        "4": {"name": "punctuation.section.directive.end.leex"},
+        "5": {"name": "invalid.illegal.characters-after-directive.leex"}
+      },
+      "end": "^(?=\\s*Erlang\\s+code\\s*\\.)",
+      "patterns": [
+        {
+          "name": "meta.rule.leex",
+          "begin": "(?=.)",
+          "end": "(\\.)",
+          "endCaptures": {
+            "1": {"name": "punctuation.section.rule.end.leex"}
+          },
+          "patterns": [
+            {
+              "name": "meta.pattern.leex",
+              "begin": "^",
+              "end": "\\s",
+              "patterns": [
+                {"include": "#regular-expression"}
+              ]
+            },
+            {
+               "match": "(?<=\\s)([^\\s:]+)\\s+",
+               "captures": {
+                 "1": {"name": "invalid.illegal.pattern-whitespace.leex"}
+               }
+            },
+            {
+              "begin": "(:)",
+              "beginCaptures": {
+                "1": {"name": "punctuation.separator.rule.head-body.leex"}
+              },
+              "end": "(?=\\.)",
+              "patterns": [
+                {"include": "source.erlang.expression"}
+              ]
+            }
+          ]
+        },
+        {"include": "#comment"}
+      ]
+    },
+    "erlang-code": {
+      "name": "meta.section.code.leex",
+      "begin": "^(\\s*)(Erlang (\\s*)code)(\\s*)(\\.)\\s*((?:\\s*[^\\s]+\\s*)*)$",
+      "beginCaptures": {
+        "1": {"name": "invalid.illegal.whitespace-before-directive.leex"},
+        "2": {"name": "keyword.control.directive.rules.leex"},
+        "3": {"name": "invalid.illegal.whitespace-in-directive.leex"},
+        "4": {"name": "invalid.illegal.whitespace-in-directive.leex"},
+        "5": {"name": "punctuation.section.directive.end.leex"},
+        "6": {"name": "invalid.illegal.characters-after-directive.leex"}
+      },
+      "end": "(?!)",
+      "patterns": [
+        {"include": "source.erlang"}
+      ]
+    },
+    "regular-expression": {
+      "patterns": [
+        {"include": "#regexp-escape-sequence"},
+        {"include": "#regexp-macro-usage"},
+        {"include": "#invalid-regexp-whitespace"},
+        {
+          "name": "keyword.operator.alternation.regexp.leex",
+          "match": "\\|"
+        },
+        {
+          "name": "keyword.operator.anychar.regexp.leex",
+          "match": "\\."
+        },
+        {
+          "name": "keyword.operator.quantifier.regexp.leex",
+          "match": "(\\+|\\*|\\?)"
+        },
+        {
+          "name": "meta.group.regexp.leex",
+          "begin": "(\\()",
+          "beginCaptures": {
+            "1": {"name": "punctuation.definition.group.begin.regexp.leex"}
+          },
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {"name": "punctuation.definition.group.end.regexp.leex"}
+          },
+          "patterns": [
+            {"include": "#regular-expression"}
+          ]
+        },
+        {
+          "name": "meta.character-class.regexp.leex",
+          "begin": "(\\[)",
+          "beginCaptures": {
+            "1": {"name": "punctuation.definition.character-class.begin.regexp.leex"}
+          },
+          "end": "(\\])",
+          "endCaptures": {
+            "1": {"name": "punctuation.definition.character-class.end.regexp.leex"}
+          },
+          "patterns": [
+            {"include": "#regexp-escape-sequence"},
+            {"include": "#regexp-macro-usage"},
+            {"include": "#invalid-regexp-whitespace"},
+            {
+              "name": "punctuation.other.character-class.negate.regexp.leex",
+              "match": "(?<=\\[)\\^"
+            },
+            {
+              "match": "(?<!\\[)(-)(?!\\])",
+              "captures": {
+                "1": {"name": "punctuation.other.character-class.range.regexp.leex"}
+              }
+            },
+            {"name": "string.leex", "match": "."}
+          ]
+        },
+        {"name": "string.leex", "match": "."}
+      ]
+    },
+    "regexp-escape-sequence": {
+      "patterns": [
+        {
+          "name": "constant.character.escape.octal.regexp.leex",
+          "match": "\\\\[0-7]{3}"
+        },
+        {
+          "match": "\\\\x\\{(?:(?:[0-9a-fA-F]*)|([^}]*))\\}",
+          "captures": {
+            "0": {"name": "constant.character.escape.hex.regexp.leex"},
+            "1": {"name": "invalid.illegal.hex.regexp.leex"}
+          }
+        },
+        {
+          "name": "constant.character.escape.regexp.leex",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "regexp-macro-usage": {
+      "match": "(\\{)([A-Z_][A-Za-z0-9_]*)(\\})",
+      "captures": {
+        "1": {"name": "variable.other.macro-usage.regexp.leex"},
+        "2": {"name": "variable.other.macro.leex"},
+        "3": {"name": "variable.other.macro-usage.regexp.leex"}
+      }
+    },
+    "invalid-regexp-whitespace": {
+      "match": "(\\s+)(?=[^\\s:]+)",
+      "captures": {
+        "1": {"name": "invalid.illegal.pattern-whitespace.leex"}
+      }
+    }
+  }
+}

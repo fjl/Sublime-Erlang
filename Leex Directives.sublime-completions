@@ -1,0 +1,8 @@
+{
+  "scope": "source.leex - meta.definition.leex",
+  "completions": [
+  	"Definitions.",
+  	"Rules.",
+  	"Erlang code."
+  ]
+}
