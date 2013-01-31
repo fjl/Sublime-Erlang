@@ -3,7 +3,6 @@
   "scopeName": "source.escript.erlang",
   "fileTypes": ["escript"],
   "firstLineMatch": "^#!/.*[ /]escript",
-  "uuid": "c03378d1-1924-457f-a346-b21c01d22a63",
   "patterns": [
     {
       "name": "source.erlang",

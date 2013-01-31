@@ -1,6 +1,5 @@
 {
   "scopeName": "source.erlang",
-  "uuid": "58ea597d-5158-4bf7-9fb2-b05135d1e166",
   "comment": "The recognition of function definitions and compiler directives (such as module, record and macro definitions) requires that each of the aforementioned constructs must be the first string inside a line (except for whitespace).  Also, all record/macro names must be given unquoted.",
   "fileTypes": [
     "erl",

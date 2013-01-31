@@ -2,7 +2,6 @@
   "name": "Yecc (Erlang)",
   "scopeName": "source.yecc",
   "fileTypes": ["yrl"],
-  "uuid": "3ca0cbfe-f2dd-4213-a54f-bde43af60b84",
   "patterns": [
     {"include": "#comment"},
     {"include": "#nonterminals-directive"},
