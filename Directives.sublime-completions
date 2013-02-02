@@ -15,7 +15,7 @@
 		{ "trigger": "-import", "contents": "-import(${1:module}, [${2:function}/${3:arity}])."},
 		{ "trigger": "-include", "contents": "-include(\"${1:file.hrl}\")."},
 		{ "trigger": "-include_lib", "contents": "-include_lib(\"${1:app/file.hrl}\")."},
-		{ "trigger": "-module", "contents": "-module(${1:${TM_FILEPATH/^.*\\/(.*)\\.erl$/$1/g}})."},
+		{ "trigger": "-module", "contents": "-module(${1:${TM_FILEPATH/^.*\\/(.*)\\.[a-z]+$/$1/g}})."},
 		{ "trigger": "-opaque", "contents": "-opaque ${1:type}() :: ${2:term()}."},
 		{ "trigger": "-record", "contents": "-record(${1:record}, {${2:field}${3: = ${4:value}}})."},
 		{ "trigger": "-spec", "contents": "-spec ${1:function}(${2:Parameters}) -> ${3:ReturnType}."},
