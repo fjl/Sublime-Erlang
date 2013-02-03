@@ -1,0 +1,9 @@
+[
+	{
+		"keys": ["f12"],
+		"command": "erlang_goto_definition",
+		"context": [
+			{ "key": "selector", "operand": "source.erlang, source.yecc", "operator": "equal" }
+		]
+	}
+]
