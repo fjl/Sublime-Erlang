@@ -1503,7 +1503,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(_[a-zA-Z\d@_]+|[A-Z][a-zA-Z\d@_]+)\s*(::)</string>
+					<string>([[:upper:]_][[:alnum:]@_]*)\s*(::)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>

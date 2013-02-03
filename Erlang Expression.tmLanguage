@@ -1077,7 +1077,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>('[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)?\s*(:)</string>
+					<string>('[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)?\s*(:)(?!:)</string>
 					<key>name</key>
 					<string>meta.function-call.erlang</string>
 				</dict>
@@ -2032,7 +2032,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(#[[:lower:]][[:alnum:]@_]*)(\{)</string>
+					<string>(#[[:lower:]][[:alnum:]@_]*)\s*(\{)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>

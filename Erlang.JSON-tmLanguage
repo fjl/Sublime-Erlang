@@ -262,7 +262,7 @@
     "internal-variable-type": {
       "patterns": [
         {
-          "begin": "(_[a-zA-Z\\d@_]+|[A-Z][a-zA-Z\\d@_]+)\\s*(::)",
+          "begin": "([[:upper:]_][[:alnum:]@_]*)\\s*(::)",
           "beginCaptures": {
             "1": {"name": "variable.other.erlang"},
             "2": {"name": "punctuation.separator.variable-type.erlang"}

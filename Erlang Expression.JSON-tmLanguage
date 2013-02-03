@@ -576,7 +576,7 @@
         },
         {
           "name": "meta.function-call.erlang",
-          "match": "('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*)?\\s*(:)",
+          "match": "('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*)?\\s*(:)(?!:)",
           "captures": {
             "1": {"name": "entity.name.type.class.module.erlang"},
             "2": {"name": "punctuation.separator.module-function.erlang"}
@@ -976,7 +976,7 @@
           "name": "meta.record-usage.erlang"
         },
         {
-          "begin": "(#[[:lower:]][[:alnum:]@_]*)(\\{)",
+          "begin": "(#[[:lower:]][[:alnum:]@_]*)\\s*(\\{)",
           "beginCaptures": {
             "1": {"name": "storage.type.record.erlang"},
             "2": {"name": "punctuation.definition.class.record.begin.erlang"}
