@@ -769,7 +769,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=end)|(?&lt;=[0-9])</string>
+					<string>(?&lt;=end)|(?![[:alnum:]\s\?\(:'/_])</string>
 					<key>name</key>
 					<string>meta.expression.fun.erlang</string>
 					<key>patterns</key>
@@ -778,15 +778,10 @@
 							<key>begin</key>
 							<string>(?=\()</string>
 							<key>end</key>
-							<string>(;)|\b(end)\b</string>
+							<string>\b(end)\b</string>
 							<key>endCaptures</key>
 							<dict>
 								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.separator.clauses.erlang</string>
-								</dict>
-								<key>2</key>
 								<dict>
 									<key>name</key>
 									<string>keyword.control.end.erlang</string>
@@ -794,6 +789,12 @@
 							</dict>
 							<key>patterns</key>
 							<array>
+								<dict>
+									<key>match</key>
+									<string>;</string>
+									<key>name</key>
+									<string>punctuation.separator.clauses.erlang</string>
+								</dict>
 								<dict>
 									<key>include</key>
 									<string>#internal-function-parts</string>
@@ -859,9 +860,19 @@
 									<key>name</key>
 									<string>constant.numeric.decimal.function-arity.erlang</string>
 								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>variable.language.omitted.function-arity.erlang</string>
+								</dict>
+								<key>4</key>
+								<dict>
+									<key>name</key>
+									<string>variable.other.function-arity.erlang</string>
+								</dict>
 							</dict>
 							<key>match</key>
-							<string>(/)\s*([0-9]+)?</string>
+							<string>(/)\s*(?:([0-9]+)|(_)|([[:upper:]_][[:alnum:]@_]*))?</string>
 						</dict>
 						<dict>
 							<key>include</key>

@@ -398,16 +398,19 @@
           "beginCaptures": {
             "1": {"name": "keyword.control.fun.erlang"}
           },
-          "end": "(?<=end)|(?<=[0-9])",
+          "end": "(?<=end)|(?![[:alnum:]\\s\\?\\(:'/_])",
           "patterns": [
             {
               "begin": "(?=\\()",
-              "end": "(;)|\\b(end)\\b",
+              "end": "\\b(end)\\b",
               "endCaptures": {
-                "1": {"name": "punctuation.separator.clauses.erlang"},
-                "2": {"name": "keyword.control.end.erlang"}
+                "1": {"name": "keyword.control.end.erlang"}
               },
               "patterns": [
+                {
+                  "match": ";",
+                  "name": "punctuation.separator.clauses.erlang"
+                },
                 {"include": "#internal-function-parts"}
               ]
             },
@@ -434,10 +437,12 @@
               "name": "punctuation.separator.module-function.erlang"
             },
             {
-              "match": "(/)\\s*([0-9]+)?",
+              "match": "(/)\\s*(?:([0-9]+)|(_)|([[:upper:]_][[:alnum:]@_]*))?",
               "captures": {
                 "1": {"name": "punctuation.separator.function-arity.erlang"},
-                "2": {"name": "constant.numeric.decimal.function-arity.erlang"}
+                "2": {"name": "constant.numeric.decimal.function-arity.erlang"},
+                "3": {"name": "variable.language.omitted.function-arity.erlang"},
+                "4": {"name": "variable.other.function-arity.erlang"}
               }
             },
             {"include": "#macro-usage"},
