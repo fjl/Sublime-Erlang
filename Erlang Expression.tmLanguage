@@ -15,7 +15,71 @@
 	<array>
 		<dict>
 			<key>include</key>
-			<string>#everything-else</string>
+			<string>#comment</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#record-usage</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#macro-usage</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#expression</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#illegal-keyword</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#textual-operator</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#function-call</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#tuple</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#list</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#binary</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#parenthesized-expression</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#character</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#number</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#atom</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#string</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#symbolic-operator</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#variable</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -151,7 +215,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#everything-else</string>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
@@ -233,80 +297,6 @@
 			<key>name</key>
 			<string>comment.line.erlang</string>
 		</dict>
-		<key>everything-else</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#record-usage</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#macro-usage</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#expression</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#illegal-keyword</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#textual-operator</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#function-call</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tuple</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#list</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#binary</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#parenthesized-expression</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#character</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#number</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#atom</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#symbolic-operator</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#variable</string>
-				</dict>
-			</array>
-		</dict>
 		<key>expression</key>
 		<dict>
 			<key>patterns</key>
@@ -347,7 +337,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>
@@ -424,7 +414,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>
@@ -445,7 +435,7 @@
 								</dict>
 								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>
@@ -493,7 +483,7 @@
 								</dict>
 								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>
@@ -615,7 +605,7 @@
 								</dict>
 								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>
@@ -669,7 +659,7 @@
 								</dict>
 								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>
@@ -698,13 +688,13 @@
 								</dict>
 								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#everything-else</string>
+							<string>$self</string>
 						</dict>
 					</array>
 				</dict>
@@ -951,7 +941,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#everything-else</string>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
@@ -1014,7 +1004,7 @@
 								</dict>
 								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>
@@ -1056,7 +1046,7 @@
 								</dict>
 								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>
@@ -1696,7 +1686,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#everything-else</string>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
@@ -1735,7 +1725,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#everything-else</string>
+							<string>$self</string>
 						</dict>
 					</array>
 				</dict>
@@ -1796,7 +1786,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#everything-else</string>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
@@ -1852,7 +1842,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#everything-else</string>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
@@ -1898,7 +1888,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#everything-else</string>
+							<string>$self</string>
 						</dict>
 					</array>
 				</dict>
@@ -1998,7 +1988,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#everything-else</string>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
@@ -2095,7 +2085,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>#everything-else</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>
@@ -2292,7 +2282,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#everything-else</string>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
