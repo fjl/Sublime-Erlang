@@ -1,0 +1,47 @@
+<snippet>
+	<scope>source.erlang - source.erlang.expression</scope>
+	<description>gen_fsm Callbacks</description>
+	<content><![CDATA[-export([start_link/0]).
+
+-behaviour(gen_fsm).
+-export([init/1, handle_info/3, terminate/3, code_change/4, handle_event/3, handle_sync_event/4]).
+-export([${1:initial_state}/2, ${1}/3]).
+
+-define(SERVER, ?MODULE).
+
+start_link() ->
+	gen_fsm:start_link({local, ?SERVER}, ?MODULE, {}, []).
+
+%% @private
+init({}) ->
+	{ok, ${1}, undefined}.
+
+%% @private
+${1}(_Event, State) ->
+	{next_state, ${1}, State}.
+
+%% @private
+${1}(_Event, _From, State) ->
+	{reply, ok, ${1}, State}.
+
+%% @private
+handle_event(_Event, StateName, State) ->
+	{next_state, StateName, State}.
+
+%% @private
+handle_sync_event(_Event, _From, StateName, State) ->
+	{reply, ok, StateName, State}.
+
+%% @private
+handle_info(_Info, StateName, State) ->
+	{next_state, StateName, State}.
+
+%% @private
+terminate(_Reason, _StateName, _State) ->
+	ok.
+
+%% @private
+code_change(_OldVsn, StateName, State, _Extra) ->
+	{ok, StateName, State}.
+]]></content>
+</snippet>

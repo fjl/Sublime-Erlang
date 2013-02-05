@@ -1,0 +1,14 @@
+<snippet>
+	<scope>source.erlang.expression</scope>
+	<description>Application Resource File</description>
+	<content><![CDATA[{application, ${1:app_name}, [
+  {description, "${2:description}"},
+  {vsn, "0.0"},
+  {modules, []},
+  {registered, []},
+  {applications, [kernel, stdlib]},
+  {env, []},
+  {mod, {${1}, []}},
+]}.
+]]></content>
+</snippet>
