@@ -5,5 +5,18 @@
 		"context": [
 			{ "key": "selector", "operand": "source.erlang, source.yecc", "operator": "equal" }
 		]
+	},
+
+	// disable wrap_block binding because it doesn't really work for Erlang
+	{
+		"keys": ["{"],
+		"command": "insert_snippet",
+		"args": { "contents": "{$0}" },
+		"context": [
+			{ "key": "indented_block", "match_all": true },
+			{ "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+			{ "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+			{ "key": "following_text", "operator": "regex_contains", "operand": "^(?:\t| |\\)|]|\\}|$)", "match_all": true },
+		]
 	}
 ]
