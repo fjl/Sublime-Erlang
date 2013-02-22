@@ -1,2 +1,2 @@
-from .plugin import ErlangGotoDefinition
-__all__ = ["ErlangGotoDefinition"]
+from .plugin import *
+__all__ = ["ErlangCommandHooks"]

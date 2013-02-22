@@ -1,12 +1,4 @@
 [
-	{
-		"keys": ["f12"],
-		"command": "erlang_goto_definition",
-		"context": [
-			{ "key": "selector", "operand": "source.erlang, source.yecc", "operator": "equal" }
-		]
-	},
-
 	// disable wrap_block binding because it doesn't really work for Erlang
 	{
 		"keys": ["{"],
