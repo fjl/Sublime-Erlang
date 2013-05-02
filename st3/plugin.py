@@ -1,4 +1,6 @@
 import sublime, sublime_plugin
+import Default.symbol
+import re, os.path
 
 # ------------------------------------------------------------------------------
 # -- Generic Command Hooks
@@ -55,27 +57,75 @@ PREFIX_MAP = [
     ('Yecc Rule', 'entity.name.token.quoted.yecc')
 ]
 
+ERLANG_EXTENSIONS = ['.erl', '.hrl', '.xrl', '.yrl']
+
+def basename(filename):
+    return re.split('/', filename)[-1]
+
+def loc_is_module(loc, module_name):
+    # TODO: escripts?
+    (root, ext) = os.path.splitext(basename(loc[0]))
+    return (ext in ERLANG_EXTENSIONS) and (root == module_name)
+
+def get_module_in_call(view, point):
+    expclass = sublime.CLASS_WORD_END | sublime.CLASS_WORD_START
+    call_r = view.expand_by_class(point, expclass, ' \"\t\n(){}[]+-*/=>,.;')
+    call = view.substr(call_r)
+    match = re.split('\'?:\'?', call)
+    if len(match) == 2:
+        return (match[0], match[1])
+
+def goto_exact_definition(kind, view, point):
+    window = view.window()
+    expanded = get_module_in_call(view, point)
+    if expanded is None:
+        return False
+    else:
+        (module, funcname) = expanded
+
+    # GotoDefinition could change at any time, but I don't feel like
+    # writing all of its code again just for the sake of being future-proof
+    goto = Default.symbol.GotoDefinition(window)
+    matches = goto.lookup_symbol(kind + ': ' + funcname)
+    locations = [loc for loc in matches if loc_is_module(loc, module)]
+
+    if len(locations) == 0:
+        return False  # run across all modules if nothing matches
+    elif len(locations) == 1:
+        goto.goto_location(locations[0])
+    else:
+        window.show_quick_panel(
+            [goto.format_location(l) for l in locations],
+            on_select = lambda x: goto.select_entry(locations, x, view, None),
+            on_highlight = lambda x: goto.highlight_entry(locations, x))
+    return True
+
 @hook_window_command('goto_definition', 'source.erlang, source.yecc')
 def erlang_goto_definition(window, symbol=None):
     if symbol is not None:
         return None
 
     view = window.active_view()
-    position = view.sel()[0].begin()
-    scope = view.scope_name(position)
-    symbol = view.substr(view.word(position))
+    point = view.sel()[0].begin()
+    scope = view.scope_name(point)
+    symbol = view.substr(view.word(point))
 
     scores = map(lambda s: sublime.score_selector(scope, s[1]), PREFIX_MAP)
     (maxscore, match) = max(zip(scores, PREFIX_MAP), key=lambda z: z[0])
+    kind = match[0]
 
     if maxscore == 0:
         gotosym = symbol
-    elif match[0] == 'Macro':
-        gotosym = match[0] + ': ' + strip_before('?', symbol)
-    elif match[0] == 'Record':
-        gotosym = match[0] + ': ' + strip_before('#', symbol)
+    elif kind == 'Macro':
+        gotosym = kind + ': ' + strip_before('?', symbol)
+    elif kind == 'Record':
+        gotosym = kind + ': ' + strip_before('#', symbol)
+    elif kind == 'Function' and goto_exact_definition(kind, view, point):
+        return None  # abort if there was an exact match
+    elif kind == 'Type' and goto_exact_definition(kind, view, point):
+        return None  # abort if there was an exact match
     else:
-        gotosym = match[0] + ': ' + symbol
+        gotosym = kind + ': ' + symbol
 
     return ('goto_definition', {'symbol': gotosym})
 
