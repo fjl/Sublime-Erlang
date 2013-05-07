@@ -1001,7 +1001,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(;)|(?=end|after|catch)</string>
+			<string>(;)|(?=\b(end|after|catch)\b)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1211,7 +1211,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?=;|end|\.)</string>
+					<string>(?=;|\bend\b|\.)</string>
 					<key>patterns</key>
 					<array>
 						<dict>

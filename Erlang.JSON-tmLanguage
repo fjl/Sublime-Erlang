@@ -762,7 +762,7 @@
       "beginCaptures": {
         "1": {"name": "punctuation.separator.clause-head-body.erlang"}
       },
-      "end": "(;)|(?=end|after|catch)",
+      "end": "(;)|(?=\\b(end|after|catch)\\b)",
       "endCaptures": {
         "1": {"name": "punctuation.separator.clauses.erlang"}
       },
@@ -912,7 +912,7 @@
           "beginCaptures": {
             "1": {"name": "punctuation.separator.function.head-body.erlang"}
           },
-          "end": "(?=;|end|\\.)",
+          "end": "(?=;|\\bend\\b|\\.)",
           "patterns": [
             {"include": "#internal-expression-list"}
           ]
