@@ -25,12 +25,17 @@ I recommend tracking this repository using Package Control's "Add Repository" co
 ## Contributing
 
 The syntax files (.tmLanguage) are built from JSON sources using
-[AAAPackageDev]. If you modify the grammar, please do so in the JSON file
-and then generate the XML using the build system supplied by AAAPackageDev. The generated XML
-files should be committed alongside your changes to the JSON.
+a custom build system. If you modify a grammar, please do so in the JSON file
+and then regenerate the XML. The XML files should be committed alongside your changes
+to the JSON source.
+
+You are kindly invited to use the included Sublime Text project file.
+
+To build all grammar files from the command line, run:
+	
+	build/all.py
 
 Pull requests and issues are welcome.
 
 [Sublime Text]: http://sublimetext.com
 [SublimErl]: https://github.com/ostinelli/SublimErl
-[AAAPackageDev]: https://github.com/SublimeText/AAAPackageDev

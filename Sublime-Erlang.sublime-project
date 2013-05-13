@@ -1,0 +1,44 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "JSON Grammar Compiler",
+			"cmd":
+			[
+				"${project_path}/build/all.py",
+				"${project_path}"
+			],
+			"variants": [
+				{
+					"name": "Clean",
+					"cmd":
+					[
+						"${project_path}/build/clean.py",
+						"${project_path}"
+					]
+				}
+			]
+		}
+	],
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		}
+	],
+	"settings":
+	{
+		"binary_file_patterns":
+		[
+			"*.pyc",
+			"*.tmLanguage",
+			"*.cache",
+			"*.sublime-workspace",
+			"*.beam",
+			"*.png",
+			"*.css",
+			"*.tmLanguage"
+		]
+	}
+}
