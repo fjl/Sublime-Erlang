@@ -443,7 +443,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>[a-z][a-zA-Z\d@_]*</string>
+					<string>[[:lower:]][[:alnum:]@_]*</string>
 					<key>name</key>
 					<string>entity.name.token.unquoted.yecc</string>
 				</dict>

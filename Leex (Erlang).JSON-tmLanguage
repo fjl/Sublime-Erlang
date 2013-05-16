@@ -2,12 +2,14 @@
   "name": "Leex (Erlang)",
   "scopeName": "source.leex",
   "fileTypes": ["xrl"],
+
   "patterns": [
     {"include": "#comment"},
     {"include": "#definitions"},
     {"include": "#rules"},
     {"include": "#erlang-code"}
   ],
+
   "repository": {
     "comment": {
       "begin": "(%)",
@@ -17,6 +19,7 @@
       "end": "$",
       "name": "comment.line.leex"
     },
+
     "definitions": {
       "name": "meta.section.definitions.leex",
       "begin": "^(\\s*)(Definitions)(\\s*)(\\.)\\s*((?:\\s*[^\\s]+\\s*)*)$",
@@ -61,6 +64,7 @@
         }
       ]
     },
+
     "rules": {
       "name": "meta.section.rules.leex",
       "begin": "^(\\s*)(Rules)(\\s*)(\\.)\\s*((?:\\s*[^\\s]+\\s*)*)$",
@@ -110,6 +114,7 @@
         {"include": "#comment"}
       ]
     },
+
     "erlang-code": {
       "name": "meta.section.code.leex source.erlang",
       "begin": "^(\\s*)(Erlang (\\s*)code)(\\s*)(\\.)\\s*((?:\\s*[^\\s]+\\s*)*)$",
@@ -126,6 +131,7 @@
         {"include": "source.erlang"}
       ]
     },
+
     "regular-expression": {
       "patterns": [
         {"include": "#regexp-escape-sequence"},
@@ -187,6 +193,7 @@
         {"name": "string.leex", "match": "."}
       ]
     },
+
     "regexp-escape-sequence": {
       "patterns": [
         {
@@ -206,6 +213,7 @@
         }
       ]
     },
+
     "regexp-macro-usage": {
       "match": "(\\{)([A-Z_][A-Za-z0-9_]*)(\\})",
       "captures": {
@@ -214,6 +222,7 @@
         "3": {"name": "variable.other.macro-usage.regexp.leex"}
       }
     },
+
     "invalid-regexp-whitespace": {
       "match": "(\\s+)(?=[^\\s:]+)",
       "captures": {
