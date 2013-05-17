@@ -290,13 +290,18 @@
 		<key>function</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))\s*(?=\()</string>
+			<string>^\s*((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))\s*(?=\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.function.definition.erlang</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.macro.erlang</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -321,9 +326,14 @@
 							<key>name</key>
 							<string>entity.name.function.erlang</string>
 						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.macro.erlang</string>
+						</dict>
 					</dict>
 					<key>match</key>
-					<string>^\s*((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))\s*(?=\()</string>
+					<string>^\s*((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))\s*(?=\()</string>
 				</dict>
 				<dict>
 					<key>begin</key>

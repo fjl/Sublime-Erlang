@@ -772,9 +772,10 @@
     },
 
     "function": {
-      "begin": "^\\s*(⟪ATOM⟫)\\s*(?=\\()",
+      "begin": "^\\s*(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(?=\\()",
       "beginCaptures": {
-        "1": {"name": "entity.name.function.definition.erlang"}
+        "1": {"name": "entity.name.function.definition.erlang"},
+        "2": {"name": "keyword.other.macro.erlang"}
       },
       "end": "(\\.)",
       "endCaptures": {
@@ -783,10 +784,11 @@
       "name": "meta.function.erlang",
       "patterns": [
         {
+          "match": "^\\s*(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(?=\\()",
           "captures": {
-            "1": {"name": "entity.name.function.erlang"}
-          },
-          "match": "^\\s*(⟪ATOM⟫)\\s*(?=\\()"
+            "1": {"name": "entity.name.function.erlang"},
+            "2": {"name": "keyword.other.macro.erlang"}
+          }
         },
         {
           "begin": "(?=\\()",
