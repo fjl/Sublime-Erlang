@@ -325,7 +325,7 @@
                "patterns": [
                  {
                    "match": "\\.\\.\\.",
-                   "name": "punctuation.other.type.ellipsis.erlang"
+                   "name": "keyword.other.type.ellipsis.erlang"
                  },
                  {
                    "match": ",",
@@ -456,7 +456,7 @@
             },
             {
               "match": "\\.\\.\\.",
-              "name": "punctuation.other.type.ellipsis.erlang"
+              "name": "keyword.other.type.ellipsis.erlang"
             },
             {"include": "#type-expression"}
           ]

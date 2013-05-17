@@ -2271,7 +2271,7 @@
 									<key>match</key>
 									<string>\.\.\.</string>
 									<key>name</key>
-									<string>punctuation.other.type.ellipsis.erlang</string>
+									<string>keyword.other.type.ellipsis.erlang</string>
 								</dict>
 								<dict>
 									<key>match</key>
@@ -2556,7 +2556,7 @@
 							<key>match</key>
 							<string>\.\.\.</string>
 							<key>name</key>
-							<string>punctuation.other.type.ellipsis.erlang</string>
+							<string>keyword.other.type.ellipsis.erlang</string>
 						</dict>
 						<dict>
 							<key>include</key>
