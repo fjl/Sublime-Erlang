@@ -111,9 +111,10 @@
 
     "internal-type-definition": {
       "name": "meta.type.erlang",
-      "begin": "\\s*(⟪ATOM⟫)\\s*(?=\\()",
+      "begin": "\\s*(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(?=\\()",
       "beginCaptures": {
-        "1": {"name": "storage.type.definition.erlang"}
+        "1": {"name": "storage.type.definition.erlang"},
+        "2": {"name": "keyword.other.macro.erlang"}
       },
       "end": "(?=\\)?\\s*\\.)",
       "patterns": [
@@ -193,11 +194,13 @@
     },
 
     "internal-type-spec": {
-      "begin": "((⟪ATOM⟫)\\s*(:)\\s*)?(⟪ATOM⟫)",
+      "begin": "(?:(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(:)\\s*)?(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))",
       "beginCaptures": {
-        "2": {"name": "entity.name.type.class.module.erlang"},
+        "1": {"name": "entity.name.type.class.module.erlang"},
+        "2": {"name": "keyword.other.macro.erlang"},
         "3": {"name": "punctuation.separator.module-function.erlang"},
-        "4": {"name": "entity.name.function.erlang"}
+        "4": {"name": "entity.name.function.erlang"},
+        "5": {"name": "keyword.other.macro.erlang"}
       },
       "end": "(?=\\.|\\)\\s*\\.)",
       "patterns": [
@@ -372,12 +375,14 @@
           ]
         },
         {
-          "begin": "((⟪ATOM⟫)(:))?(⟪ATOM⟫)(\\()",
+          "begin": "(?:(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))(:))?(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))(\\()",
           "beginCaptures": {
-            "2": {"name": "storage.type.module.erlang"},
+            "1": {"name": "storage.type.module.erlang"},
+            "2": {"name": "keyword.other.macro.erlang"},
             "3": {"name": "punctuation.separator.module-type.erlang"},
             "4": {"name": "storage.type.erlang"},
-            "5": {"name": "punctuation.definition.parameters.type.begin.erlang"}
+            "5": {"name": "keyword.other.macro.erlang"},
+            "6": {"name": "punctuation.definition.parameters.type.begin.erlang"}
           },
           "end": "(\\))",
           "endCaptures": {
@@ -577,11 +582,12 @@
           },
           "patterns": [
             {
-              "match": "(⟪ATOM⟫)\\s*(/)\\s*([\\d]+)",
+              "match": "(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(/)\\s*([\\d]+)",
               "captures": {
                 "1": {"name": "storage.type.erlang"},
-                "2": {"name": "punctuation.separator.type-arity.erlang"},
-                "3": {"name": "constant.numeric.arity.erlang"}
+                "2": {"name": "keyword.other.macro.erlang"},
+                "3": {"name": "punctuation.separator.type-arity.erlang"},
+                "4": {"name": "constant.numeric.arity.erlang"}
               }
             },
             {

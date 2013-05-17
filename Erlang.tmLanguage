@@ -258,16 +258,21 @@
 								<key>2</key>
 								<dict>
 									<key>name</key>
-									<string>punctuation.separator.type-arity.erlang</string>
+									<string>keyword.other.macro.erlang</string>
 								</dict>
 								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.separator.type-arity.erlang</string>
+								</dict>
+								<key>4</key>
 								<dict>
 									<key>name</key>
 									<string>constant.numeric.arity.erlang</string>
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))\s*(/)\s*([\d]+)</string>
+							<string>((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))\s*(/)\s*([\d]+)</string>
 						</dict>
 						<dict>
 							<key>match</key>
@@ -1183,13 +1188,18 @@
 		<key>internal-type-definition</key>
 		<dict>
 			<key>begin</key>
-			<string>\s*((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))\s*(?=\()</string>
+			<string>\s*((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))\s*(?=\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>storage.type.definition.erlang</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.macro.erlang</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1269,13 +1279,18 @@
 		<key>internal-type-spec</key>
 		<dict>
 			<key>begin</key>
-			<string>(((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))\s*(:)\s*)?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))</string>
+			<string>(?:((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))\s*(:)\s*)?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>2</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.type.class.module.erlang</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.macro.erlang</string>
 				</dict>
 				<key>3</key>
 				<dict>
@@ -1286,6 +1301,11 @@
 				<dict>
 					<key>name</key>
 					<string>entity.name.function.erlang</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.macro.erlang</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -2376,13 +2396,18 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))(:))?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))(\()</string>
+					<string>(?:((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))(:))?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))(\()</string>
 					<key>beginCaptures</key>
 					<dict>
-						<key>2</key>
+						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>storage.type.module.erlang</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.macro.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -2395,6 +2420,11 @@
 							<string>storage.type.erlang</string>
 						</dict>
 						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.macro.erlang</string>
+						</dict>
+						<key>6</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.definition.parameters.type.begin.erlang</string>
