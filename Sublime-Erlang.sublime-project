@@ -8,6 +8,7 @@
 				"${project_path}/build/all.py",
 				"${project_path}"
 			],
+			"selector": "source.json-tmlanguage",
 			"variants": [
 				{
 					"name": "Clean",
