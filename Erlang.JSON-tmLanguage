@@ -354,7 +354,7 @@
         },
         {
           "comment": "type arguments given to predefined arity-0 types are marked invalid",
-          "begin": "\\b(any|term|boolean|byte|binary|bitstring|char|non_neg_integer|pos_integer|neg_integer|number|integer|float|tuple|iolist|string|nonempty_string|module|atom|pid|port|reference|mfa|node|timeout|set|dict|no_return|none)\\s*(\\()",
+          "begin": "\\b(any|term|boolean|byte|binary|bitstring|char|non_neg_integer|pos_integer|neg_integer|number|integer|float|tuple|iolist|string|nonempty_string|module|atom|pid|port|reference|mfa|node|timeout|no_return|none)\\s*(\\()",
           "beginCaptures": {
             "1": {"name": "storage.type.builtin.erlang"},
             "2": {"name": "punctuation.definition.parameters.type.begin.erlang"}
