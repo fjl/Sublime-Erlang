@@ -1783,7 +1783,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(\?(?:[[:alpha:]_][[:alnum]@_]*))\s*(\()</string>
+					<string>(\?(?:[[:alpha:]_][[:alnum:]@_]*))\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1833,7 +1833,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\?(?:[[:alpha:]_][[:alnum]@_]*))(?!\()</string>
+					<string>(\?(?:[[:alpha:]_][[:alnum:]@_]*))(?!\()</string>
 					<key>name</key>
 					<string>meta.macro-usage.erlang</string>
 				</dict>

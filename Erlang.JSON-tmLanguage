@@ -5,7 +5,7 @@
 
   "tokens": {
     "ATOM": "'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*",
-    "MACRO-NAME": "[[:alpha:]_][[:alnum]@_]*",
+    "MACRO-NAME": "[[:alpha:]_][[:alnum:]@_]*",
     "VARIABLE": "_[[:alnum:]@_]+|[[:upper:]][[:alnum:]@_]*"
   },
 

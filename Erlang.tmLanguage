@@ -1447,7 +1447,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(\?(?:[[:alpha:]_][[:alnum]@_]*))\s*(\()</string>
+					<string>(\?(?:[[:alpha:]_][[:alnum:]@_]*))\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1497,7 +1497,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\?(?:[[:alpha:]_][[:alnum]@_]*))(?!\()</string>
+					<string>(\?(?:[[:alpha:]_][[:alnum:]@_]*))(?!\()</string>
 					<key>name</key>
 					<string>meta.macro-usage.erlang</string>
 				</dict>
@@ -1638,7 +1638,7 @@
 					<array>
 						<dict>
 							<key>match</key>
-							<string>(?:[[:alpha:]_][[:alnum]@_]*)</string>
+							<string>(?:[[:alpha:]_][[:alnum:]@_]*)</string>
 							<key>name</key>
 							<string>entity.name.macro.erlang</string>
 						</dict>
@@ -1682,7 +1682,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>^\s*(-)\s*(define)\s*(\()\s*(((?:[[:alpha:]_][[:alnum]@_]*)))\s*(,)</string>
+					<string>^\s*(-)\s*(define)\s*(\()\s*(((?:[[:alpha:]_][[:alnum:]@_]*)))\s*(,)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1743,7 +1743,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?=^\s*-\s*define\s*\(\s*(?:[[:alpha:]_][[:alnum]@_]*)\s*\()</string>
+					<string>(?=^\s*-\s*define\s*\(\s*(?:[[:alpha:]_][[:alnum:]@_]*)\s*\()</string>
 					<key>end</key>
 					<string>(\))\s*(\.)</string>
 					<key>endCaptures</key>
@@ -1765,7 +1765,7 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>^\s*(-)\s*(define)\s*(\()\s*(((?:[[:alpha:]_][[:alnum]@_]*)))\s*(\()</string>
+							<string>^\s*(-)\s*(define)\s*(\()\s*(((?:[[:alpha:]_][[:alnum:]@_]*)))\s*(\()</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>1</key>
@@ -2707,7 +2707,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?=((-?([0-9]+#)?[0-9a-zA-Z]+)|\?(?:[[:alpha:]_][[:alnum]@_]*))\s*\.\.\s*((-?([0-9]+#)?[0-9a-zA-Z]+))|\?(?:[[:alpha:]_][[:alnum]@_]*))</string>
+					<string>(?=((-?([0-9]+#)?[0-9a-zA-Z]+)|\?(?:[[:alpha:]_][[:alnum:]@_]*))\s*\.\.\s*((-?([0-9]+#)?[0-9a-zA-Z]+))|\?(?:[[:alpha:]_][[:alnum:]@_]*))</string>
 					<key>end</key>
 					<string>(?=\}|\]|\)|&gt;|,|\.(?!\.))</string>
 					<key>name</key>
