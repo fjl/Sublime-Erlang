@@ -1770,8 +1770,6 @@
 							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 					</dict>
-					<key>name</key>
-					<string>meta.macro-usage.erlang</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1797,8 +1795,6 @@
 					</dict>
 					<key>match</key>
 					<string>(\?(?:[[:alpha:]_][[:alnum:]@_]*))(?!\()</string>
-					<key>name</key>
-					<string>meta.macro-usage.erlang</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1816,8 +1812,6 @@
 					</dict>
 					<key>match</key>
 					<string>(\?\?)((?:_[[:alnum:]@_]+|[[:upper:]][[:alnum:]@_]*))</string>
-					<key>name</key>
-					<string>meta.preprocessor.stringify-macro-arg.erlang</string>
 				</dict>
 			</array>
 		</dict>

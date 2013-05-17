@@ -695,7 +695,6 @@
     "macro-usage": {
       "patterns": [
         {
-          "name": "meta.macro-usage.erlang",
           "begin": "(\\?⟪MACRO-NAME⟫)\\s*(\\()",
           "beginCaptures": {
             "1": {"name": "keyword.other.macro.erlang"},
@@ -714,14 +713,12 @@
           ]
         },
         {
-          "name": "meta.macro-usage.erlang",
           "match": "(\\?⟪MACRO-NAME⟫)(?!\\()",
           "captures": {
             "1": {"name": "keyword.other.macro.erlang"}
           }
         },
         {
-          "name": "meta.preprocessor.stringify-macro-arg.erlang",
           "match": "(\\?\\?)(⟪VARIABLE⟫)",
           "captures": {
             "1": {"name": "keyword.operator.macro.stringify.erlang"},
