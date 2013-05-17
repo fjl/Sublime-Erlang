@@ -6,7 +6,8 @@
   "tokens": {
     "ATOM": "'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*",
     "MACRO-NAME": "[[:alpha:]_][[:alnum:]@_]*",
-    "VARIABLE": "_[[:alnum:]@_]+|[[:upper:]][[:alnum:]@_]*"
+    "VARIABLE": "_[[:alnum:]@_]+|[[:upper:]][[:alnum:]@_]*",
+    "CHAR-ESCAPE": "\\\\(?:\\^.|[0-7]{1,3}|x[0-9a-fA-F]{2}|x\\{[0-9a-fA-F]+\\}|[^x\\^])"
   },
 
   "patterns": [
@@ -48,12 +49,12 @@
                 "1": {"name": "punctuation.definition.escape.erlang"},
                 "3": {"name": "punctuation.definition.escape.erlang"}
               },
-              "match": "(\\\\)([bdefnrstv\\\\'\"]|(\\^)[@-_]|[0-7]{1,3}|x([0-9a-fA-F]{2}|\\{[0-9a-fA-F]+\\}))",
+              "match": "⟪CHAR-ESCAPE⟫",
               "name": "constant.other.symbol.escape.erlang"
             },
             {
               "match": "\\\\\\^?.?",
-              "name": "invalid.illegal.atom.erlang"
+              "name": "invalid.illegal.symbol.escape.erlang"
             }
           ]
         },
@@ -102,25 +103,12 @@
     "character": {
       "patterns": [
         {
-          "captures": {
-            "1": {"name": "punctuation.definition.character.erlang"},
-            "2": {"name": "constant.character.escape.erlang"},
-            "3": {"name": "punctuation.definition.escape.erlang"},
-            "5": {"name": "punctuation.definition.escape.erlang"}
-          },
-          "match": "(\\$)((\\\\)([bdefnrstv\\\\'\"]|(\\^)[@-_]|[0-7]{1,3}|x([0-9a-fA-F]{2}|\\{[0-9a-fA-F]+\\})))",
+          "match": "\\$(?:[^\\\\]|⟪CHAR-ESCAPE⟫)(?![:alnum:])",
           "name": "constant.character.erlang"
         },
         {
-          "match": "\\$\\\\\\^?.?",
+          "match": "\\$\\\\x\\{.+\\}",
           "name": "invalid.illegal.character.erlang"
-        },
-        {
-          "captures": {
-            "1": {"name": "punctuation.definition.character.erlang"}
-          },
-          "match": "(\\$)\\S",
-          "name": "constant.character.erlang"
         },
         {
           "match": "\\$.?",
@@ -990,7 +978,7 @@
             "1": {"name": "punctuation.definition.escape.erlang"},
             "3": {"name": "punctuation.definition.escape.erlang"}
           },
-          "match": "(\\\\)([bdefnrstv\\\\'\"]|(\\^)[@-_]|[0-7]{1,3}|x([0-9a-fA-F]{2}|\\{[0-9a-fA-F]+\\}))",
+          "match": "⟪CHAR-ESCAPE⟫",
           "name": "constant.character.escape.erlang"
         },
         {

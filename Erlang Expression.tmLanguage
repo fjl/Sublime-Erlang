@@ -128,7 +128,7 @@
 								</dict>
 							</dict>
 							<key>match</key>
-							<string>(\\)([bdefnrstv\\'"]|(\^)[@-_]|[0-7]{1,3}|x([0-9a-fA-F]{2}|\{[0-9a-fA-F]+\}))</string>
+							<string>(?:\\(?:\^.|[0-7]{1,3}|x[0-9a-fA-F]{2}|x\{[0-9a-fA-F]+\}|[^x\^]))</string>
 							<key>name</key>
 							<string>constant.other.symbol.escape.erlang</string>
 						</dict>
@@ -136,7 +136,7 @@
 							<key>match</key>
 							<string>\\\^?.?</string>
 							<key>name</key>
-							<string>invalid.illegal.atom.erlang</string>
+							<string>invalid.illegal.symbol.escape.erlang</string>
 						</dict>
 					</array>
 				</dict>
@@ -224,53 +224,16 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.character.erlang</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>constant.character.escape.erlang</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.escape.erlang</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.escape.erlang</string>
-						</dict>
-					</dict>
 					<key>match</key>
-					<string>(\$)((\\)([bdefnrstv\\'"]|(\^)[@-_]|[0-7]{1,3}|x([0-9a-fA-F]{2}|\{[0-9a-fA-F]+\})))</string>
+					<string>\$(?:[^\\]|(?:\\(?:\^.|[0-7]{1,3}|x[0-9a-fA-F]{2}|x\{[0-9a-fA-F]+\}|[^x\^])))(?![:alnum:])</string>
 					<key>name</key>
 					<string>constant.character.erlang</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\$\\\^?.?</string>
+					<string>\$\\x\{.+\}</string>
 					<key>name</key>
 					<string>invalid.illegal.character.erlang</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.character.erlang</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>(\$)\S</string>
-					<key>name</key>
-					<string>constant.character.erlang</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -2073,7 +2036,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\\)([bdefnrstv\\'"]|(\^)[@-_]|[0-7]{1,3}|x([0-9a-fA-F]{2}|\{[0-9a-fA-F]+\}))</string>
+					<string>(?:\\(?:\^.|[0-7]{1,3}|x[0-9a-fA-F]{2}|x\{[0-9a-fA-F]+\}|[^x\^]))</string>
 					<key>name</key>
 					<string>constant.character.escape.erlang</string>
 				</dict>
