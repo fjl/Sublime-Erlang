@@ -348,6 +348,8 @@
 							<string>punctuation.separator.clauses.erlang</string>
 						</dict>
 					</dict>
+					<key>name</key>
+					<string>meta.function-clause.erlang</string>
 					<key>patterns</key>
 					<array>
 						<dict>

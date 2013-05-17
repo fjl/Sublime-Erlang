@@ -791,6 +791,7 @@
           }
         },
         {
+          "name": "meta.function-clause.erlang",
           "begin": "(?=\\()",
           "end": "(;)|(?=\\.)",
           "endCaptures": {
