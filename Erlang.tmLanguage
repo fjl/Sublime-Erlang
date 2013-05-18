@@ -1279,7 +1279,7 @@
 		<key>internal-type-spec</key>
 		<dict>
 			<key>begin</key>
-			<string>(((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))\s*(:)\s*)?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))</string>
+			<string>(?:(((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))\s*(:)\s*)?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*))))?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>

@@ -194,7 +194,7 @@
     },
 
     "internal-type-spec": {
-      "begin": "((⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(:)\\s*)?(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))",
+      "begin": "(?:((⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(:)\\s*)?(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫)))?",
       "beginCaptures": {
         "1": {"name": "entity.name.function.erlang"},
         "2": {"name": "entity.name.type.class.module.erlang"},
