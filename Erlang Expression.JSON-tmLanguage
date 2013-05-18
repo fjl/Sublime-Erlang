@@ -118,7 +118,7 @@
     },
 
     "comment": {
-      "begin": "(%)",
+      "begin": "(%+)",
       "beginCaptures": {
         "1": {"name": "punctuation.definition.comment.erlang"}
       },
