@@ -194,13 +194,14 @@
     },
 
     "internal-type-spec": {
-      "begin": "(?:(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(:)\\s*)?(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))",
+      "begin": "((⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(:)\\s*)?(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))",
       "beginCaptures": {
-        "1": {"name": "entity.name.type.class.module.erlang"},
-        "2": {"name": "keyword.other.macro.erlang"},
-        "3": {"name": "punctuation.separator.module-function.erlang"},
-        "4": {"name": "entity.name.function.erlang"},
-        "5": {"name": "keyword.other.macro.erlang"}
+        "1": {"name": "entity.name.function.erlang"},
+        "2": {"name": "entity.name.type.class.module.erlang"},
+        "3": {"name": "keyword.other.macro.erlang"},
+        "4": {"name": "punctuation.separator.module-function.erlang"},
+        "5": {"name": "entity.name.function.erlang"},
+        "6": {"name": "keyword.other.macro.erlang"}
       },
       "end": "(?=\\.|\\)\\s*\\.)",
       "patterns": [

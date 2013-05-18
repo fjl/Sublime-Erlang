@@ -865,6 +865,11 @@
 							<string>((erlang)\s*(:)\s*)?(abs|binary_part|bit_size|byte_size|element|float|hd|is_atom|is_binary|is_bitstring|is_boolean|is_float|is_function|is_integer|is_list|is_number|is_pid|is_port|is_record|is_reference|is_tuple|length|node|round|self|size|tl|trunc|tuple_size)\s*(\()</string>
 							<key>beginCaptures</key>
 							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.function.erlang</string>
+								</dict>
 								<key>2</key>
 								<dict>
 									<key>name</key>
@@ -907,6 +912,11 @@
 							<string>(((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))?\s*(:)\s*)?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))\s*(\()</string>
 							<key>beginCaptures</key>
 							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.function.erlang</string>
+								</dict>
 								<key>2</key>
 								<dict>
 									<key>name</key>
@@ -952,16 +962,23 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.type.class.module.erlang</string>
+							<string>entity.name.function.erlang</string>
 						</dict>
 						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type.class.module.erlang</string>
+						</dict>
+						<key>3</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.separator.module-function.erlang</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>match incomplete function calls to improve typing experience</string>
 					<key>match</key>
-					<string>((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))?\s*(:)(?!:)</string>
+					<string>(((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))?\s*(:))(?!:)</string>
 					<key>name</key>
 					<string>meta.function-call.erlang</string>
 				</dict>
