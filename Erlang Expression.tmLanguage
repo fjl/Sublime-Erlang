@@ -1900,7 +1900,7 @@
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>variable.other.field.erlang</string>
+							<string>storage.type.record.field.erlang</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -1946,12 +1946,12 @@
 								<key>2</key>
 								<dict>
 									<key>name</key>
-									<string>variable.other.field.erlang</string>
+									<string>storage.type.record.field.erlang</string>
 								</dict>
 								<key>3</key>
 								<dict>
 									<key>name</key>
-									<string>variable.language.omitted.field.erlang</string>
+									<string>storage.type.record.field.catch-all.erlang</string>
 								</dict>
 								<key>4</key>
 								<dict>

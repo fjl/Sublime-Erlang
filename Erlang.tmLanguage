@@ -1948,7 +1948,7 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>variable.other.field.erlang</string>
+									<string>storage.type.record.field.erlang</string>
 								</dict>
 							</dict>
 							<key>end</key>
@@ -2535,7 +2535,7 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>variable.other.field.erlang</string>
+									<string>storage.type.record.field.erlang</string>
 								</dict>
 								<key>2</key>
 								<dict>

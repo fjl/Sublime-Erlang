@@ -434,7 +434,7 @@
               "name": "meta.field-type.erlang",
               "begin": "(⟪ATOM⟫)\\s*(::)",
               "beginCaptures": {
-                "1": {"name": "variable.other.field.erlang"},
+                "1": {"name": "storage.type.record.field.erlang"},
                 "2": {"name": "punctuation.separator.field-type.erlang"}
               },
               "end": "(?=,|\\})",
@@ -1233,7 +1233,7 @@
             {
               "begin": "(⟪ATOM⟫)\\s*",
               "beginCaptures": {
-                "1": {"name": "variable.other.field.erlang"}
+                "1": {"name": "storage.type.record.field.erlang"}
               },
               "end": "(?=\\s*(,)|\\})",
               "endCaptures": {

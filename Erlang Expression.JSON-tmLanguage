@@ -922,7 +922,7 @@
           "captures": {
             "1": {"name": "storage.type.record.erlang"},
             "2": {"name": "punctuation.separator.record-field.erlang"},
-            "3": {"name": "variable.other.field.erlang"}
+            "3": {"name": "storage.type.record.field.erlang"}
           }
         },
         {
@@ -940,8 +940,8 @@
             {
               "begin": "((⟪ATOM⟫)|(_))\\s*(=)",
               "beginCaptures": {
-                "2": {"name": "variable.other.field.erlang"},
-                "3": {"name": "variable.language.omitted.field.erlang"},
+                "2": {"name": "storage.type.record.field.erlang"},
+                "3": {"name": "storage.type.record.field.catch-all.erlang"},
                 "4": {"name": "keyword.operator.assignment.erlang"}
               },
               "end": "(,)|(?=\\})",
