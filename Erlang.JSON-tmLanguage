@@ -1278,11 +1278,11 @@
     },
 
     "variable": {
+      "match": "(⟪VARIABLE⟫)|(_)",
       "captures": {
         "1": {"name": "variable.other.erlang"},
         "2": {"name": "variable.language.omitted.erlang"}
-      },
-      "match": "(⟪VARIABLE⟫)|(_)"
+      }
     }
   }
 }

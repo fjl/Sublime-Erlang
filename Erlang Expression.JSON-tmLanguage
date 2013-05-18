@@ -1060,10 +1060,10 @@
     },
 
     "variable": {
-      "match": "(_)|(⟪VARIABLE⟫)",
+      "match": "(⟪VARIABLE⟫)|(_)",
       "captures": {
-        "1": {"name": "variable.language.omitted.erlang"},
-        "2": {"name": "variable.other.erlang"}
+        "1": {"name": "variable.other.erlang"},
+        "2": {"name": "variable.language.omitted.erlang"}
       }
     }
   }

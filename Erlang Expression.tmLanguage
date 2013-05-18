@@ -2013,6 +2013,8 @@
 							<string>storage.type.record.erlang</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>match incomplete record references to improve typing experience</string>
 					<key>match</key>
 					<string>(#(?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))</string>
 					<key>name</key>
@@ -2212,16 +2214,16 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>variable.language.omitted.erlang</string>
+					<string>variable.other.erlang</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>variable.other.erlang</string>
+					<string>variable.language.omitted.erlang</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(_)|((?:_[[:alnum:]@_]+|[[:upper:]][[:alnum:]@_]*))</string>
+			<string>((?:_[[:alnum:]@_]+|[[:upper:]][[:alnum:]@_]*))|(_)</string>
 		</dict>
 	</dict>
 	<key>scopeName</key>
