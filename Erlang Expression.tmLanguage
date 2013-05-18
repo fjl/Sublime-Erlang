@@ -2004,6 +2004,20 @@
 						</dict>
 					</array>
 				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.record.erlang</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(#(?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))</string>
+					<key>name</key>
+					<string>meta.record-usage.erlang</string>
+				</dict>
 			</array>
 		</dict>
 		<key>string</key>
