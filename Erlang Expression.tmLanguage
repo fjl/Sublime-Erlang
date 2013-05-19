@@ -1557,22 +1557,22 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>storage.type.erlang</string>
+							<string>storage.modifier.binary.type.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>storage.modifier.signedness.erlang</string>
+							<string>storage.modifier.binary.signedness.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>storage.modifier.endianness.erlang</string>
+							<string>storage.modifier.binary.endianness.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>storage.modifier.unit.erlang</string>
+							<string>storage.modifier.binary.unit.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>

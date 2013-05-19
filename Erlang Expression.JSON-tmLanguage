@@ -581,14 +581,14 @@
       "end": "(?=,|:|>>)",
       "patterns": [
         {
+          "match": "(integer|float|binary|bytes|bitstring|bits|utf8|utf16|utf32)|(signed|unsigned)|(big|little|native)|(unit)|(-)",
           "captures": {
-            "1": {"name": "storage.type.erlang"},
-            "2": {"name": "storage.modifier.signedness.erlang"},
-            "3": {"name": "storage.modifier.endianness.erlang"},
-            "4": {"name": "storage.modifier.unit.erlang"},
+            "1": {"name": "storage.modifier.binary.type.erlang"},
+            "2": {"name": "storage.modifier.binary.signedness.erlang"},
+            "3": {"name": "storage.modifier.binary.endianness.erlang"},
+            "4": {"name": "storage.modifier.binary.unit.erlang"},
             "5": {"name": "punctuation.separator.type-specifiers.erlang"}
-          },
-          "match": "(integer|float|binary|bytes|bitstring|bits|utf8|utf16|utf32)|(signed|unsigned)|(big|little|native)|(unit)|(-)"
+          }
         }
       ]
     },
