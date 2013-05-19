@@ -1279,35 +1279,30 @@
 		<key>internal-type-spec</key>
 		<dict>
 			<key>begin</key>
-			<string>(?:(((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))\s*(:)\s*)?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*))))?</string>
+			<string>(?:(?:((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))\s*(:)\s*)?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*))))?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.erlang</string>
+					<string>entity.name.function.erlang entity.name.type.class.module.erlang</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.type.class.module.erlang</string>
+					<string>keyword.other.macro.erlang</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.macro.erlang</string>
+					<string>punctuation.separator.module-function.erlang</string>
 				</dict>
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.separator.module-function.erlang</string>
-				</dict>
-				<key>5</key>
-				<dict>
-					<key>name</key>
 					<string>entity.name.function.erlang</string>
 				</dict>
-				<key>6</key>
+				<key>5</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.other.macro.erlang</string>
