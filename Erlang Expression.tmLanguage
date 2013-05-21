@@ -777,7 +777,7 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.function.erlang entity.name.type.class.module.erlang</string>
+									<string>meta.function.module.erlang</string>
 								</dict>
 								<key>2</key>
 								<dict>
@@ -792,7 +792,7 @@
 							<key>match</key>
 							<string>(?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)</string>
 							<key>name</key>
-							<string>entity.name.function.erlang</string>
+							<string>meta.function.erlang</string>
 						</dict>
 						<dict>
 							<key>match</key>
@@ -868,7 +868,7 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.function.erlang entity.name.type.class.module.erlang</string>
+									<string>meta.function.module.erlang</string>
 								</dict>
 								<key>2</key>
 								<dict>
@@ -878,7 +878,7 @@
 								<key>3</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.function.guard.erlang</string>
+									<string>support.function.guard.erlang</string>
 								</dict>
 								<key>4</key>
 								<dict>
@@ -910,7 +910,7 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.function.erlang entity.name.type.class.module.erlang</string>
+									<string>meta.function.module.erlang</string>
 								</dict>
 								<key>2</key>
 								<dict>
@@ -920,7 +920,7 @@
 								<key>3</key>
 								<dict>
 									<key>name</key>
-									<string>entity.name.function.erlang</string>
+									<string>meta.function.erlang</string>
 								</dict>
 								<key>4</key>
 								<dict>
@@ -952,7 +952,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.erlang entity.name.type.class.module.erlang</string>
+							<string>meta.function.module.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>

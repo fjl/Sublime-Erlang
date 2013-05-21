@@ -320,7 +320,7 @@
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>meta.function.erlang</string>
+			<string>meta.function-definition.erlang</string>
 			<key>patterns</key>
 			<array>
 				<dict>

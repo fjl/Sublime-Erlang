@@ -45,7 +45,7 @@ class ErlangCommandHooks(sublime_plugin.EventListener):
 # ------------------------------------------------------------------------------
 # -- Goto Definition
 PREFIX_MAP = [
-    ('Function',  'entity.name.function.erlang'),
+    ('Function',  'meta.function.erlang'),
     ('Function',  'entity.name.function.definition.erlang'),
     ('Type',      'storage.type.erlang'),
     ('Type',      'storage.type.definition.erlang'),
@@ -53,6 +53,7 @@ PREFIX_MAP = [
     ('Record',    'storage.type.record.definition.erlang'),
     ('Macro',     'keyword.other.macro.erlang'),
     ('Module',    'entity.name.type.class.module.erlang'),
+    ('Module',    'meta.function.module.erlang'),
     ('Yecc Rule', 'entity.name.token.unquoted.yecc'),
     ('Yecc Rule', 'entity.name.token.quoted.yecc')
 ]

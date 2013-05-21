@@ -1,5 +1,5 @@
 {
-  "scope": "source.erlang meta.function, source.erlang meta.directive",
+  "scope": "meta.function-definition.erlang, meta.directive.erlang",
   "completions": [
     "?MODULE",
     "?FILE",

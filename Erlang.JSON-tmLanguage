@@ -775,6 +775,7 @@
     },
 
     "function": {
+      "name": "meta.function-definition.erlang",
       "begin": "^\\s*(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(?=\\()",
       "beginCaptures": {
         "1": {"name": "entity.name.function.definition.erlang"},
@@ -784,7 +785,6 @@
       "endCaptures": {
         "1": {"name": "punctuation.terminator.function.erlang"}
       },
-      "name": "meta.function.erlang",
       "patterns": [
         {
           "match": "^\\s*(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(?=\\()",
