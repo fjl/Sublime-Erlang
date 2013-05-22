@@ -380,14 +380,14 @@
           "beginCaptures": {
             "1": {"name": "keyword.control.fun.erlang"}
           },
-          "end": "(?<=end)|(?![[:alnum:]\\s\\?\\(:'/_])",
+          "end": "\\b(end)\\b|(?=[^[:alnum:]\\s\\?\\(:'/_]+)",
+          "endCaptures": {
+            "1": {"name": "keyword.control.end.erlang"}
+          },
           "patterns": [
             {
               "begin": "(?=\\()",
-              "end": "\\b(end)\\b",
-              "endCaptures": {
-                "1": {"name": "keyword.control.end.erlang"}
-              },
+              "end": "(?=\\bend\\b)",
               "patterns": [
                 {
                   "match": ";",
@@ -537,6 +537,7 @@
     },
 
     "internal-function-parts": {
+      "name": "function-parts",
       "patterns": [
         {
           "begin": "(\\()",

@@ -722,7 +722,15 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=end)|(?![[:alnum:]\s\?\(:'/_])</string>
+					<string>\b(end)\b|(?=[^[:alnum:]\s\?\(:'/_]+)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.end.erlang</string>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>meta.expression.fun.erlang</string>
 					<key>patterns</key>
@@ -731,15 +739,7 @@
 							<key>begin</key>
 							<string>(?=\()</string>
 							<key>end</key>
-							<string>\b(end)\b</string>
-							<key>endCaptures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>keyword.control.end.erlang</string>
-								</dict>
-							</dict>
+							<string>(?=\bend\b)</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1588,6 +1588,8 @@
 		</dict>
 		<key>internal-function-parts</key>
 		<dict>
+			<key>name</key>
+			<string>function-parts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
