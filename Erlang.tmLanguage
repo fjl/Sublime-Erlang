@@ -1204,8 +1204,6 @@
 			</dict>
 			<key>end</key>
 			<string>(?=\)?\s*\.)</string>
-			<key>name</key>
-			<string>meta.type.erlang</string>
 			<key>patterns</key>
 			<array>
 				<dict>

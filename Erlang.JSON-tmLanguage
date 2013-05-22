@@ -110,7 +110,6 @@
     },
 
     "internal-type-definition": {
-      "name": "meta.type.erlang",
       "begin": "\\s*(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))\\s*(?=\\()",
       "beginCaptures": {
         "1": {"name": "storage.type.definition.erlang"},
@@ -634,6 +633,7 @@
           }
         },
         {
+          "name": "meta.directive.define.erlang",
           "begin": "^\\s*(-)\\s*(define)\\s*(\\()\\s*((⟪MACRO-NAME⟫))\\s*(,)",
           "beginCaptures": {
             "1": {"name": "punctuation.section.directive.begin.erlang"},
@@ -648,7 +648,6 @@
             "1": {"name": "punctuation.definition.parameters.end.erlang"},
             "2": {"name": "punctuation.section.directive.end.erlang"}
           },
-          "name": "meta.directive.define.erlang",
           "patterns": [
             {"include": "source.erlang.expression"}
           ]
@@ -812,6 +811,7 @@
     "import-export-directive": {
       "patterns": [
         {
+          "name": "meta.directive.import.erlang",
           "begin": "^\\s*(-)(import)\\s*(\\()\\s*(⟪ATOM⟫)\\s*(,)",
           "beginCaptures": {
             "1": {"name": "punctuation.section.directive.begin.erlang"},
@@ -825,12 +825,12 @@
             "1": {"name": "punctuation.definition.parameters.end.erlang"},
             "2": {"name": "punctuation.section.directive.end.erlang"}
           },
-          "name": "meta.directive.import.erlang",
           "patterns": [
             {"include": "#internal-function-list"}
           ]
         },
         {
+          "name": "meta.directive.export.erlang",
           "begin": "^\\s*(-)(export)\\s*(\\()",
           "beginCaptures": {
             "1": {"name": "punctuation.section.directive.begin.erlang"},
@@ -842,7 +842,6 @@
             "1": {"name": "punctuation.definition.parameters.end.erlang"},
             "2": {"name": "punctuation.section.directive.end.erlang"}
           },
-          "name": "meta.directive.export.erlang",
           "patterns": [
             {"include": "#internal-function-list"}
           ]
@@ -851,6 +850,7 @@
     },
 
     "internal-function-list": {
+      "name": "meta.structure.list.function.erlang",
       "begin": "(\\[)",
       "beginCaptures": {
         "1": {"name": "punctuation.definition.list.begin.erlang"}
@@ -859,7 +859,6 @@
       "endCaptures": {
         "1": {"name": "punctuation.definition.list.end.erlang"}
       },
-      "name": "meta.structure.list.function.erlang",
       "patterns": [
         {
           "begin": "(⟪ATOM⟫)\\s*(/)",
@@ -919,6 +918,7 @@
     },
 
     "module-directive": {
+      "name": "meta.directive.module.erlang",
       "captures": {
         "1": {"name": "punctuation.section.directive.begin.erlang"},
         "2": {"name": "keyword.control.directive.module.erlang"},
@@ -927,8 +927,7 @@
         "5": {"name": "punctuation.definition.parameters.end.erlang"},
         "6": {"name": "punctuation.section.directive.end.erlang"}
       },
-      "match": "^\\s*(-)(module)\\s*(\\()\\s*(⟪ATOM⟫)\\s*(\\))\\s*(\\.)",
-      "name": "meta.directive.module.erlang"
+      "match": "^\\s*(-)(module)\\s*(\\()\\s*(⟪ATOM⟫)\\s*(\\))\\s*(\\.)"
     },
 
     "integer": {

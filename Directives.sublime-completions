@@ -1,5 +1,5 @@
 {
-	"scope": "source.erlang - meta.function-definition.erlang",
+	"scope": "meta.directive.erlang",
 
 	"completions": [
 		{ "trigger": "-behaviour", "contents": "-behaviour(${1:behaviour})."},
