@@ -30,11 +30,11 @@
         {
           "begin": "(')",
           "beginCaptures": {
-            "1": {"name": "punctuation.definition.symbol.begin.erlang"}
+            "1": {"name": "punctuation.definition.string.symbol.begin.erlang"}
           },
           "end": "(')",
           "endCaptures": {
-            "1": {"name": "punctuation.definition.symbol.end.erlang"}
+            "1": {"name": "punctuation.definition.string.symbol.end.erlang"}
           },
           "name": "constant.other.symbol.quoted.single.erlang",
           "patterns": [

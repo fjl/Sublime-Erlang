@@ -96,7 +96,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.symbol.begin.erlang</string>
+							<string>punctuation.definition.string.symbol.begin.erlang</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -106,7 +106,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.symbol.end.erlang</string>
+							<string>punctuation.definition.string.symbol.end.erlang</string>
 						</dict>
 					</dict>
 					<key>name</key>
