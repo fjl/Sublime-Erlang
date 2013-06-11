@@ -8,6 +8,7 @@
 		<string>Emakefile</string>
 		<string>app</string>
 		<string>app.src</string>
+		<string>rebar.config</string>
 	</array>
 	<key>name</key>
 	<string>Erlang Expressions</string>
