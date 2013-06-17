@@ -6,6 +6,7 @@
       "Emakefile",
       "app",
       "app.src",
+      "appup",
       "rebar.config",
       "reltool.config"
   ],
