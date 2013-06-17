@@ -9,6 +9,7 @@
 		<string>app</string>
 		<string>app.src</string>
 		<string>rebar.config</string>
+		<string>reltool.config</string>
 	</array>
 	<key>name</key>
 	<string>Erlang Expressions</string>

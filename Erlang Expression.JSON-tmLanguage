@@ -1,8 +1,14 @@
 {
   "scopeName": "source.erlang.expression",
   "name": "Erlang Expressions",
-  "fileTypes": ["emakefile", "Emakefile", "app", "app.src", "rebar.config"],
-
+  "fileTypes": [
+      "emakefile",
+      "Emakefile",
+      "app",
+      "app.src",
+      "rebar.config",
+      "reltool.config"
+  ],
   "tokens": {
     "ATOM": "'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'|[[:lower:]][[:alnum:]@_]*",
     "MACRO-NAME": "[[:alpha:]_][[:alnum:]@_]*",
