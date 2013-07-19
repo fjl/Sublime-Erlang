@@ -61,46 +61,85 @@ PREFIX_MAP = [
 
 ERLANG_EXTENSIONS = ['.erl', '.hrl', '.xrl', '.yrl']
 
-def basename(filename):
-    return re.split('/', filename)[-1]
+class GotoExactDefinition:
+    def __init__(self, view):
+        # GotoDefinition could change at any time, but I don't feel like
+        # writing all of its code again just for the sake of being future-proof
+        self.view = view
+        self.window = view.window()
+        self.goto = Default.symbol.GotoDefinition(self.window)
 
-def loc_is_module(loc, module_name):
-    # TODO: escripts?
-    (root, ext) = os.path.splitext(basename(loc[0]))
-    return (ext in ERLANG_EXTENSIONS) and (root == module_name)
+    def at_position(self, kind, point):
+        (module, funcname) = self.get_module_in_call(point)
+        matches = self.goto.lookup_symbol(kind + ': ' + funcname)
+        locations = [loc for loc in matches if self.loc_is_module(loc, module)]
 
-def get_module_in_call(view, point):
-    expclass = sublime.CLASS_WORD_END | sublime.CLASS_WORD_START
-    call_r = view.expand_by_class(point, expclass, ' \"\t\n(){}[]+-*/=>,.;')
-    call = view.substr(call_r)
-    match = re.split('\'?:\'?', call)
-    if len(match) == 2:
-        return (match[0], match[1])
+        if len(locations) == 0:
+            sublime.status_message("No exact matches for %s %s:%s" %
+                                   (kind.lower(), module, funcname))
+            # try to find the module if nothing matched
+            mod_matches = self.goto.lookup_symbol('Module: ' + module)
+            if len(mod_matches) == 0:
+                if len(matches) == 0:
+                    sublime.status_message("No matches for %s %s" %
+                                           (kind.lower(), funcname))
+                else:
+                    self.goto_panel(matches) # open panel with inexact matches
+            elif len(mod_matches) == 1:
+                self.goto.goto_location(mod_matches[0])
+            else:
+                self.goto_panel(mod_matches) # open panel with modules
+        elif len(locations) == 1:
+            self.goto.goto_location(locations[0])
+        else:
+            self.goto_panel(locations)
 
-def goto_exact_definition(kind, view, point):
-    window = view.window()
-    expanded = get_module_in_call(view, point)
-    if expanded is None:
-        return False
-    else:
-        (module, funcname) = expanded
+    def get_module_in_call(self, point):
+        v = self.view
+        expclass = sublime.CLASS_WORD_END | sublime.CLASS_WORD_START
+        word_sep =' \"\t\n(){}[]+-*/=>,.;'
+        call = v.substr(v.expand_by_class(point, expclass, word_sep))
+        match = re.split('\'?:\'?', call)
+        if len(match) == 2:
+            return (match[0], match[1])
+        else:
+            return (self.module_name(self.view.file_name()), call)
 
-    # GotoDefinition could change at any time, but I don't feel like
-    # writing all of its code again just for the sake of being future-proof
-    goto = Default.symbol.GotoDefinition(window)
-    matches = goto.lookup_symbol(kind + ': ' + funcname)
-    locations = [loc for loc in matches if loc_is_module(loc, module)]
+    def loc_is_module(self, loc, expected):
+        # TODO: escripts?
+        lmod = self.module_name(loc[0])
+        return (lmod != None) and (lmod == expected)
 
-    if len(locations) == 0:
-        return False  # run across all modules if nothing matches
-    elif len(locations) == 1:
-        goto.goto_location(locations[0])
-    else:
-        window.show_quick_panel(
-            [goto.format_location(l) for l in locations],
-            on_select = lambda x: goto.select_entry(locations, x, view, None),
-            on_highlight = lambda x: goto.highlight_entry(locations, x))
-    return True
+    def module_name(self, filename):
+        (root, ext) = os.path.splitext(re.split('/', filename)[-1])
+        if ext in ERLANG_EXTENSIONS:
+            return root
+        else:
+            return None
+
+    def goto_panel(self, locations):
+        sel_idx = self.local_match_idx(locations)
+
+        # apparently, on_highlight is not called on entry
+        self.on_highlight_entry(sel_idx, locations)
+
+        self.window.show_quick_panel(
+            [self.goto.format_location(l) for l in locations],
+            on_select = lambda x: self.on_select_entry(x, locations),
+            selected_index = sel_idx,
+            on_highlight = lambda x: self.on_highlight_entry(x, locations))
+
+    def on_select_entry(self, x, locations):
+        self.goto.select_entry(locations, x, self.view, None)
+
+    def on_highlight_entry(self, x, locations):
+        self.goto.highlight_entry(locations, x)
+
+    def local_match_idx(self, locations):
+        for idx in range(len(locations)):
+            if locations[idx][0] == self.view.file_name():
+                return idx
+        return 0
 
 @hook_window_command('goto_definition', 'source.erlang, source.yecc')
 def erlang_goto_definition(window, symbol=None):
@@ -122,10 +161,12 @@ def erlang_goto_definition(window, symbol=None):
         gotosym = kind + ': ' + strip_before('?', symbol)
     elif kind == 'Record':
         gotosym = kind + ': ' + strip_before('#', symbol)
-    elif kind == 'Function' and goto_exact_definition(kind, view, point):
-        return None  # abort if there was an exact match
-    elif kind == 'Type' and goto_exact_definition(kind, view, point):
-        return None  # abort if there was an exact match
+    elif kind == 'Function':
+        GotoExactDefinition(view).at_position(kind, point)
+        return ('noop', None)
+    elif kind == 'Type':
+        GotoExactDefinition(view).at_position(kind, point)
+        return ('noop', None)
     else:
         gotosym = kind + ': ' + symbol
 

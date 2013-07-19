@@ -2388,7 +2388,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?:((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))(:))?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*)|(\?(?:[[:alpha:]_][[:alnum:]@_]*)))(\()</string>
+					<string>(?:((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))?\s*(:)\s*)?((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))\s*(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2399,24 +2399,14 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.macro.erlang</string>
+							<string>punctuation.separator.module-type.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.separator.module-type.erlang</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
 							<string>storage.type.erlang</string>
 						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.macro.erlang</string>
-						</dict>
-						<key>6</key>
+						<key>4</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.definition.parameters.type.begin.erlang</string>
@@ -2435,22 +2425,40 @@
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>captures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.separator.parameters.erlang</string>
-								</dict>
-							</dict>
 							<key>match</key>
-							<string>(,)</string>
+							<string>,</string>
+							<key>name</key>
+							<string>punctuation.separator.parameters.type.erlang</string>
 						</dict>
 						<dict>
 							<key>include</key>
 							<string>#type-expression</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.module.erlang</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.module-type.erlang</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.erlang</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>match incomplete type references to improve typing experience</string>
+					<key>match</key>
+					<string>((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))?\s*(:)((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))?(?!:)</string>
 				</dict>
 				<dict>
 					<key>begin</key>

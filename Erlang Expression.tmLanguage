@@ -962,11 +962,16 @@
 							<key>name</key>
 							<string>punctuation.separator.module-function.erlang</string>
 						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function.erlang</string>
+						</dict>
 					</dict>
 					<key>comment</key>
 					<string>match incomplete function calls to improve typing experience</string>
 					<key>match</key>
-					<string>((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))?\s*(:)(?!:)</string>
+					<string>((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))?\s*(:)((?:'[^'\\]*(?:\\.[^'\\]*)*'|[[:lower:]][[:alnum:]@_]*))?(?!:)</string>
 					<key>name</key>
 					<string>meta.function-call.erlang</string>
 				</dict>

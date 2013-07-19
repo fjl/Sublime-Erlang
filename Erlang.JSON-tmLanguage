@@ -374,14 +374,12 @@
           ]
         },
         {
-          "begin": "(?:(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))(:))?(⟪ATOM⟫|(\\?⟪MACRO-NAME⟫))(\\()",
+          "begin": "(?:(⟪ATOM⟫)?\\s*(:)\\s*)?(⟪ATOM⟫)\\s*(\\()",
           "beginCaptures": {
             "1": {"name": "storage.type.module.erlang"},
-            "2": {"name": "keyword.other.macro.erlang"},
-            "3": {"name": "punctuation.separator.module-type.erlang"},
-            "4": {"name": "storage.type.erlang"},
-            "5": {"name": "keyword.other.macro.erlang"},
-            "6": {"name": "punctuation.definition.parameters.type.begin.erlang"}
+            "2": {"name": "punctuation.separator.module-type.erlang"},
+            "3": {"name": "storage.type.erlang"},
+            "4": {"name": "punctuation.definition.parameters.type.begin.erlang"}
           },
           "end": "(\\))",
           "endCaptures": {
@@ -389,13 +387,20 @@
           },
           "patterns": [
             {
-              "match": "(,)",
-              "captures": {
-                "1": {"name": "punctuation.separator.parameters.erlang"}
-              }
+              "match": ",",
+              "name": "punctuation.separator.parameters.type.erlang"
             },
             {"include": "#type-expression"}
           ]
+        },
+        {
+          "comment": "match incomplete type references to improve typing experience",
+          "match": "(⟪ATOM⟫)?\\s*(:)(⟪ATOM⟫)?(?!:)",
+          "captures": {
+            "1": {"name": "storage.type.module.erlang"},
+            "2": {"name": "punctuation.separator.module-type.erlang"},
+            "3": {"name": "storage.type.erlang"}
+          }
         },
         {
           "name": "meta.type.tuple.erlang",

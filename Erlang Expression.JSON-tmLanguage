@@ -534,10 +534,11 @@
         {
           "comment": "match incomplete function calls to improve typing experience",
           "name": "meta.function-call.erlang",
-          "match": "(⟪ATOM⟫)?\\s*(:)(?!:)",
+          "match": "(⟪ATOM⟫)?\\s*(:)(⟪ATOM⟫)?(?!:)",
           "captures": {
             "1": {"name": "meta.function.module.erlang"},
-            "2": {"name": "punctuation.separator.module-function.erlang"}
+            "2": {"name": "punctuation.separator.module-function.erlang"},
+            "3": {"name": "meta.function.erlang"}
           }
         }
       ]
