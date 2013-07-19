@@ -47,6 +47,7 @@ class ErlangCommandHooks(sublime_plugin.EventListener):
 PREFIX_MAP = [
     ('Function',  'meta.function.erlang'),
     ('Function',  'meta.function.module.erlang'),
+    ('Function',  'entity.name.function.erlang'),
     ('Function',  'entity.name.function.definition.erlang'),
     ('Type',      'storage.type.erlang'),
     ('Type',      'storage.type.module.erlang'),
