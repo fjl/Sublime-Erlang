@@ -1,0 +1,39 @@
+{
+    "cmd": ["rebar", "compile", "skip_deps=true"],
+    "target": "exec_in_project_folder",
+    "path": "$HOME/bin:/usr/local/bin:$PATH",
+    "file_regex": "^([^: ]+):([0-9]+):?([0-9]+)?:? (.*)$",
+    "selector": "source.erlang",
+    "variants": [
+        {
+            "name": "Clean",
+            "cmd": ["rebar", "clean", "--verbose", "skip_deps=true"]
+        },
+        {
+            "name": "Build with dependencies",
+            "cmd": ["rebar", "compile"]
+        },
+        {
+            "name": "Test (common_test)",
+            "cmd": ["rebar", "ct", "--verbose", "skip_deps=true"]
+        },
+        {
+            "name": "Test (eunit)",
+            "cmd": ["rebar", "eunit", "--verbose", "skip_deps=true"]
+        },
+        {
+            "name": "Test Current Module (eunit)",
+            "cmd": ["rebar", "eunit", "--verbose", "skip_deps=true",
+                    "suites=${file_name/\\.erl$//}"]
+        },
+        {
+            "name": "Generate Documentation",
+            "cmd": ["rebar", "doc", "skip_deps=true"],
+            "file_regex": "^([^, ]+), .*?\\b(?:at line ([0-9]+)):( )(.*)"
+        },
+        {
+            "name": "Update Dependencies",
+            "cmd": ["rebar", "get-deps", "update-deps"]
+        }
+    ]
+}

@@ -8,16 +8,18 @@ This repository contains a much-improved Erlang package.
 - *Goto Symbol* works correctly
 - Snippets that *actually* make your life easier when writing Erlang code
 
-## No IDE Functionality
+## Build Systems
 
-This package does not provide any functionality related to
-building or testing Erlang applications. If you need any of that, check out the [SublimErl] package. Compiling single files is supported.
+This package comes with a build system definition for rebar.
+It runs rebar in the project folder containing the current file.
+
+There is also a build system that runs erlc.
 
 ## Installation
 
-* clone this repository into the ST2 `Packages` folder
+* clone this repository into the ST `Packages` folder
 * remove the `Erlang` folder inside your ST2 `Packages` folder or (more elegant)
-  disable the `Erlang` package in your User Settings file. 
+  disable the `Erlang` package in your User Settings file.
 
 This package is not yet available through Package Control.
 I recommend tracking this repository using Package Control's "Add Repository" command.
@@ -32,7 +34,7 @@ to the JSON source.
 You are kindly invited to use the included Sublime Text project file.
 
 To build all grammar files from the command line, run:
-	
+
 	build/all.py
 
 Pull requests and issues are welcome.
