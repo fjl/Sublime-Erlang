@@ -387,7 +387,7 @@
           "beginCaptures": {
             "1": {"name": "keyword.control.fun.erlang"}
           },
-          "end": "\\b(end)\\b|(?=[^[:alnum:]\\s\\?\\(:'/_]+)",
+          "end": "\\b(end)\\b|(?=[^[:alnum:]\\s\\?\\('/_]+)",
           "endCaptures": {
             "1": {"name": "keyword.control.end.erlang"}
           },
@@ -420,10 +420,6 @@
             {
               "match": "⟪ATOM⟫",
               "name": "meta.function.erlang"
-            },
-            {
-              "match": ":",
-              "name": "punctuation.separator.module-function.erlang"
             },
             {
               "match": "(/)\\s*(?:([0-9]+)|(_)|(⟪VARIABLE⟫))?",

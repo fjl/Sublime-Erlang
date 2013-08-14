@@ -725,7 +725,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>\b(end)\b|(?=[^[:alnum:]\s\?\(:'/_]+)</string>
+					<string>\b(end)\b|(?=[^[:alnum:]\s\?\('/_]+)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
