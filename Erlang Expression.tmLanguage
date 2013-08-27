@@ -798,12 +798,6 @@
 							<string>meta.function.erlang</string>
 						</dict>
 						<dict>
-							<key>match</key>
-							<string>:</string>
-							<key>name</key>
-							<string>punctuation.separator.module-function.erlang</string>
-						</dict>
-						<dict>
 							<key>captures</key>
 							<dict>
 								<key>1</key>
