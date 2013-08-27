@@ -2,11 +2,11 @@
   "name": "EScript (Erlang)",
   "scopeName": "source.escript.erlang",
   "fileTypes": ["escript"],
-  "firstLineMatch": "^#!/.*[ /]escript",
+  "firstLineMatch": "^#!\\s*/.*[ /]escript",
   "patterns": [
     {
       "name": "source.erlang",
-      "begin": "^(#!/.*[ /]escript)",
+      "begin": "^(#!\\s*/.*[ /]escript)",
       "beginCaptures": {
         "1": {"name": "comment.shebang.escript.erlang"}
       },

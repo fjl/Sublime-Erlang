@@ -7,14 +7,14 @@
 		<string>escript</string>
 	</array>
 	<key>firstLineMatch</key>
-	<string>^#!/.*[ /]escript</string>
+	<string>^#!\s*/.*[ /]escript</string>
 	<key>name</key>
 	<string>EScript (Erlang)</string>
 	<key>patterns</key>
 	<array>
 		<dict>
 			<key>begin</key>
-			<string>^(#!/.*[ /]escript)</string>
+			<string>^(#!\s*/.*[ /]escript)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
