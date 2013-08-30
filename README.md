@@ -6,7 +6,8 @@ This repository contains a much-improved Erlang package.
 
 - Hand-tuned grammar definitions for Erlang, Leex and Yecc
 - *Goto Symbol* works correctly
-- Snippets that *actually* make your life easier when writing Erlang code
+- Improved auto-match
+- Snippets that make your life easier when writing Erlang code
 
 ## Build Systems
 
