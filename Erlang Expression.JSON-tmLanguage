@@ -110,6 +110,10 @@
     "character": {
       "patterns": [
         {
+          "match": "\\$ ",
+          "name": "invalid.illegal.raw-space-char-literal.erlang"
+        },
+        {
           "match": "\\$(?:[^\\\\]|⟪CHAR-ESCAPE⟫)(?![:alnum:])",
           "name": "constant.character.erlang"
         },
