@@ -71,13 +71,14 @@ class GotoExactDefinition:
         self.goto = Default.symbol.GotoDefinition(self.window)
 
     def at_position(self, kind, point):
-        (module, funcname) = self.get_module_in_call(point)
+        (module, funcname, is_local) = self.get_module_in_call(point)
         matches = self.goto.lookup_symbol(kind + ': ' + funcname)
         locations = [loc for loc in matches if self.loc_is_module(loc, module)]
 
         if len(locations) == 0:
-            sublime.status_message("No exact matches for %s %s:%s" %
+            sublime.status_message("No matches for %s %s:%s" %
                                    (kind.lower(), module, funcname))
+            if is_local: return
             # try to find the module if nothing matched
             mod_matches = self.goto.lookup_symbol('Module: ' + module)
             if len(mod_matches) == 0:
@@ -97,14 +98,15 @@ class GotoExactDefinition:
 
     def get_module_in_call(self, point):
         v = self.view
+        this_module = self.module_name(v.file_name())
         expclass = sublime.CLASS_WORD_END | sublime.CLASS_WORD_START
         word_sep =' \"\t\n(){}[]+-*/=>,.;'
         call = v.substr(v.expand_by_class(point, expclass, word_sep))
         match = re.split('\'?:\'?', call)
         if len(match) == 2:
-            return (match[0], match[1])
+            return (match[0], match[1], match[0] == this_module)
         else:
-            return (self.module_name(self.view.file_name()), call)
+            return (this_module, match[0], True)
 
     def loc_is_module(self, loc, expected):
         # TODO: escripts?
