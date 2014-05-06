@@ -48,7 +48,7 @@
             "windows":
             {
                 "cmd": ["rebar.cmd", "eunit", "--verbose", "skip_deps=true",
-                    "suites=${file_name/\\.erl$//}"],
+                    "suites=${file_name/\\.erl$//}"]
             }
         },
         {
