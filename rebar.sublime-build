@@ -11,33 +11,62 @@
     "variants": [
         {
             "name": "Clean",
-            "cmd": ["rebar", "clean", "--verbose", "skip_deps=true"]
+            "cmd": ["rebar", "clean", "--verbose", "skip_deps=true"],
+            "windows":
+            {
+                "cmd": ["rebar.cmd", "clean", "--verbose", "skip_deps=true"]
+            }
         },
         {
             "name": "Build with dependencies",
-            "cmd": ["rebar", "compile"]
+            "cmd": ["rebar", "compile"],
+            "windows":
+            {
+                "cmd": ["rebar.cmd", "compile"]
+            }
         },
         {
             "name": "Test (common_test)",
-            "cmd": ["rebar", "ct", "--verbose", "skip_deps=true"]
+            "cmd": ["rebar", "ct", "--verbose", "skip_deps=true"],
+            "windows":
+            {
+                "cmd": ["rebar.cmd", "ct", "--verbose", "skip_deps=true"]
+            }
         },
         {
             "name": "Test (eunit)",
-            "cmd": ["rebar", "eunit", "--verbose", "skip_deps=true"]
+            "cmd": ["rebar", "eunit", "--verbose", "skip_deps=true"],
+            "windows":
+            {
+                "cmd": ["rebar.cmd", "eunit", "--verbose", "skip_deps=true"]
+            }
         },
         {
             "name": "Test Current Module (eunit)",
             "cmd": ["rebar", "eunit", "--verbose", "skip_deps=true",
+                    "suites=${file_name/\\.erl$//}"],
+            "windows":
+            {
+                "cmd": ["rebar.cmd", "eunit", "--verbose", "skip_deps=true",
                     "suites=${file_name/\\.erl$//}"]
+            }
         },
         {
             "name": "Generate Documentation",
             "cmd": ["rebar", "doc", "skip_deps=true"],
-            "file_regex": "^([^, ]+), .*?\\b(?:at line ([0-9]+)):( )(.*)"
+            "file_regex": "^([^, ]+), .*?\\b(?:at line ([0-9]+)):( )(.*)",
+            "windows":
+            {
+                "cmd": ["rebar.cmd", "doc", "skip_deps=true"]
+            }
         },
         {
             "name": "Update Dependencies",
-            "cmd": ["rebar", "get-deps", "update-deps"]
+            "cmd": ["rebar", "get-deps", "update-deps"],
+            "windows":
+            {
+                "cmd": ["rebar.cmd", "get-deps", "update-deps"]
+            }
         }
     ]
 }
