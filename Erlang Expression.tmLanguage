@@ -477,51 +477,12 @@
 							<key>patterns</key>
 							<array>
 								<dict>
-									<key>begin</key>
-									<string>(?!-&gt;)</string>
-									<key>end</key>
-									<string>(?=-&gt;)</string>
-									<key>patterns</key>
-									<array>
-										<dict>
-											<key>include</key>
-											<string>#integer</string>
-										</dict>
-										<dict>
-											<key>include</key>
-											<string>#variable</string>
-										</dict>
-										<dict>
-											<key>include</key>
-											<string>#macro-usage</string>
-										</dict>
-										<dict>
-											<key>include</key>
-											<string>#comment</string>
-										</dict>
-										<dict>
-											<key>match</key>
-											<string>infinity</string>
-											<key>name</key>
-											<string>constant.other.symbol.unquoted.erlang</string>
-										</dict>
-										<dict>
-											<key>match</key>
-											<string>'infinity'</string>
-											<key>name</key>
-											<string>constant.other.symbol.quoted.erlang</string>
-										</dict>
-										<dict>
-											<key>match</key>
-											<string>[^\s]</string>
-											<key>name</key>
-											<string>invalid.illegal.receive-timeout.erlang</string>
-										</dict>
-									</array>
+									<key>include</key>
+									<string>#internal-arrow-clause-expression</string>
 								</dict>
 								<dict>
 									<key>include</key>
-									<string>#internal-arrow-clause-expression</string>
+									<string>$self</string>
 								</dict>
 							</array>
 						</dict>

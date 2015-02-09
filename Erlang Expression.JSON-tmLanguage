@@ -269,29 +269,8 @@
               },
               "end": "(?=\\b(end)\\b)",
               "patterns": [
-                {
-                  "begin": "(?!->)",
-                  "end": "(?=->)",
-                  "patterns": [
-                    {"include": "#integer"},
-                    {"include": "#variable"},
-                    {"include": "#macro-usage"},
-                    {"include": "#comment"},
-                    {
-                      "match": "infinity",
-                      "name": "constant.other.symbol.unquoted.erlang"
-                    },
-                    {
-                      "match": "'infinity'",
-                      "name": "constant.other.symbol.quoted.erlang"
-                    },
-                    {
-                      "match": "[^\\s]",
-                      "name": "invalid.illegal.receive-timeout.erlang"
-                    }
-                  ]
-                },
-                {"include": "#internal-arrow-clause-expression"}
+                {"include": "#internal-arrow-clause-expression"},
+                {"include": "$self"}
               ]
             }
           ]
