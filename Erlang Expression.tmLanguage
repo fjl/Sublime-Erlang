@@ -941,7 +941,7 @@
 		<key>illegal-keyword</key>
 		<dict>
 			<key>match</key>
-			<string>\b(after|begin|case|catch|cond|end|fun|if|let|of|query|try|receive|when)\b</string>
+			<string>\b(after|begin|case|catch|cond|end|fun|if|let|of|try|receive|when)\b</string>
 			<key>name</key>
 			<string>invalid.illegal.keyword.control.erlang</string>
 		</dict>

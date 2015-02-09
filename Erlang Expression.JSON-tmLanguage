@@ -579,7 +579,7 @@
     },
 
     "illegal-keyword": {
-      "match": "\\b(after|begin|case|catch|cond|end|fun|if|let|of|query|try|receive|when)\\b",
+      "match": "\\b(after|begin|case|catch|cond|end|fun|if|let|of|try|receive|when)\\b",
       "name": "invalid.illegal.keyword.control.erlang"
     },
 
