@@ -391,7 +391,7 @@
           "beginCaptures": {
             "1": {"name": "keyword.control.fun.erlang"}
           },
-          "end": "\\b(end)\\b|(?=[^[:alnum:]\\s\\?\\('/_]+)",
+          "end": "\\b(end)\\b|(?=(/\\s*(?:[0-9]+|⟪VARIABLE⟫))|([^[:alnum:]\\s\\?\\('/_]+))",
           "endCaptures": {
             "1": {"name": "keyword.control.end.erlang"}
           },
